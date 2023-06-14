@@ -52,6 +52,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'brands': self.brand_dicts,
-            'products': self.product_dicts
+            'brands': brand_dicts,
+            'products': product_dicts
         }

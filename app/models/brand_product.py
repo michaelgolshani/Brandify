@@ -8,10 +8,10 @@ from datetime import datetime
 class Brand(db.Model):
     __tablename__ = 'brands'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    story = db.Column(db.String(255))
+    name = db.Column(db.String(255),nullable=False)
+    story = db.Column(db.String(255), nullable = False)
     description = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     admin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
@@ -32,7 +32,8 @@ class Brand(db.Model):
             'description': self.description,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'admin_id': self.admin_id
+            'admin_id': self.admin_id,
+            'products': product_dicts
         }
 
 
@@ -60,13 +61,13 @@ class Product(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'name':self.id,
-            'review': self.review,
+            'name':self.name,
             'price': self.price,
             'brand_id': self.brand_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'admin_id': self.admin_id
+            'owner_id': self.owner_id,
+            'brand_id': self.brand_id
         }
 
 
