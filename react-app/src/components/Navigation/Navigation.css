@@ -5,3 +5,47 @@
 .hidden {
   display: none;
 }
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  justify-content: space-between;
+  padding:0px 0px;
+  margin:0px;
+  border-bottom: 1px solid black;
+
+
+}
+
+.nav-link {
+  text-decoration: none;
+  color:black;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-item-right{
+  margin-left:auto;
+  margin-right:50px
+}
+
+.nav-item-left{
+  margin-right:auto;
+  margin:0px;
+  margin-left:40px;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom:0px;
+}
+
+.logo-image{
+  width:100px;
+  height: auto;
+}

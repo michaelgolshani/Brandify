@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request,redirect
+from ..forms import BrandForm
 from flask_login import login_required, current_user, login_user, logout_user
 from app.models import db, User, Brand, Product, Review, Order, OrderItem
 from .auth_routes import validation_errors_to_error_messages
-from ..forms import BrandForm
+
 
 
 
@@ -45,30 +46,71 @@ def current_user_brands():
 
 
 
-@brand_routes.route('/new', methods= ["POST"])
+@brand_routes.route('/new', methods=["POST"])
+@login_required
 def create_brand():
-  user = User.query.get(current_user.id)
+    user = User.query.get(current_user.id)
 
-  form = BrandForm()
+    form = BrandForm()
 
-  form['crsf_token'].data = request.cookies['crsf_token']
+    form.csrf_token.data = request.cookies.get('csrf_token')
 
-  if form.validate_on_sibmit():
+    if form.validate_on_submit():
 
-    for brand in user.brands:
-      if form.data['name'] == brand.name:
-        return {"errors": "You already have a brand named this"}
-    new_brand = Brand(
-      name = form.data["name"],
-      story = form.data["story"],
-      description = form.data["description"],
-      admin_id = current_user.id
-    )
-    db.session.add(new_brand)
+        for brand in user.brands:
+            if form.name.data == brand.name:
+                return {"errors": "You already have a brand named this"}
+
+        new_brand = Brand(
+            name=form.name.data,
+            story=form.story.data,
+            description=form.description.data,
+            admin_id=current_user.id
+        )
+
+        db.session.add(new_brand)
+        db.session.commit()
+
+        return new_brand.to_dict()
+
+    elif form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
+@brand_routes.route('/edit/<int:brand_id>', methods =["PUT"])
+@login_required
+def update_brand(brand_id):
+  brand_to_edit = Brand.query.get(brand_id)
+
+  if current_user.id != brand_to_edit.admin_id:
+    return {"errors": "You do not own this brand"}
+
+  form =BrandForm()
+
+  form.csrf_token.data = request.cookies.get('csrf_token')
+
+  if form.validate_on_submit():
+    brand_to_edit.name = form.name.data
+    brand_to_edit.story = form.story.data
+    brand_to_edit.description = form.description.data
+
     db.session.commit()
+    return brand_to_edit.to_dict()
 
-    return new_brand.to_dict()
-  elif form.errors:
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+  else:
+     return {'errors':validation_errors_to_error_messages}
 
 
+@brand_routes.route('/delete/<int:brand_id>', methods=["DELETE"])
+@login_required
+def delete_brand(brand_id):
+   brand_to_delete = Brand.query.get(brand_id)
+
+   if current_user.id != brand_to_delete.admin_id:
+      return {"errors": "You do not own this brand"}
+
+   db.session.delete(brand_to_delete)
+   db.session.commit()
+
+   return {"message": f"{brand_to_delete.name} successfully deleted"}

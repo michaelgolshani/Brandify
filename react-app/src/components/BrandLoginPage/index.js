@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+import './BrandLoginPage.css';
 
-function LoginFormPage() {
+
+
+
+const BrandLoginPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/store-login" />;
+  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +31,7 @@ function LoginFormPage() {
 
           <form onSubmit={handleSubmit} className="form-container">
             <h2>Log In</h2>
-            <p> Continue to Brandify</p>
+            <p> Contiinue to Brandify</p>
             <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
@@ -62,4 +65,4 @@ function LoginFormPage() {
   );
 }
 
-export default LoginFormPage;
+export default BrandLoginPage
