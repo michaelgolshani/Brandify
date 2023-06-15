@@ -77,7 +77,7 @@ const BrandLoginPage = () => {
             </ul>
             <div className="brand-login-brand-outer-container">
               {myBrandArr.map((brand, index) => (
-                <div className="brand-login-brand-container" key={index}>
+                <div className="brand-login-brand-container" onClick={() => history.push(`/store-dashboard/${brand.name}`)}key={index}>
                   <div>{brand.name}</div>
                 </div>
               ))}
