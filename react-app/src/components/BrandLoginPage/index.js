@@ -22,6 +22,7 @@ const BrandLoginPage = () => {
     dispatch(getAllBrandsThunk())
   }, [])
 
+  
   const state = useSelector((state) => state)
   console.log("STATE", state)
   const brands = state.brands

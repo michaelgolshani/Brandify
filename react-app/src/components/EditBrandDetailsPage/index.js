@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import { login } from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import './CreateBrandPage.css';
-import { createBrandThunk } from "../../store/brands";
+import React from 'react'
+import { useDispatch, useSelector,useEffect } from 'react'
+import CreateBrandPage from '../CreateBrandPage';
+import { createBrandThunk } from '../../store/brands';
+import { useState } from 'react';
 
 
 
-
-const CreateBrandPage = () => {
-  
+export const EditBrandDetails = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
