@@ -9,7 +9,7 @@ import { createBrandThunk } from "../../store/brands";
 
 
 const CreateBrandPage = () => {
-  
+
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
@@ -29,7 +29,7 @@ const CreateBrandPage = () => {
     //   setErrors(data);
     // }
 const formData = {
-  name,
+  name: name.trim(),
   story,
   description
 }

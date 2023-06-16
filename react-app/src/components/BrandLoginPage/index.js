@@ -22,7 +22,7 @@ const BrandLoginPage = () => {
     dispatch(getAllBrandsThunk())
   }, [])
 
-  
+
   const state = useSelector((state) => state)
   console.log("STATE", state)
   const brands = state.brands
@@ -57,9 +57,9 @@ const BrandLoginPage = () => {
     }
   };
 
-  if (myBrandArr.length < 1) {
-    return <h1>loading....</h1>
-  }
+  // if (myBrandArr.length < 1) {
+  //   return <h1>loading....</h1>
+  // }
 
   return (
     <>
@@ -77,6 +77,9 @@ const BrandLoginPage = () => {
               ))}
             </ul>
             <div className="brand-login-brand-outer-container">
+              {myBrandArr.length == 0 && (
+                <div>You have no brands. Lets create one.</div>
+              )}
               {myBrandArr.map((brand, index) => (
                 <div className="brand-login-brand-container" onClick={() => history.push(`/store-dashboard/${brand.name}`)}key={index}>
                   <div>{brand.name}</div>

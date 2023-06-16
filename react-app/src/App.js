@@ -26,10 +26,10 @@ function App() {
           <Route exact path='/store-login'>
             <BrandLoginPage />
           </Route>
-          <Route exact path = '/store-dashboard/:brandname/edit'>
+          <Route exact path = '/store-dashboard/:brandName/edit'>
             <EditBrandDetails/>
           </Route>
-          <Route exact path = '/store-dashboard/:brandname'>
+          <Route exact path = '/store-dashboard/:brandName'>
             <BrandDashboardPage/>
           </Route>
           <Route exact path='/create-brand'>

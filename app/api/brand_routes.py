@@ -32,6 +32,17 @@ def get_single_brand(brand_id):
     return {"errors": "Brand could not be found"}
 
 
+@brand_routes.route('/<brand_name>', methods= ["GET"])
+def get_single_brand_by_name(brand_name):
+  brand = Brand.query.filter_by(name = brand_name).first()
+
+
+  if(brand):
+    return brand.to_dict()
+  else:
+    return {"errors": "Brand could not be found"}
+
+
 @brand_routes.route('/current_user', methods= ["GET"])
 def current_user_brands():
   user_brands = Brand.query.filter_by(admin_id = current_user.id ).all()
@@ -78,11 +89,12 @@ def create_brand():
 
 
 
-@brand_routes.route('/edit/<int:brand_id>', methods =["PUT"])
+@brand_routes.route('/edit/<brand_name>', methods =["PUT"])
 @login_required
-def update_brand(brand_id):
-  brand_to_edit = Brand.query.get(brand_id)
-
+def update_brand(brand_name):
+  brand_to_edit = Brand.query.filter_by(name = brand_name).first()
+  print("BRAND TO EDIT", brand_to_edit)
+  print("user id", current_user.id)
   if current_user.id != brand_to_edit.admin_id:
     return {"errors": "You do not own this brand"}
 
@@ -102,10 +114,11 @@ def update_brand(brand_id):
      return {'errors':validation_errors_to_error_messages}
 
 
-@brand_routes.route('/delete/<int:brand_id>', methods=["DELETE"])
+@brand_routes.route('/delete/<brand_name>', methods=["DELETE"])
 @login_required
-def delete_brand(brand_id):
-   brand_to_delete = Brand.query.get(brand_id)
+def delete_brand(brand_name):
+   brand_to_delete = Brand.query.filter_by(name = brand_name).first()
+   print("WE ARE IN ROUTE FLASK", brand_to_delete)
 
    if current_user.id != brand_to_delete.admin_id:
       return {"errors": "You do not own this brand"}

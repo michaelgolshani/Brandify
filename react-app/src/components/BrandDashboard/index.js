@@ -1,16 +1,18 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,Route, Switch } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getSingleBrandThunk } from '../../store/brands'
 import { useDispatch } from 'react-redux'
 import './BrandDashboard.css'
+import { useHistory } from 'react-router-dom'
 
 
 const BrandDashboardPage = () => {
 
   const dispatch = useDispatch()
+  const history = useHistory()
 
-  const { brandId } = useParams()
+  const { brandName } = useParams()
 
 
   useEffect(() => {
@@ -55,9 +57,10 @@ const BrandDashboardPage = () => {
 
       <div className='main-container'>
 
+
         <div className="grid-container">
           <div className="grid-row">
-            <div className="grid-cell">Brand Details</div>
+            <div className="grid-cell" onClick={()=> history.push(`/store-dashboard/${brandName}/edit`)}>Edit Brand Details</div>
             <div className="grid-cell">My Products</div>
             <div className="grid-cell">Orders</div>
           </div>
