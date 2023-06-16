@@ -10,6 +10,7 @@ import BrandLoginPage from "./components/BrandLoginPage";
 import CreateBrandPage from "./components/CreateBrandPage";
 import BrandDashboardPage from "./components/BrandDashboard";
 import { EditBrandDetails } from "./components/EditBrandDetailsPage";
+import ProductListPage from "./components/ProductListPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
         <Switch>
           <Route exact path='/store-login'>
             <BrandLoginPage />
+          </Route>
+          <Route exact path='/:brandName/products'>
+            <ProductListPage/>
           </Route>
           <Route exact path = '/store-dashboard/:brandName/edit'>
             <EditBrandDetails/>

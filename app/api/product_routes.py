@@ -55,7 +55,7 @@ def create_product(brand_name):
             name=form.name.data,
             price=form.price.data,
             inventory=form.inventory.data,
-            owner_id=current_user.id
+            owner_id=current_user.id,
             brand_id = brand.id
         )
         db.session.add(new_product)
