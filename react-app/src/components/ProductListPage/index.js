@@ -4,16 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSingleBrandThunk } from '../../store/brands';
 import { getAllProductsThunk } from '../../store/products';
 import './ProductListPage.css';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProductListPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const { brandName } = useParams();
 
   useEffect(() => {
     dispatch(getAllProductsThunk());
   }, [dispatch]);
 
-  const state= useSelector(state => state)
+  const state = useSelector(state => state)
   console.log(state)
 
   let products = []
@@ -23,7 +25,7 @@ const ProductListPage = () => {
       <div className='product-list-side-menu'>
         <div className='product-list-inidividual-choice'>
           <i className="fa-solid fa-house"></i>
-          <div className='product-list-side-bar-text'>Home</div>
+          <div className='product-list-side-bar-text' onClick={() => history.push(`/store-dashboard/${brandName}`)} >Home</div>
         </div>
         <div className='product-list-inidividual-choice'>
           <i className="fa-solid fa-inbox"></i>
@@ -31,7 +33,7 @@ const ProductListPage = () => {
         </div>
         <div className='product-list-inidividual-choice'>
           <i className="fa-solid fa-tag fa-rotate-90"></i>
-          <div className='product-list-side-bar-text'>Products</div>
+          <div className='product-list-side-bar-text' onClick={() => history.push(`/${brandName}/products`)}>Products</div>
         </div>
         <div className='product-list-inidividual-choice'>
           <i className="fa-solid fa-address-card"></i>
@@ -65,22 +67,22 @@ const ProductListPage = () => {
             <div>Vendor</div>
           </div>
           {products.map((product) => (
-        <div key={product.id} className="product-list-rows-container product-list-grey-hover">
-          <div>
-            <input type="checkbox" />
-          </div>
-          <div>{product.image}</div>
-          <div>{product.name}</div>
-          <div className={product.active ? "product-list-rows-active" : ""}>Active</div>
-          <div>{product.inventory}</div>
-          <div>{product.brand}</div>
-        </div>
-      ))}
+            <div key={product.id} className="product-list-rows-container product-list-grey-hover">
+              <div>
+                <input type="checkbox" />
+              </div>
+              <div>{product.image}</div>
+              <div>{product.name}</div>
+              <div className={product.active ? "product-list-rows-active" : ""}>Active</div>
+              <div>{product.inventory}</div>
+              <div>{product.brand}</div>
+            </div>
+          ))}
 
+
+        </div>
 
       </div>
-
-    </div>
     </div>
   );
 };

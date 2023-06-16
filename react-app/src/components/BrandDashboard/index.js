@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams,Route, Switch } from 'react-router-dom'
+import { useParams, Route, Switch } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getSingleBrandThunk } from '../../store/brands'
 import { useDispatch } from 'react-redux'
@@ -26,7 +26,7 @@ const BrandDashboardPage = () => {
       <div className='side-menu'>
         <div className='inidividual-choice'>
           <i className="fa-solid fa-house"></i>
-          <div className='side-bar-text'>Home</div>
+          <div className='side-bar-text' onClick={() => history.push(`/store-dashboard/${brandName}/products`)}>Home</div>
         </div>
         <div className='inidividual-choice'>
           <i className="fa-solid fa-inbox"></i>
@@ -34,14 +34,14 @@ const BrandDashboardPage = () => {
         </div>
         <div className='inidividual-choice'>
           <i className="fa-solid fa-tag fa-rotate-90"></i>
-          <div className='side-bar-text'>Products</div>
+          <div className='side-bar-text' onClick={() => history.push(`/${brandName}/products`)}>Products</div>
         </div>
         <div className='inidividual-choice'>
           <i className="fa-solid fa-address-card"></i>
           <div className='side-bar-text'>Customers</div>
         </div>
         <div className='inidividual-choice'>
-        <i className="fa-solid fa-chart-line"></i>
+          <i className="fa-solid fa-chart-line"></i>
           <div className='side-bar-text'>Analytics</div>
         </div>
         <div className='inidividual-choice settings'>
@@ -60,8 +60,8 @@ const BrandDashboardPage = () => {
 
         <div className="grid-container">
           <div className="grid-row">
-            <div className="grid-cell" onClick={()=> history.push(`/store-dashboard/${brandName}/edit`)}>Edit Brand Details</div>
-            <div className="grid-cell">My Products</div>
+            <div className="grid-cell" onClick={() => history.push(`/store-dashboard/${brandName}/edit`)}>Edit Brand Details</div>
+            <div className="grid-cell" onClick={() => history.push(`/${brandName}/products`)}>My Products</div>
             <div className="grid-cell">Orders</div>
           </div>
           <div className="grid-row">

@@ -51,7 +51,7 @@ export const EditBrandDetails = () => {
       setStory(oldBrand.story)
       setDescription(oldBrand.description)
     }
-  }, [oldBrand]);
+  }, [oldBrand,brandName]);
 
 
 
@@ -85,7 +85,7 @@ export const EditBrandDetails = () => {
     console.log("FORM DATA", formData)
 
     await dispatch(updateBrandThunk(formData, brandName))
-    history.push('/')
+    history.push(`/store-dashboard/${brandName}`)
   };
 
   if (!oldBrand) {
@@ -136,7 +136,7 @@ export const EditBrandDetails = () => {
                 className="login-input"
               />
             </label>
-            <button type="submit">Create Brand</button>
+            <button type="submit">Save</button>
           </form>
           <button onClick={handleDelete}>Delete Brand</button>
         </div>
