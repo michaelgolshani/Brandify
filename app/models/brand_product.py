@@ -63,6 +63,7 @@ class Product(db.Model):
             'id': self.id,
             'name':self.name,
             'price': self.price,
+            'inventory': self.inventory,
             'brand_id': self.brand_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

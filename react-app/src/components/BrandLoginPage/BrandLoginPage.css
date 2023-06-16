@@ -52,13 +52,19 @@
   padding: 5px 10px;
   font-size: 14px;
   margin: 0;
-  height: 30px;
+  height: 35px;
   align-items: center;
   justify-content: center;
   background-color: rgb(0, 128, 96);
   color: white;
   border: none;
   border-radius: 3px;
+
+  transition: border 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+.create-store-button:hover{
+  background-color: rgb(1, 105, 79);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .storesbrand-login{
@@ -73,9 +79,15 @@
   justify-content: center;
   border: 1px solid rgb(224, 224, 224);
   padding: 30px;
+  margin-bottom: 15px;
   border-radius: 3px;
   overflow: auto;
-
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.brand-login-brand-container:hover{
+  cursor: pointer;
+  border: 3px solid rgb(8, 91, 255);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
 
 }
 

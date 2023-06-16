@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './CreateBrandPage.css';
 import { createBrandThunk } from "../../store/brands";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
@@ -11,6 +12,7 @@ import { createBrandThunk } from "../../store/brands";
 const CreateBrandPage = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [story, setStory] = useState("")
@@ -37,6 +39,7 @@ const formData = {
 console.log(formData)
 
 await dispatch(createBrandThunk(formData))
+history.push(`/store-dashboard/${name}`)
 
 
   };

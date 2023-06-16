@@ -12,13 +12,31 @@ const ProductListPage = () => {
   const { brandName } = useParams();
 
   useEffect(() => {
+    dispatch(getSingleBrandThunk(brandName))
     dispatch(getAllProductsThunk());
   }, [dispatch]);
 
   const state = useSelector(state => state)
   console.log(state)
+  const allProducts = useSelector(state => state?.products.allProducts)
+  console.log("ALL PRODUCTS", allProducts)
+  const singleBrand = useSelector(state => state.brands.singleBrand)
+  console.log(singleBrand)
+  const allProductsArr = Object.values(allProducts)
+  console.log("all products arr", allProductsArr)
 
   let products = []
+  if (allProducts){
+    products=[]
+    for (let i =0; i < allProductsArr.length ; i ++){
+      let product = allProductsArr[i]
+      if(product.brand_id === singleBrand.id ){
+        products.push(product)
+      }
+    }
+  }
+
+  console.log("PRODUCTS OF BRAND",products)
 
   return (
     <div className='product-list-dashboard-container'>
@@ -75,7 +93,7 @@ const ProductListPage = () => {
               <div>{product.name}</div>
               <div className={product.active ? "product-list-rows-active" : ""}>Active</div>
               <div>{product.inventory}</div>
-              <div>{product.brand}</div>
+              <div>{brandName}</div>
             </div>
           ))}
 
