@@ -85,7 +85,8 @@ export const EditBrandDetails = () => {
     console.log("FORM DATA", formData)
 
     await dispatch(updateBrandThunk(formData, brandName))
-    history.push(`/store-dashboard/${brandName}`)
+
+    history.push(`/store-dashboard/${name}`)
   };
 
   if (!oldBrand) {

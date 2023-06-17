@@ -147,6 +147,7 @@
 
 .product-list-grey-hover:hover{
   background-color: rgb(238, 238, 238);
+  cursor: pointer;
 }
 
 .product-list-grey-hover{
