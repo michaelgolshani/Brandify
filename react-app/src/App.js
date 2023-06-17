@@ -25,20 +25,20 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path= '/productpage'>
-            <ProductBuyPage/>
+          <Route exact path='/store-dashboard/:brandName/edit'>
+            <EditBrandDetails />
+          </Route>
+          <Route exact path='/store-dashboard/:brandName'>
+            <BrandDashboardPage />
+          </Route>
+          <Route exact path='/:brandName/products'>
+            <ProductListPage />
+          </Route>
+          <Route exact path='/productpage'>
+            <ProductBuyPage />
           </Route>
           <Route exact path='/store-login'>
             <BrandLoginPage />
-          </Route>
-          <Route exact path='/:brandName/products'>
-            <ProductListPage/>
-          </Route>
-          <Route exact path = '/store-dashboard/:brandName/edit'>
-            <EditBrandDetails/>
-          </Route>
-          <Route exact path = '/store-dashboard/:brandName'>
-            <BrandDashboardPage/>
           </Route>
           <Route exact path='/create-brand'>
             <CreateBrandPage />

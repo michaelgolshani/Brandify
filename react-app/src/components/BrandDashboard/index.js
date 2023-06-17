@@ -5,6 +5,7 @@ import { getSingleBrandThunk } from '../../store/brands'
 import { useDispatch } from 'react-redux'
 import './BrandDashboard.css'
 import { useHistory } from 'react-router-dom'
+import SideBarDashboard from '../SideBarDashboard.js'
 
 
 const BrandDashboardPage = () => {
@@ -22,42 +23,8 @@ const BrandDashboardPage = () => {
 
   return (
     <div className='dashboard-container'>
-
-      <div className='side-menu'>
-        <div className='inidividual-choice'>
-          <i className="fa-solid fa-house"></i>
-          <div className='side-bar-text' onClick={() => history.push(`/store-dashboard/${brandName}/products`)}>Home</div>
-        </div>
-        <div className='inidividual-choice'>
-          <i className="fa-solid fa-inbox"></i>
-          <div className='side-bar-text'>Orders</div>
-        </div>
-        <div className='inidividual-choice'>
-          <i className="fa-solid fa-tag fa-rotate-90"></i>
-          <div className='side-bar-text' onClick={() => history.push(`/${brandName}/products`)}>Products</div>
-        </div>
-        <div className='inidividual-choice'>
-          <i className="fa-solid fa-address-card"></i>
-          <div className='side-bar-text'>Customers</div>
-        </div>
-        <div className='inidividual-choice'>
-          <i className="fa-solid fa-chart-line"></i>
-          <div className='side-bar-text'>Analytics</div>
-        </div>
-        <div className='inidividual-choice settings'>
-          <i className="fa-solid fa-gear"></i>
-          <div className='side-bar-text'>Settings</div>
-        </div>
-
-
-      </div>
-
-
-
-
+      <SideBarDashboard />
       <div className='main-container'>
-
-
         <div className="grid-container">
           <div className="grid-row">
             <div className="grid-cell" onClick={() => history.push(`/store-dashboard/${brandName}/edit`)}>Edit Brand Details</div>
@@ -70,16 +37,7 @@ const BrandDashboardPage = () => {
             <div className="grid-cell">Orders</div>
           </div>
         </div>
-
       </div>
-
-
-
-
-
-
-
-
     </div>
   )
 }

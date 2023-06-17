@@ -5,6 +5,7 @@ import { getSingleBrandThunk } from '../../store/brands';
 import { getAllProductsThunk } from '../../store/products';
 import './ProductListPage.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import SideBarDashboard from '../SideBarDashboard.js';
 
 const ProductListPage = () => {
   const dispatch = useDispatch();
@@ -26,49 +27,21 @@ const ProductListPage = () => {
   console.log("all products arr", allProductsArr)
 
   let products = []
-  if (allProducts){
-    products=[]
-    for (let i =0; i < allProductsArr.length ; i ++){
+  if (allProducts) {
+    products = []
+    for (let i = 0; i < allProductsArr.length; i++) {
       let product = allProductsArr[i]
-      if(product.brand_id === singleBrand.id ){
+      if (product.brand_id === singleBrand.id) {
         products.push(product)
       }
     }
   }
 
-  console.log("PRODUCTS OF BRAND",products)
+  console.log("PRODUCTS OF BRAND", products)
 
   return (
     <div className='product-list-dashboard-container'>
-      <div className='product-list-side-menu'>
-        <div className='product-list-inidividual-choice'>
-          <i className="fa-solid fa-house"></i>
-          <div className='product-list-side-bar-text' onClick={() => history.push(`/store-dashboard/${brandName}`)} >Home</div>
-        </div>
-        <div className='product-list-inidividual-choice'>
-          <i className="fa-solid fa-inbox"></i>
-          <div className='product-list-side-bar-text'>Orders</div>
-        </div>
-        <div className='product-list-inidividual-choice'>
-          <i className="fa-solid fa-tag fa-rotate-90"></i>
-          <div className='product-list-side-bar-text' onClick={() => history.push(`/${brandName}/products`)}>Products</div>
-        </div>
-        <div className='product-list-inidividual-choice'>
-          <i className="fa-solid fa-address-card"></i>
-          <div className='product-list-side-bar-text'>Customers</div>
-        </div>
-        <div className='product-list-inidividual-choice'>
-          <i className="fa-solid fa-chart-line"></i>
-          <div className='product-list-side-bar-text'>Analytics</div>
-        </div>
-        <div className='product-list-inidividual-choice product-list-settings'>
-          <i className="fa-solid fa-gear"></i>
-          <div className='product-list-side-bar-text'>Settings</div>
-        </div>
-      </div>
-
-
-
+      <SideBarDashboard />
       <div className='product-list-main-container'>
         <div className='product-list-top-bar'>
           <div className='product-list-products-text'>Products</div>
@@ -96,10 +69,7 @@ const ProductListPage = () => {
               <div>{brandName}</div>
             </div>
           ))}
-
-
         </div>
-
       </div>
     </div>
   );
