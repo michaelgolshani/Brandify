@@ -3,6 +3,12 @@ import { OrangeGradientWave, StraightGradientWave } from '../AllDesignContent/Or
 import energyDrink from '../../assets/energy-drink-front-cover.jpg'
 import energyDrinkColor from '../../assets/energy-drink-standing-tall-color.jpeg'
 import shoe from '../../assets/shoes-metallic.jpg'
+import futureShoe from '../../assets/nike-shoe-future.jpg'
+import baycFront from '../../assets/bayc-front.jpg'
+import baycBack from '../../assets/bayc-back.jpg'
+import baycMid from '../../assets/bayc-mid.jpg'
+import baycSide from '../../assets/bayc-side.jpg'
+import baycTop from '../../assets/bayc-top.jpg'
 import './ProductBuyPage.css'
 
 
@@ -14,6 +20,8 @@ import './ProductBuyPage.css'
 
 export const ProductBuyPage = () => {
   const [order, setOrder] = useState(1)
+  const [selectedImage, setSelectedImage] = useState(energyDrinkColor)
+
 
   return (
 
@@ -28,19 +36,24 @@ export const ProductBuyPage = () => {
         </div>
         <div className='top-section-left index'>
           <div>
-            <img src={energyDrinkColor} className='energy-drink index' />
+            <img src={selectedImage} className='energy-drink index' />
           </div>
           <div className='small-images-product'>
-            <img src={energyDrink} className='energy-drink-small-images index' />
-            <img src={energyDrinkColor} className='energy-drink-small-images index' />
-            <img src={energyDrink} className='energy-drink-small-images index' />
-            <img src={energyDrinkColor} className='energy-drink-small-images index' />
-            <img src={energyDrink} className='energy-drink-small-images index' />
+            <img src={energyDrinkColor} className='energy-drink-small-images index' onClick={() => setSelectedImage(energyDrinkColor)} />
+            <img src={energyDrink} className='energy-drink-small-images index' onClick={() => setSelectedImage(energyDrink)} />
+            <img src={energyDrinkColor} className='energy-drink-small-images index' onClick={() => setSelectedImage(energyDrinkColor)} />
+            <img src={energyDrink} className='energy-drink-small-images index' onClick={() => setSelectedImage(energyDrink)} />
+            <img src={energyDrinkColor} className='energy-drink-small-images index' onClick={() => setSelectedImage(energyDrinkColor)} />
+
+            {/* <img src={baycBack} className='energy-drink-small-images index' onClick={() => setSelectedImage(baycBack)} /> */}
+            {/* <img src={baycTop} className='energy-drink-small-images index' onClick={() => setSelectedImage(baycTop)} />
+            <img src={baycMid} className='energy-drink-small-images index' onClick={() => setSelectedImage(baycMid)} />
+            <img src={baycSide} className='energy-drink-small-images index' onClick={() => setSelectedImage(baycSide)}/> */}
           </div>
         </div>
         <div className='top-section-right'>
+          <h1 className='index product-title shadowed-text'>CHEESCAKE</h1>
           <div className='top-title-money'>
-            <h1 className='index product-title shadowed-text'>CHEESE CAKE</h1>
             <div className='add-minus-sign-price'>$24</div>
           </div>
           <div className='add-minus-sign-container'>

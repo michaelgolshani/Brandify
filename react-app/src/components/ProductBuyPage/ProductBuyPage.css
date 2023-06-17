@@ -7,9 +7,10 @@
   /* justify-content: center; */
   align-items: center;
   width: 50vw;
+  overflow: hidden;
 }
 
-.product-description{
+.product-description {
   width: 45vw;
   padding-top: 15px;
   line-height: 1.5;
@@ -20,7 +21,7 @@
 
 .product-title {
   font-size: 81px;
-  height:20px;
+  /* height: 20px; */
   text-align: left;
   color: white;
   font-style: "Neue Haas Unica", sans-serif;
@@ -30,6 +31,9 @@
     -2px 2px 0 #000,
     2px 2px 0 #000;
   text-rendering: optimizeLegibility;
+  width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 0px;
 }
 
 .shadowed-text {
@@ -45,6 +49,8 @@
   flex-direction: row;
   z-index: 2;
   position: relative;
+  overflow: hidden;
+
 }
 
 
@@ -69,7 +75,7 @@
   flex-direction: column;
   padding-top: 40px;
   /* margin-left: 8px; */
-
+  max-width: 40vw;
   align-items: left;
 
 }
@@ -142,6 +148,8 @@
   padding: 10px;
   border: 2px solid black;
   border-radius: 7px;
+  /* width: 100%; */
+  width: 100%;
 
   background-color: #ea426f;
 
@@ -312,6 +320,7 @@ section {
   ;
   backgroundSize: "400% 400%";
   animation: "gradient 25s ease infinite";
+
 }
 
 @keyframes gradient {
@@ -352,10 +361,11 @@ section {
 }
 
 
-.energy-drink-small-images{
+.energy-drink-small-images {
   height: 70px;
   width: 70px;
   z-index: 2;
+
   /* border-radius: 50%; */
   border-radius: 10px;
   border: 2px black solid;
@@ -365,16 +375,17 @@ section {
   z-index: 1;
   cursor: pointer;
   box-shadow: 0px 8px 6px 0px black;
-  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out,border 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out, border 0.1s ease-in-out;
   /* transform: skewX(-10deg); */
 }
-.energy-drink-small-images:hover{
+
+.energy-drink-small-images:hover {
   transform: translateY(5px);
   box-shadow: none;
   border: 3px black solid;
 }
 
-.small-images-product{
+.small-images-product {
   display: flex;
   flex-direction: row;
   justify-content: center;
