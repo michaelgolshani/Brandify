@@ -3,6 +3,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 
+# product_variant_association = db.Table(
+#     'product_association',
+#     db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True),
+#     db.Column('product_variant_id', db.Integer, db.ForeignKey('product_variants.id'), primary_key=True),
+#     schema=SCHEMA
+# )
+
 
 
 class Brand(db.Model):
@@ -40,8 +47,11 @@ class Brand(db.Model):
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-    price = db.Column(db.Integer, nullable = False)
+    name = db.Column(db.String(50), nullable=False)
+    price = db.Column(db.Float, nullable = False)
+    description = db.Column(db.String(355), nullable = False)
+    images = db.Column(db.ARRAY(db.String), nullable=False, default=[])
+    features = db.Column(db.ARRAY(db.String), nullable=False, default=[])
     inventory = db.Column(db.Integer, default = 10)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
@@ -50,6 +60,8 @@ class Product(db.Model):
 
     user = db.relationship('User', back_populates='products')
     product_brand = db.relationship('Brand', back_populates='products')
+    # product_variants = db.relationship('ProductVariant', back_populates="product", cascade="delete")
+    # product_features = db.relationship('ProductFeature', back_populates='product', cascade='delete')
 
     # orders = db.relationship('Order', secondary='order_items', cascade='delete')
     order_items = db.relationship('OrderItem', cascade='delete')
@@ -58,19 +70,63 @@ class Product(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+
     def to_dict(self):
+        # variants = [variant.to_dict() for variant in self.product_variants]
+        # features = [feature.to_dict() for feature in self.product_features]
         return {
             'id': self.id,
             'name':self.name,
             'price': self.price,
+            'description': self.description,
+            'images': self.images.split(',') if self.images else [],
+            'features' : self.features.split(',') if self.features else [],
+            # 'image': self.image,
             'inventory': self.inventory,
             'brand_id': self.brand_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'owner_id': self.owner_id,
-            'brand_id': self.brand_id
+            'brand_id': self.brand_id,
+            # 'variants': variants,
+            # 'features': features,
         }
 
+    # def parse_images(self):
+    #     return self.images.split(',') if self.images else []
+
+# class ProductVariant(db.Model):
+#     __tablename__ = 'product_variants'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(255), nullable=False)
+#     price = db.Column(db.Float, nullable=False)
+#     color = db.Column(db.String(50))
+#     size = db.Column(db.String(50))
+
+#     products = db.relationship('Product', secondary=product_variant_association, back_populates='product_variants')
+
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name,
+#             'price': self.price,
+#             'color': self.color,
+#             'size': self.size
+#         }
+
+# class ProductFeature(db.Model):
+#     __tablename__ = 'product_features'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(255), nullable=False)
+#     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
+
+#     product = db.relationship('Product', back_populates='product_features')
+
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name
+#         }
 
 class Review(db.Model):
     __tablename__ = 'reviews'

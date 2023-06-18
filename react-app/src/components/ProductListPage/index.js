@@ -62,7 +62,7 @@ const ProductListPage = () => {
               <div>
                 <input type="checkbox" />
               </div>
-              <div>{product.image}</div>
+              <img className='product-list-small-image'src={product.images[0]}/>
               <div>{product.name}</div>
               <div className={product.active ? "product-list-rows-active" : ""}>Active</div>
               <div>{product.inventory}</div>

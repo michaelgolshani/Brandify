@@ -52,17 +52,41 @@ def upgrade():
 
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=255), nullable=False),
-    sa.Column('price', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('price', sa.Float(), nullable=False),
+    sa.Column('description', sa.String(length=355), nullable=True),
     sa.Column('inventory', sa.Integer(), default=10),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('brand_id', sa.Integer(), nullable=False),
+    sa.Column('images', sa.String(), nullable=False),
+    sa.Column('features', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['brand_id'], ['brands.id'], ),
     sa.PrimaryKeyConstraint('id')
-    )
+)
+
+
+
+    # op.create_table('product_variants',
+    #     sa.Column('id', sa.Integer(), nullable=False),
+    #     sa.Column('name', sa.String(length=255), nullable=False),
+    #     sa.Column('price', sa.Float(), nullable=False),
+    #     sa.Column('color', sa.String(length=50)),
+    #     sa.Column('size', sa.String(length=50)),
+    #     sa.PrimaryKeyConstraint('id')
+    # )
+
+    # op.create_table('product_features',
+    #     sa.Column('id', sa.Integer(), nullable=False),
+    #     sa.Column('name', sa.String(length=255), nullable=False),
+    #     sa.Column('product_id', sa.Integer(), nullable=False),
+    #     sa.ForeignKeyConstraint(['product_id'], ['products.id']),
+    #     sa.PrimaryKeyConstraint('id')
+    # )
+
+
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('review', sa.String(length=255), nullable=True),
@@ -107,6 +131,8 @@ def downgrade():
     op.drop_table("order_items")
     op.drop_table("orders")
     op.drop_table("reviews")
+    # op.drop_table('product_features')
+    # op.drop_table('product_variants')
     op.drop_table("products")
     op.drop_table("brands")
     op.drop_table('users')

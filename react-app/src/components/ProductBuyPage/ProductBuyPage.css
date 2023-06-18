@@ -351,8 +351,8 @@ section {
 
 
 .energy-drink {
-  height: 550px;
-  width: 550px;
+  height: 40vw;
+  width: 40vw;
   z-index: 2;
   border-radius: 5px;
   border: 1px black solid;
@@ -362,8 +362,8 @@ section {
 
 
 .energy-drink-small-images {
-  height: 70px;
-  width: 70px;
+  height: 5vw;
+  width: 5vw;
   z-index: 2;
 
   /* border-radius: 50%; */

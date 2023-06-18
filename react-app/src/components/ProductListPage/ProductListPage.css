@@ -143,7 +143,21 @@
   color: rgb(120, 120, 120);
   font-size: 12px;
 }
+.product-list-small-image {
+  height: 40px;
+  border-radius: 10px;
+  width: 40px;
+object-fit: cover;
+}
+.product-list-small-image:hover{
+  box-shadow: 2px 2px 6px 0px rgb(86, 86, 86);
+}
 
+.product-list-small-image img {
+  height: 100%;
+  width: 100%;
+
+}
 
 .product-list-grey-hover:hover{
   background-color: rgb(238, 238, 238);
@@ -151,7 +165,8 @@
 }
 
 .product-list-grey-hover{
-  padding: 15px 15px;
+  padding: 10px 15px;
+  align-items: center;
 }
 
 .product-list-rows-active{
