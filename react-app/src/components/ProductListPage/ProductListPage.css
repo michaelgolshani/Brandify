@@ -96,14 +96,20 @@
 
 .product-list-rows-container{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   gap: 15px;
   padding: 10px 15px;
   font-size: 13px;
+  align-items: center;
+
 }
 
 
-
+.store-icon{
+ font-size: 22px;
+margin-left:10px;
+color: rgb(3, 85, 25);
+}
 
 
 .product-list-grid-container {

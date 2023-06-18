@@ -12,6 +12,7 @@ import BrandDashboardPage from "./components/BrandDashboard";
 import { EditBrandDetails } from "./components/EditBrandDetailsPage";
 import ProductListPage from "./components/ProductListPage";
 import { ProductBuyPage } from "./components/ProductBuyPage";
+import AddProductPage from "./components/AddProductPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/store-dashboard/:brandName/new'>
+            <AddProductPage/>
+          </Route>
           <Route exact path='/store-dashboard/:brandName/edit'>
             <EditBrandDetails />
           </Route>

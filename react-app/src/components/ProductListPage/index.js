@@ -51,22 +51,26 @@ const ProductListPage = () => {
         <div className='product-list-white-container'>
           <div className='product-list-rows-container background-grey'>
             <div><input type="checkbox" /></div>
+            <div>My Store</div>
             <div></div>
             <div>Product</div>
             <div>Status</div>
             <div>Inventory</div>
             <div>Vendor</div>
+            <div>Edit</div>
           </div>
           {products.map((product) => (
             <div key={product.id} className="product-list-rows-container product-list-grey-hover">
               <div>
                 <input type="checkbox" />
               </div>
+              <i className="fa-sharp fa-solid fa-store store-icon"></i>
               <img className='product-list-small-image'src={product.images[0]}/>
               <div>{product.name}</div>
               <div className={product.active ? "product-list-rows-active" : ""}>Active</div>
               <div>{product.inventory}</div>
               <div>{brandName}</div>
+              <i className="fa-solid fa-pen-to-square store-icon"></i>
             </div>
           ))}
         </div>
