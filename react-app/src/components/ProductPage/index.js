@@ -8,11 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 
-
-
-
-
-
 const ProductPage = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -51,7 +46,8 @@ const ProductPage = () => {
     setSelectedImage(image);
   };
 
- 
+
+
 
   return (
 
