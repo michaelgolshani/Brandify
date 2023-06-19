@@ -16,8 +16,8 @@ class Brand(db.Model):
     __tablename__ = 'brands'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255),nullable=False)
-    story = db.Column(db.String(255), nullable = False)
-    description = db.Column(db.String(255))
+    story = db.Column(db.String(400), nullable = False)
+    description = db.Column(db.String(500))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     admin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
