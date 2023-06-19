@@ -147,7 +147,7 @@ export default function productsReducer(state = initialState, action) {
       if (newState.allProducts[action.product.id]) {
         newState.allProducts[action.product.id] = action.product
       }
-      newState.singleProduct = action.Product
+      newState.singleProduct = action.product
 
       console.log("WE ARE IN SUCCESFUL UPDATED PRODUCT REDUCER", action.product)
       return newState

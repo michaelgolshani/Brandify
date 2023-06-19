@@ -40,7 +40,7 @@ def upgrade():
     op.create_table('brands',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=True),
-    sa.Column('story', sa.String(length=400), nullable=True),
+    sa.Column('story', sa.String(length=450), nullable=True),
     sa.Column('description', sa.String(length=550), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=False),

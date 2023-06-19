@@ -8,5 +8,5 @@ from app.models import Brand, User
 
 class BrandForm(FlaskForm):
     name = StringField('Board Name', validators=[Length(max=50, message="Name must be less than 255 chars!"), DataRequired()])
-    story= StringField("Brand Story", validators=[Length(max = 400, message = "Brand Story does well with about 255 characters."), DataRequired()])
+    story= StringField("Brand Story", validators=[Length(max = 450, message = "Brand Story does well with about 255 characters."), DataRequired()])
     description = StringField('Brand Description', validators=[Length(max=550, message="Name must be less than 255 chars!"), DataRequired()])

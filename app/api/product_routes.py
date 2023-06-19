@@ -78,7 +78,7 @@ def update_product(product_id, brand_name):
     print("INNNNNNNNNNNNNNNNNNNNNNNNNNNNn")
     if current_user.id != product_to_edit.owner_id:
         return {"errors": "You do not own this product"}
-    form = BrandForm()
+    form = ProductForm()
     form.csrf_token.data = request.cookies.get('csrf_token')
     print("INNNNNNNNNNNNNNNNNNNNNNNNNNNN 22222")
     if form.validate_on_submit():

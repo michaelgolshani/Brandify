@@ -16,7 +16,7 @@ class Brand(db.Model):
     __tablename__ = 'brands'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255),nullable=False)
-    story = db.Column(db.String(400), nullable = False)
+    story = db.Column(db.String(450), nullable = False)
     description = db.Column(db.String(550))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)

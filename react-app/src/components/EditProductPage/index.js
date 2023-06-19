@@ -121,7 +121,7 @@ const EditProductPage = ({ update }) => {
   console.log("features", combinedFeatures)
 
   const onDelete = async() => {
-    dispatch(deleteProductThunk(productId))
+    await dispatch(deleteProductThunk(productId))
     history.push(`/store-dashboard/${brandName}`)
 
   }
@@ -138,7 +138,8 @@ const EditProductPage = ({ update }) => {
       inventory: inventory,
 
     }
-    await dispatch(updateProductThunk(formData, brandName, productId))
+    await dispatch(updateProductThunk(formData, brandName, productId)).then(()=> history.push(`/store-dashboard/${brandName}`) )
+
 
     console.log("FORM DATA", formData)
 
