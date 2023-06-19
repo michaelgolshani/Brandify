@@ -13,6 +13,8 @@ import { EditBrandDetails } from "./components/EditBrandDetailsPage";
 import ProductListPage from "./components/ProductListPage";
 import { ProductBuyPage } from "./components/ProductBuyPage";
 import AddProductPage from "./components/AddProductPage";
+import EditProductPage from "./components/EditProductPage";
+import ProductPage from "./components/ProductPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +28,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/store/:brandName/:productId'>
+            <ProductPage />
+          </Route>
+          <Route exact path='/store-dashboard/:brandName/:productId/edit'>
+            <EditProductPage update={true} />
+          </Route>
           <Route exact path='/store-dashboard/:brandName/new'>
-            <AddProductPage/>
+            <AddProductPage />
           </Route>
           <Route exact path='/store-dashboard/:brandName/edit'>
             <EditBrandDetails />

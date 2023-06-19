@@ -40,10 +40,11 @@ def current_user_products():
         all_products[product.id] = product.to_dict()
     return all_products
 
-@product_routes.route('/new', methods=["POST"])
+@product_routes.route('/<brand_name>/new', methods=["POST"])
 @login_required
 def create_product(brand_name):
     user = User.query.get(current_user.id)
+    # brand_name = request.form.get('brand_name')
     brand = Brand.query.filter_by(name=brand_name, admin_id=current_user.id).first()
     form = ProductForm()
     form.csrf_token.data = request.cookies.get('csrf_token')
@@ -54,6 +55,9 @@ def create_product(brand_name):
         new_product = Product(
             name=form.name.data,
             price=form.price.data,
+            description=form.description.data,
+            images = form.images.data,
+            features = form.features.data,
             inventory=form.inventory.data,
             owner_id=current_user.id,
             brand_id = brand.id
@@ -64,20 +68,26 @@ def create_product(brand_name):
     elif form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@product_routes.route('/edit/<product_name>', methods=["PUT"])
+@product_routes.route('/edit/<brand_name>/<int:product_id>', methods=["PUT"])
 @login_required
-def update_product(product_name, brand_name):
-    product_to_edit = Product.query.filter_by(name=product_name).first()
+def update_product(product_id, brand_name):
+    product_to_edit = Product.query.get(product_id)
     brand = Brand.query.filter_by(name=brand_name, admin_id=current_user.id).first()
     print("PRODUCT TO EDIT", product_to_edit)
     print("user id", current_user.id)
-    if current_user.id != product_to_edit.admin_id:
+    print("INNNNNNNNNNNNNNNNNNNNNNNNNNNNn")
+    if current_user.id != product_to_edit.owner_id:
         return {"errors": "You do not own this product"}
     form = BrandForm()
     form.csrf_token.data = request.cookies.get('csrf_token')
+    print("INNNNNNNNNNNNNNNNNNNNNNNNNNNN 22222")
     if form.validate_on_submit():
+        print("INNNNNNNNNNNNNNNNNNNNNNNNNNNN 22222")
         product_to_edit.name = form.name.data
-        product_to_edit.price = form.edit.data
+        product_to_edit.price = form.price.data
+        product_to_edit.description = form.description.data
+        product_to_edit.images = form.images.data
+        product_to_edit.features = form.features.data
         product_to_edit.inventory = form.inventory.data
         product_to_edit.owner_id = current_user.id
         product_to_edit.brand_id = brand.id
@@ -87,10 +97,10 @@ def update_product(product_name, brand_name):
     else:
         return {'errors': validation_errors_to_error_messages}
 
-@product_routes.route('/delete/<product_name>', methods=["DELETE"])
+@product_routes.route('/delete/<int:product_id>', methods=["DELETE"])
 @login_required
-def delete_product(product_name):
-    product_to_delete = Product.query.filter_by(name=product_name).first()
+def delete_product(product_id):
+    product_to_delete = Product.query.get(product_id)
     print("WE ARE IN ROUTE FLASK", product_to_delete)
     if current_user.id != product_to_delete.owner_id:
         return {"errors": "You do not own this product"}

@@ -3,24 +3,24 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSingleBrandThunk } from '../../store/brands';
 import { getAllProductsThunk, getSingleProductThunk } from '../../store/products';
-import './AddProductPage.css';
+import './EditProductPage.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import SideBarDashboard from '../SideBarDashboard.js';
-import { createProductThunk } from '../../store/products';
+import { createProductThunk,updateProductThunk, deleteProductThunk } from '../../store/products';
 
-const AddProductPage = ({ update }) => {
+const EditProductPage = ({ update }) => {
   const dispatch = useDispatch();
   const history = useHistory()
   const { brandName, productId } = useParams();
 
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [description, setDescription] = useState('')
-  const [images, setImages] = useState(['', '', '']);
-  const [optionalImage1, setOptionalImage1] = useState('');
-  const [optionalImage2, setOptionalImage2] = useState('');
-  const [features, setFeatures] = useState(['', '', '']);
-  const [inventory, setInventory] = useState('')
+  // const [name, setName] = useState('')
+  // const [price, setPrice] = useState('')
+  // const [description, setDescription] = useState('')
+  // const [images, setImages] = useState(['', '', '']);
+  // const [optionalImage1, setOptionalImage1] = useState('');
+  // const [optionalImage2, setOptionalImage2] = useState('');
+  // const [features, setFeatures] = useState(['', '', '']);
+  // const [inventory, setInventory] = useState('')
 
 
   const [isLoaded, setIsLoaded] = useState(false)
@@ -41,6 +41,15 @@ const AddProductPage = ({ update }) => {
   const allProductsArr = Object.values(allProducts)
   console.log("all products arr", allProductsArr)
 
+  const [name, setName] = useState(singleProduct.name)
+  const [price, setPrice] = useState(singleProduct.price)
+  const [description, setDescription] = useState(singleProduct.description)
+  const [images, setImages] = useState(singleProduct.images);
+  const [optionalImage1, setOptionalImage1] = useState('');
+  const [optionalImage2, setOptionalImage2] = useState('');
+  const [features, setFeatures] = useState(singleProduct.features);
+  const [inventory, setInventory] = useState(singleProduct.inventory)
+
   console.log("IMAGES", images)
 
   //find the single product
@@ -59,14 +68,22 @@ const AddProductPage = ({ update }) => {
   console.log("CURRENT PRODUCT", currentProductTest)
 
   useEffect(() => {
-    dispatch(getSingleBrandThunk(brandName))
+    // dispatch(getSingleBrandThunk(brandName))
     dispatch(getSingleProductThunk(productId))
-    dispatch(getAllProductsThunk()).then(() => setIsLoaded(true));
-
-
-
+    // dispatch(getAllProductsThunk()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  useEffect(() => {
+    if(singleProduct.name){
+      setName(singleProduct.name)
+      setDescription(singleProduct.description)
+      setPrice(singleProduct.price)
+      setInventory(singleProduct.inventory)
+      setImages(singleProduct.images)
+      setFeatures(singleProduct.features)
+
+    }
+  }, [singleProduct,brandName])
 
   // const currentProduct = products.find(product => productId == product.id);
 
@@ -94,14 +111,20 @@ const AddProductPage = ({ update }) => {
 
 
 
-
+  const imagesArr = String(images ?? "").split(',');
+  const featuresArr = String(features ?? "").split(',')
 
   //combine images before sending them to the database
-  const combinedImages = [...images, optionalImage1, optionalImage2].filter(Boolean).join(',');
+  const combinedImages = [...imagesArr, optionalImage1, optionalImage2].filter(Boolean).join(',');
   console.log("COMBINED IMAGES", combinedImages)
-  const combinedFeatures = [...features].filter(Boolean).join(',');
+  const combinedFeatures = [...featuresArr].filter(Boolean).join(',');
   console.log("features", combinedFeatures)
 
+  const onDelete = async() => {
+    dispatch(deleteProductThunk(productId))
+    history.push(`/store-dashboard/${brandName}`)
+
+  }
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -112,11 +135,11 @@ const AddProductPage = ({ update }) => {
       images: combinedImages,
       price: parseFloat(price),
       features: combinedFeatures,
-      inventory: inventory
+      inventory: inventory,
 
     }
-    dispatch(createProductThunk(formData, brandName))
-    history.push(`/store-dashboard/${brandName}`)
+    await dispatch(updateProductThunk(formData, brandName, productId))
+
     console.log("FORM DATA", formData)
 
 
@@ -124,8 +147,8 @@ const AddProductPage = ({ update }) => {
 
   console.log("PRODUCTS OF BRAND", products)
 
-  if (update) {
-
+  if (!singleProduct) {
+    return <h1>loading...</h1>
   }
 
   return (
@@ -134,6 +157,7 @@ const AddProductPage = ({ update }) => {
       <form className='product-list-main-container' onSubmit={onSubmit}>
         <div className='product-list-top-bar'>
           <div className='product-list-products-text'>Add Product</div>
+          <button className='product-list-delete-product' onClick={onDelete}>Delete</button>
           <button className='product-list-add-product'>Save</button>
         </div>
 
@@ -166,7 +190,7 @@ const AddProductPage = ({ update }) => {
               <label>
                 Product Cover Photo
                 <input
-                  value={images[0]}
+                  value={imagesArr[0]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 0)}
                   required
@@ -175,7 +199,7 @@ const AddProductPage = ({ update }) => {
               <label>
                 Photo #2
                 <input
-                  value={images[1]}
+                  value={imagesArr[1]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 1)}
                   required
@@ -184,7 +208,7 @@ const AddProductPage = ({ update }) => {
               <label>
                 Photo #3
                 <input
-                  value={images[2]}
+                  value={imagesArr[2]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 2)}
                   required
@@ -193,7 +217,7 @@ const AddProductPage = ({ update }) => {
               <label>
                 Photo #4
                 <input
-                  value={images[3]}
+                  value={imagesArr[3]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 3)}
 
@@ -202,7 +226,7 @@ const AddProductPage = ({ update }) => {
               <label>
                 Photo #5
                 <input
-                  value={images[4]}
+                  value={imagesArr[4]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 4)}
 
@@ -223,7 +247,7 @@ const AddProductPage = ({ update }) => {
             </div>
 
             <div className="add-product-left-container-individual" >
-              {features.map((feature, index) => (
+              {featuresArr.map((feature, index) => (
                 <div key={index}>
                   <label>
                     Feature {index + 1}
@@ -278,4 +302,4 @@ const AddProductPage = ({ update }) => {
   );
 };
 
-export default AddProductPage;
+export default EditProductPage;

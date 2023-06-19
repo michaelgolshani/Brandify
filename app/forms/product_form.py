@@ -11,4 +11,4 @@ class ProductForm(FlaskForm):
     description = StringField("Product Description", validators=[DataRequired()])
     images = StringField("Product Images", validators=[DataRequired()])
     features = StringField("Product Features", validators=[DataRequired()])
-    brand_id = SelectField("Brand", coerce=int, validators=[DataRequired()])
+    # brand_id = SelectField("Brand", coerce=int, validators=[DataRequired()])

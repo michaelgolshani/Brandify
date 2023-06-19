@@ -15,8 +15,9 @@ const SideBarDashboard = () => {
   const { brandName } = useParams()
 
 
+  
   useEffect(() => {
-    dispatch(getSingleBrandThunk(1))
+    dispatch(getSingleBrandThunk(brandName))
   }, [])
 
 

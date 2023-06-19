@@ -17,8 +17,8 @@ const BrandDashboardPage = () => {
 
 
   useEffect(() => {
-    dispatch(getSingleBrandThunk(1))
-  }, [])
+    dispatch(getSingleBrandThunk(brandName))
+  }, [brandName])
 
 
   return (

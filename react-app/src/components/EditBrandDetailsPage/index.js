@@ -22,12 +22,11 @@ export const EditBrandDetails = () => {
 
 
   const { brandName } = useParams()
-  const encodedBrandName = encodeURIComponent(brandName);
-  const editUrl = `/store-dashboard/${encodedBrandName}/edit`;
+
 
 
   console.log("BRAND NAME", brandName)
-  console.log("ENCODED BRAND NAME", encodedBrandName)
+
 
   const oldBrand = useSelector((state) => state.brands.singleBrand)
   console.log("BRAND TO UPDATE ", oldBrand)
