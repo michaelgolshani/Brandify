@@ -14,25 +14,22 @@ const ProductListPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Wait for 2 seconds before fetching the single brand
       await new Promise((resolve) => setTimeout(resolve, 10));
-
       dispatch(getSingleBrandThunk(brandName));
     };
 
     fetchData();
   }, [dispatch, brandName]);
 
+
   useEffect(() => {
     const fetchData = async () => {
-      // Wait for 2 seconds before fetching the single brand
       await new Promise((resolve) => setTimeout(resolve, 20));
-
       dispatch(getAllProductsThunk());
     };
-
     fetchData();
   }, [dispatch]);
+  
 
   console.log("BRAND NAME", brandName)
   const state = useSelector(state => state)

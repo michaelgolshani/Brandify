@@ -91,6 +91,7 @@
   background: transparent;
   border-radius: 10px;
   font-weight: 600;
+  transition: box-shadow ease-in 3s;
 }
 
 .login-form-button:hover{
