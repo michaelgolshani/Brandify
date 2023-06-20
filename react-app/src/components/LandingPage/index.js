@@ -16,8 +16,8 @@ const LandingPage = () => {
         <div className='landing-page-left-side'>
           <div className='landing-page-header'>The Global commerce platform</div>
           <h2>Build your business with Brandify to sell online, offline, and everywhere in between.</h2>
-          <NavLink to="/login">
-            <button>Sign Up</button>
+          <NavLink to="/signup">
+            <button className='landing-page-signup'>Sign Up</button>
           </NavLink>
         </div>
         <div className='landing-page-right-side'>

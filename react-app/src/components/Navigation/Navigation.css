@@ -1,5 +1,52 @@
 .profile-dropdown {
   position: absolute;
+  background-color: white;
+  top: 75px;
+  right: 10px;
+  width: 200px;
+  height: 350px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: baseline;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.profile-dropdown li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.profile-dropdown-logo {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.profile-dropdown-icon {
+  color: grey;
+  margin-right: 20px;
+  width: 10px;
+  text-align: center;
+}
+
+.profile-dropdown-arrow {
+  background-color: grey;
+  color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+}
+
+.profile-contents {
+  margin: 10px 0px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .hidden {
@@ -12,40 +59,81 @@
   text-decoration: none;
   list-style-type: none;
   justify-content: space-between;
-  padding:0px 0px;
-  margin:0px;
+  padding: 0px 0px;
+  margin: 0px;
+  /* opacity: 0;
+  transition: opacity 0.3s ease-in; */
   /* border-bottom: 1px solid rgb(232, 232, 232); */
   border-bottom: 1.5px solid#f1f2f4;
+  /* background-image: linear-gradient(to bottom,
+      rgb(33 44 55 / 0),
+      rgb(33 44 55 / 0),
+      rgb(33 44 55 / 0.75)); */
 
+}
+.nav-container.visible {
+  opacity: 1;
 }
 
 .nav-link {
   text-decoration: none;
-  color:black;
+  color: black;
 }
 
 .nav-item {
   margin-right: 10px;
 }
 
-.nav-item-right{
-  margin-left:auto;
-  margin-right:50px
+.nav-item-right {
+  margin-left: auto;
+  margin-right: 50px
 }
 
-.nav-item-left{
-  margin-right:auto;
-  margin:0px;
-  margin-left:40px;
+.nav-item-left {
+  margin-right: auto;
+  margin: 0px;
+  margin-left: 40px;
 }
 
 .nav-logo {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom:0px;
+  margin-bottom: 0px;
 }
 
-.logo-image{
-  width:100px;
+.logo-image {
+  width: 100px;
   height: auto;
+}
+
+
+.nav-login-signup-container {
+  display: flex;
+  flex-direction: row;
+  margin: 5px 10px;
+}
+
+.nav-login {
+  margin-left: 30px;
+  cursor: pointer;
+  /* border: 1px solid black; */
+  padding: 15px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-signup {
+  margin-left: 30px;
+  cursor: pointer;
+  color: white;
+  /* border: 1px solid black; */
+  padding: 15px 35px;
+  border-radius: 25px;
+  background-color: black;
+  text-decoration: none;
+}
+
+.nav-signup:hover {
+  background-color: rgb(69, 69, 69);
 }

@@ -4,9 +4,11 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -32,7 +34,14 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push('/')
+    closeMenu()
   };
+
+  const handleMyBrands = (e) => {
+    history.push('/store-login')
+    closeMenu()
+  }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
@@ -42,14 +51,27 @@ function ProfileButton({ user }) {
       <div onClick={openMenu}>
         <i className="fa-solid fa-bars"></i>
       </div>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <div className="profile-dropdown-logo profile-contents">{user.username}</div>
+
+            <div className="profile-dropdown-logo profile-contents">{user.email}</div>
+
+            <div className="profile-dropdown-logo profile-contents">
+              <i class="fa-regular fa-user profile-dropdown-icon"></i>
+              <div>Manage Profile</div>
+            </div>
+
+            <div className="profile-dropdown-logo profile-contents" onClick={handleMyBrands}>
+              <i className="fa-sharp fa-solid fa-store profile-dropdown-icon"></i>
+              <div>My Brands</div>
+            </div>
+
+            <div className="profile-dropdown-logo profile-contents">
+              <i class="fa-solid fa-arrow-right profile-dropdown-icon"></i>
+              <div onClick={handleLogout}>Log Out</div>
+            </div>
           </>
         ) : (
           <>
@@ -66,7 +88,7 @@ function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </>
   );
 }

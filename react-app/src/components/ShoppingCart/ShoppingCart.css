@@ -1,0 +1,45 @@
+.shopping-cart-main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(253, 116, 87, 1);
+  height: 100vh;
+  width: 33vw;
+  align-items: center;
+}
+
+.shopping-cart-width{
+  width: 90%;
+}
+.shopping-cart-your-cart {
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.shopping-cart-product {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+.shopping-cart-prouct-image {
+
+  width: 150px;
+  height: 150px;
+  border: 2px black solid;
+  border-radius: 10px;
+}
+
+.shopping-cart-product-right-side{
+  display: flex;
+  flex-direction: column;
+}
+
+.shopping-cart-product-flavor-money{
+  display: flex;
+  flex-direction: row;
+}
+
+.shopping-cart-product-flavor{
+
+}

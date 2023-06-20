@@ -3,7 +3,7 @@
   flex-direction: row;
   background-color: #f1f2f4;
   height: calc(100vh - 67px);
-  width: 100%;
+  width: 100vw;
 
 }
 
@@ -49,33 +49,33 @@
   max-width: 70%;
 }
 
-.main-container{
+/* .main-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.grid-container {
+/* .grid-container {
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 cursor: pointer;
 
-}
+} */
 
-.grid-row {
+/* .grid-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 200px;
-}
+} */
 
-.grid-cell {
+/* .grid-cell {
   flex: 1;
-  height: 200px; /* Adjust the height and width as per your requirements */
+  height: 200px;
   width: 200px;
   background-color: #ccc;
   border: 1px solid #000;
@@ -84,4 +84,4 @@ cursor: pointer;
   align-items: center;
   font-weight: bold;
   width: 100%;
-}
+} */

@@ -21,6 +21,8 @@ const AddProductPage = ({ update }) => {
   const [optionalImage2, setOptionalImage2] = useState('');
   const [features, setFeatures] = useState(['', '', '']);
   const [inventory, setInventory] = useState('')
+  const [errors, setErrors] = useState({})
+
 
 
   const [isLoaded, setIsLoaded] = useState(false)
@@ -102,9 +104,77 @@ const AddProductPage = ({ update }) => {
   const combinedFeatures = [...features].filter(Boolean).join(',');
   console.log("features", combinedFeatures)
 
+  const validate = () => {
+    const errors = {}
+
+    if (!name) {
+      errors.name = "Name is required";
+    }
+    if (name.length < 5) {
+      errors.name = "Name must be at least 5 characters";
+    }
+    if (!description) {
+      errors.description = "Description is required";
+    }
+
+    if (features.length < 2) {
+      errors.features = "All features are required";
+    }
+
+
+
+    // if price is NAN, then throw an error on the web page
+    if (!price) {
+      errors.price = "Price is required";
+    } else if (isNaN(price)) {
+      errors.price = "Price is invalid";
+    }
+
+    if (images.length < 2) {
+      errors.images = "At least 3 images are required";
+    }
+
+    for (let i = 0; i < images.length; i++) {
+      let image = images[i]
+      if (image) {
+        const fileExtension = image.split('.').pop().toLowerCase();
+        const checkLast = ['jpg', 'png', 'jpeg'];
+        if (!checkLast.includes(fileExtension)) {
+          errors.images = "Image URL needs to end in .png, .jpg or .jpeg";
+        }
+      }
+    }
+
+    console.log("CHECKING IMAGES ARR", images)
+    // if (image) {
+    //   //split the image with the url. then check to see if the image has the checks needed.
+    //   const fileExtension = image.split('.').pop().toLowerCase();
+    //   const checkLast = ['jpg', 'png', 'jpeg'];
+    //   if (!checkLast.includes(fileExtension)) {
+    //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
+    //   }
+    // }
+
+    console.log("ERRORS", errors)
+    if (isNaN(inventory)) {
+      errors.inventory = "Inventory needs to be a number";
+    }
+    if (!inventory) {
+      errors.inventory = "Inventory is required"
+    }
+
+    return errors
+
+  }
+
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    const errors = validate()
+    const errorContent = Object.values(errors)
+    if (errorContent.length) return setErrors(errors)
+
 
     const formData = {
       name: name,
@@ -151,6 +221,7 @@ const AddProductPage = ({ update }) => {
                 >
                 </input>
               </label>
+              {errors.name && <p className="error">{errors.name}</p>}
               <label>
                 Description
                 <textarea
@@ -159,6 +230,7 @@ const AddProductPage = ({ update }) => {
                   required
                 />
               </label>
+              {errors.description && <p className="error">{errors.description}</p>}
             </div>
 
 
@@ -172,6 +244,7 @@ const AddProductPage = ({ update }) => {
                   required
                 />
               </label>
+              {errors.images && <p className="error">{errors.images}</p>}
               <label>
                 Photo #2
                 <input
@@ -220,6 +293,7 @@ const AddProductPage = ({ update }) => {
                   required
                 />
               </label>
+              {errors.price && <p className="error">{errors.price}</p>}
             </div>
 
             <div className="add-product-left-container-individual" >
@@ -234,6 +308,7 @@ const AddProductPage = ({ update }) => {
                       required
                     />
                   </label>
+                  {errors.features && <p className="error">{errors.features}</p>}
                 </div>
               ))}
             </div>
@@ -248,6 +323,7 @@ const AddProductPage = ({ update }) => {
                   required
                 />
               </label>
+              {errors.inventory && <p className="error">{errors.inventory}</p>}
             </div>
 
 

@@ -108,3 +108,8 @@ margin-left: 15px;
   filter: brightness(100%);
 
 }
+
+
+.error{
+  color: red;
+}

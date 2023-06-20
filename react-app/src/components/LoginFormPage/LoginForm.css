@@ -1,5 +1,5 @@
 .login-full-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -8,20 +8,25 @@
   /* border: 1px black solid; */
   margin: 0 auto;
   background: linear-gradient(90deg, #9ef9dc, #97dbf2);
+  /* background: #dedede; */
 
 }
 
 .login-container {
   height: 70%;
-  width:30%;
+  width: 30%;
   /* border: 1px solid black; */
   border-radius: 12px;
-  background-color: rgb(255, 255, 255);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3),
+    -15px -15px 50px rgba(253, 253, 253, 0.7);
+
+  /* padding:80px 50px 50px; */
+  background-color: rgba(236, 236, 236, 1);
 }
 
 .form-container {
   display: flex;
-  padding: 50px 25px;
+  /* padding: 50px 25px; */
   flex-direction: column;
   justify-content: center;
   margin: 0px 0px;
@@ -30,8 +35,65 @@
 .login-input {
   display: flex;
   flex-direction: column;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-radius: 10px;
   width: 70%;
-  height: 25px;
-  border-radius: 5px;
-  margin: 10px 0px;
+  height: 30px;
+  padding: 8px 20px;
+
+  /* border-radius: 5px; */
+  margin: 10px 20px;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.05), inset -5px -5px 10px rgba(255, 255, 255, 1);
+}
+
+.login-errors {
+  color: red;
+}
+
+
+.login-title {
+  padding: 0px;
+  font-size: 40px;
+  padding-top: 35px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+}
+
+.login-continue {
+  margin-top: 0px;
+  margin-left: 20px;
+  font-weight: 100;
+}
+
+
+.login-form-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 30px;
+}
+
+.login-form-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px #fff;
+  width: 80%;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.login-form-button:hover{
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+  inset -5px -5px 10px #fff;
 }

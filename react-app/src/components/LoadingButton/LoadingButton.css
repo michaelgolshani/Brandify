@@ -1,0 +1,46 @@
+.spinner {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  fill: rgb(255, 255, 255);
+
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .submit-btn:disabled {
+  background: #e7e8e9;
+  color: #9fa3a9;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  font-family: 'Anek Malayalam', sans-serif;
+  background: #f5b40d;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  min-width: 200px;
+  min-height: 36px;
+  cursor: pointer;
+  outline: none;
+} */
+
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}

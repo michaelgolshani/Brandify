@@ -15,6 +15,7 @@ import { ProductBuyPage } from "./components/ProductBuyPage";
 import AddProductPage from "./components/AddProductPage";
 import EditProductPage from "./components/EditProductPage";
 import ProductPage from "./components/ProductPage";
+import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/store/shoppingcart'>
+           < ShoppingCart/>
+          </Route>
           <Route exact path='/store/:brandName/:productId'>
             <ProductPage />
           </Route>

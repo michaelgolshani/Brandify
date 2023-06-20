@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min
 import { getSingleProductThunk } from '../../store/products'
 import { getSingleBrandThunk } from '../../store/brands'
 import { useDispatch, useSelector } from 'react-redux'
+import LoadingButton from '../LoadingButton'
 
 
 
@@ -20,21 +21,32 @@ const ProductPage = () => {
   const currentBrand = state.brands.singleBrand
   console.log("CURRENT BRAND", currentBrand)
 
+  const currentBrandProducts = currentBrand.products
+  console.log("CURRENT BRAND PRODUCTS", currentBrandProducts)
+
+  // const currentBrandProductsArr = Object.values(currentBrandProducts)
+  // console.log("CURRENT BRAND PRODUCTS ARR", currentBrandProductsArr)
 
   const [order, setOrder] = useState(1)
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(currentProduct?.images?.[0] || '')
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(currentProduct ? currentProduct.images?.[0] : '')
   const { brandName, productId } = useParams()
 
   console.log("BRAND NAME", brandName)
   console.log("PRODUCT ID", productId)
+  console.log("COVER IMAGE", currentProduct?.images?.[0])
 
   useEffect(() => {
     dispatch(getSingleProductThunk(productId))
     dispatch(getSingleBrandThunk(brandName))
-  }, [dispatch, productId, brandName, selectedImage])
+  }, [dispatch])
 
-
+  useEffect(() => {
+    if (currentProduct?.images?.[0]) {
+      setSelectedImage(currentProduct.images[0]);
+    }
+  }, [currentProduct]);
 
   const handleImageLoad = () => {
     setImagesLoaded(true);
@@ -46,8 +58,18 @@ const ProductPage = () => {
     setSelectedImage(image);
   };
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+      // Perform any additional operations after the timeout (e.g., show loader, handle error)
+    }, 200); // Set the timeout duration here (in milliseconds)
 
+    return () => clearTimeout(timeout); // Clear the timeout when the component unmounts
+  }, []); // Empty dependency array to run the effect only once
 
+  if (isLoading) {
+    return <LoadingButton />
+  }
 
   return (
 
@@ -55,11 +77,12 @@ const ProductPage = () => {
 
 
       <section className='red anim_gradient top-section'>
-        <div className="wave-top-test">
+        {/* <div className="wave-top-test">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+
           </svg>
-        </div>
+        </div> */}
         <div className='top-section-left index'>
           <div>
             <img src={selectedImage} className='energy-drink index' />
@@ -114,16 +137,32 @@ const ProductPage = () => {
 
 
 
-      <section>
+      {/* <section>
         <div class="wave-top">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
           </svg>
         </div>
-      </section>
+      </section> */}
       <section className='section-3'>
-        <h1>Nice Curves 45</h1>
-        <p>This is a test to see how we can do the product</p>
+
+        <h1 className='index you-may-also-like shadowed-text-white'>YOU MAY ALSO LIKE</h1>
+        <div className='you-may-like-image-container'>
+          {currentBrandProducts.map((product, index) => (
+            <div className='current-brand-products-container'>
+              <img
+                key={index}
+                src={product.images[0]}
+                className="you-may-also-images"
+
+              // onClick={() => handleImageClick(image)}
+              />
+              <div className='you-may-also-name'>{product.name}</div>
+              <div className='you-may-also-name'>${product.price}</div>
+            </div>
+          ))}
+        </div>
+        {/* <p>This is a test to see how we can do the product</p> */}
       </section>
       <section>
         <div class="wave-3">
