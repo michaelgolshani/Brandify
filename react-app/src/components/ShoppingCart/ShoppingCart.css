@@ -7,19 +7,24 @@
   align-items: center;
 }
 
-.shopping-cart-width{
+.shopping-cart-width {
   width: 90%;
 }
+
 .shopping-cart-your-cart {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 800;
   margin-top: 20px;
+  font-family: "Neue Haas Unica", sans-serif;
+  ;
+  line-height: 1.2;
 }
 
 .shopping-cart-product {
   display: flex;
   flex-direction: row;
   margin-top: 30px;
+
 }
 
 .shopping-cart-prouct-image {
@@ -30,16 +35,32 @@
   border-radius: 10px;
 }
 
-.shopping-cart-product-right-side{
+.shopping-cart-product-right-side {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.shopping-cart-product-flavor-money{
+.shopping-cart-product-flavor-money {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.shopping-cart-product-flavor{
+.shopping-cart-product-flavor {
+  /* justify-content: space-between; */
+}
+
+.shopping-cart-product-money {
+  /* justify-content: space-between; */
+}
+
+.shopping-cart-tezt-area {
+  width: 100%;
+  height:50px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgba(253, 116, 87, 1);
+  margin-bottom: 50px;
 
 }

@@ -23,7 +23,7 @@ export const ShoppingCart = () => {
         </div>
 
         <div>Add a note to your order</div>
-        <div>text box</div>
+        <textarea className='shopping-cart-tezt-area'></textarea>
 
         <div>
           <div>Subtotal</div>
