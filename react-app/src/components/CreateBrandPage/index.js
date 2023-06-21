@@ -16,7 +16,7 @@ const CreateBrandPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [story, setStory] = useState("")
-  const [description,setDescription] = useState("")
+  const [description, setDescription] = useState("")
   const [errors, setErrors] = useState([]);
 
   console.log("NAME", name)
@@ -30,16 +30,16 @@ const CreateBrandPage = () => {
     // if (data) {
     //   setErrors(data);
     // }
-const formData = {
-  name: name.trim(),
-  story,
-  description
-}
-// let newBrand = await
-console.log(formData)
+    const formData = {
+      name: name.trim(),
+      story,
+      description
+    }
+    // let newBrand = await
+    console.log(formData)
 
-await dispatch(createBrandThunk(formData))
-history.push(`/store-dashboard/${name}`)
+    await dispatch(createBrandThunk(formData))
+    history.push(`/store-dashboard/${name}`)
 
 
   };
@@ -56,7 +56,10 @@ history.push(`/store-dashboard/${name}`)
               ))}
             </ul>
             <div className="create-brand-top-header-store">
-              Let's get started. What is your brand name?
+              Let's get started.
+            </div>
+            <div className="create-brand-top-header-store-bottom">
+             Share with us your brand details.
             </div>
             <label>
               Name
@@ -69,26 +72,28 @@ history.push(`/store-dashboard/${name}`)
               />
             </label>
             <label>
-              Story
-              <input
+              Brand Story <span className="create-brand-small-text">(What is the purpose for starting your brand?)</span>
+              <textarea
                 type="text"
                 value={story}
                 onChange={(e) => setStory(e.target.value)}
                 required
-                className="login-input"
+                className="login-input brand-story"
               />
             </label>
             <label>
-              Description
-              <input
+              Description <span className="create-brand-small-text">(i.e. We are an xyz company that specializes in selling xyz... )</span>
+              <textarea
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required
-                className="login-input"
+                className="login-input description"
               />
             </label>
-            <button type="submit">Create Brand</button>
+            <div className="login-form-button-container">
+              <button className="login-form-button create-brand-create-button" type="submit">Create Brand</button>
+            </div>
           </form>
         </div>
       </div>

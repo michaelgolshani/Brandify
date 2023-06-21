@@ -89,5 +89,11 @@
 
 
 .brand-login-brand-outer-container{
-  /* overflow: auto; */
+  overflow: auto;
+  height:40vh;
+}
+
+
+.brand-login-form-container{
+  overflow-y: hidden;
 }

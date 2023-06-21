@@ -31,52 +31,60 @@ function SignupFormPage() {
     <>
       <div className="login-full-container">
         <div className="login-container">
-          <h1>Sign Up</h1>
           <form onSubmit={handleSubmit} className="form-container">
+            <h1 className="login-title">Sign Up</h1>
+            <p className="login-continue">with Brandify</p>
+
             <ul>
-              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              {errors.map((error, idx) => <li key={idx} className="login-errors">{error}</li>)}
             </ul>
             <label>
-              Email
+              {/* Email */}
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                placeholder="Email"
                 className="login-input"
               />
             </label>
             <label>
-              Username
+              {/* Username */}
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
+                placeholder="Username"
                 className="login-input"
               />
             </label>
             <label>
-              Password
+              {/* Password */}
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                placeholder="Password"
                 className="login-input"
               />
             </label>
             <label>
-              Confirm Password
+              {/* Confirm Password */}
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+                placeholder="Confirm Password"
                 className="login-input"
               />
             </label>
-            <button type="submit">Sign Up</button>
+            <div className="login-form-button-container">
+              <button className="login-form-button signup-form-button" type="submit">Sign Up</button>
+            </div>
           </form>
         </div>
       </div>

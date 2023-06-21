@@ -13,8 +13,8 @@
 }
 
 .login-container {
-  height: 70%;
-  width: 30%;
+  height: 550px;
+  width: 400px;
   /* border: 1px solid black; */
   border-radius: 12px;
   box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3),
@@ -30,6 +30,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 0px 0px;
+  /* height: 90%; */
 }
 
 .login-input {

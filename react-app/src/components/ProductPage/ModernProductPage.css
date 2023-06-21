@@ -305,7 +305,7 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
 .modern .wave-3 {
@@ -451,6 +451,7 @@
   transform: translateY(10px);
   box-shadow: 0px 0px 15px 0px rgb(255, 255, 255);
   border: none;
+
 }
 
 
@@ -460,17 +461,29 @@
   align-items: center;
   justify-content: center;
   z-index: 20;
-  width: 100%;
-  /* overflow: hidden; */
+  background-color: black;
+  /* width: 90%; */
+  white-space: nowrap;
+  overflow: hidden;
+  padding-bottom: 15vh;
+}
+
+.modern .you-may-also-images:hover .current-brand-products-container{
+  animation-play-state: paused;
 }
 
 
 
+.current-brand-products-container{
+  /* display: inline-block; */
+}
+
 
 .modern .you-may-also-name {
   z-index: 200;
-  margin: 20px;
-  margin-bottom: -10px;
+  /* margin: 20px 0px; */
+  margin-top: 20px;
+  margin-bottom: 0px;
   color: rgb(71, 71, 71);
   font-size: 20px;
   font-weight: 600;
@@ -483,6 +496,7 @@
   z-index: 20;
   justify-content: center;
   align-items: center;
+  animation: 10s slide infinite linear;
 
 }
 
@@ -508,10 +522,105 @@
   fill: #000000;
 }
 
+.custom-shape-divider-top-1687368080 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
 
+.custom-shape-divider-top-1687368226 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
 
-.manage-theme{
+.custom-shape-divider-top-1687368226 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  /* height: 98px; */
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1687368226 .shape-fill {
+  fill: #000000;
+}
+
+.modern .manage-theme{
 
   color: black;
   cursor: pointer;
+}
+
+
+@keyframes slide {
+  from{
+transform: translateX(0%);
+  }
+  to {
+transform: translateX(-100%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-shape-divider-bottom-1687372545 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1687372545 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 128px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1687372545 .shape-fill {
+  fill: #000000;
+}
+
+
+.custom-shape-divider-top-1687372598 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+}
+
+.custom-shape-divider-top-1687372598 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 128px;
+  z-index: 1;
+}
+
+.custom-shape-divider-top-1687372598 .shape-fill {
+  fill: #000000;
+  z-index: 1;
 }
