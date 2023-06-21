@@ -50,7 +50,7 @@ export const EditBrandDetails = () => {
       setStory(oldBrand.story)
       setDescription(oldBrand.description)
     }
-  }, [oldBrand,brandName]);
+  }, [oldBrand, brandName]);
 
 
 
@@ -76,7 +76,7 @@ export const EditBrandDetails = () => {
     //   setErrors(data);
     // }
     const formData = {
-      name:name.trim(),
+      name: name.trim(),
       story,
       description
     }
@@ -106,6 +106,9 @@ export const EditBrandDetails = () => {
             <div className="create-brand-top-header-store">
               Brand Details
             </div>
+            <div className="create-brand-top-header-store-bottom">
+              Edit your brand.
+            </div>
             <label>
               Name
               <input
@@ -117,28 +120,30 @@ export const EditBrandDetails = () => {
               />
             </label>
             <label>
-              Story
-              <input
+              Brand Story
+              <textarea
                 type="text"
                 value={story}
                 onChange={(e) => setStory(e.target.value)}
                 required
-                className="login-input"
+                className="login-input brand-story"
               />
             </label>
             <label>
               Description
-              <input
+              <textarea
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required
-                className="login-input"
+                className="login-input description"
               />
             </label>
-            <button type="submit">Save</button>
+            <div className="login-form-button-container">
+              <button className="login-form-button create-brand-create-button" type="submit">Update Brand</button>
+            </div>
           </form>
-          <button onClick={handleDelete}>Delete Brand</button>
+          <button  className="edit-brand-delete-button "onClick={handleDelete}>Delete Brand</button>
         </div>
       </div>
     </>

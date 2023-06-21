@@ -20,6 +20,7 @@
   width: 60%;
   /* border: 1px solid black; */
   border-radius: 12px;
+  position: relative;
   background-color: rgba(236, 236, 236, 1);
 }
 
@@ -111,6 +112,30 @@
   color: grey;
 }
 
-.create-brand-create-button{
+.create-brand-create-button {
   margin-bottom: 100px;
+}
+
+
+
+
+.edit-brand-delete-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: none;
+  padding: 15px 15px;
+  background-color: rgb(219, 4, 4);
+  border-radius: 15px;
+  color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9),
+    -5px -5px 10px #fff;
+  cursor: pointer;
+  background: rgb(186, 21, 21);
+}
+
+.edit-brand-delete-button:hover{
+transform: translateY(5px);
+box-shadow: none;
+
 }
