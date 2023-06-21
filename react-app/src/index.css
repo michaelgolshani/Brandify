@@ -21,3 +21,19 @@ body {
   'GRAD' 0,
   'opsz' 48
 }
+
+
+@font-face {
+  font-family: 'syncopate-regular';
+  src: url('./assets/Syncopate-Regular.ttf')format('truetype');
+}
+
+@font-face {
+  font-family: 'syncopate-bold';
+  src: url('./assets/Syncopate-Bold.ttf')format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins';
+  src: url('./assets/Poppins-Regular.ttf')format('truetype');
+}

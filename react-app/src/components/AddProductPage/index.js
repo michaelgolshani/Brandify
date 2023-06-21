@@ -211,17 +211,23 @@ const AddProductPage = ({ update }) => {
           <div className='add-product-left-container-main' style={{ flex: '1 1 40%' }}>
 
             <div className='add-product-left-container-individual title-description'>
-              <label>
-                Title
+              <div className='add-product-title-container'>
+                <div className='add-product-title'>Title</div>
+              </div>
+              <div className='add-product-input-container'>
                 <input
                   value={name}
                   type='text'
                   onChange={(e) => setName(e.target.value)}
                   required
+                  className='add-product-input'
                 >
                 </input>
-              </label>
+              </div>
+
               {errors.name && <p className="error">{errors.name}</p>}
+
+
               <label>
                 Description
                 <textarea

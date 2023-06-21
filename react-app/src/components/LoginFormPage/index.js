@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from "react";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -13,7 +14,15 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/store-login" />;
+  useEffect(() => {
+    if (sessionUser) {
+      history.push('/store-login');
+    }
+  }, [sessionUser, history]);
+
+  useEffect(() => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }, []); // Scroll to bottom on initial render
 
   const handleSubmit = async (e) => {
     e.preventDefault();

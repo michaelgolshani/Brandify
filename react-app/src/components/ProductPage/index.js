@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { OrangeGradientWave, StraightGradientWave } from '../AllDesignContent/OrangeGradientWave'
-import './ProductPage.css'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { getSingleProductThunk } from '../../store/products'
 import { getSingleBrandThunk } from '../../store/brands'
 import { useDispatch, useSelector } from 'react-redux'
 import LoadingButton from '../LoadingButton'
-
+import './PoppyProductPage.css'
+import './ModernProductPage.css'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import ShoppingCart from '../ShoppingCart'
 
 
 const ProductPage = () => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
 
   const state = useSelector((state) => state)
   console.log("STATE", state)
@@ -32,6 +35,23 @@ const ProductPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(currentProduct ? currentProduct.images?.[0] : '')
   const { brandName, productId } = useParams()
+  const [theme, setTheme] = useState('modern')
+  const [openCart, setOpenCart] = useState(false)
+
+  console.log("OPEN CART", openCart)
+
+  // this will control straight lines or waves on the site
+  // const modern = true
+
+  const handleTheme = () => {
+    if (theme === 'modern') {
+      setTheme('poppy')
+    } else {
+      setTheme('modern')
+    }
+  }
+  console.log("THEME", theme)
+
 
   console.log("BRAND NAME", brandName)
   console.log("PRODUCT ID", productId)
@@ -40,13 +60,23 @@ const ProductPage = () => {
   useEffect(() => {
     dispatch(getSingleProductThunk(productId))
     dispatch(getSingleBrandThunk(brandName))
-  }, [dispatch])
+  }, [dispatch, productId, brandName])
 
   useEffect(() => {
     if (currentProduct?.images?.[0]) {
       setSelectedImage(currentProduct.images[0]);
     }
   }, [currentProduct]);
+
+
+
+
+  const redirectProduct = (productId) => {
+    history.push(`/store/${brandName}/${productId}`)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
 
   const handleImageLoad = () => {
     setImagesLoaded(true);
@@ -57,6 +87,7 @@ const ProductPage = () => {
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -73,9 +104,9 @@ const ProductPage = () => {
 
   return (
 
-    <div className='product-page-container'>
+    <div className={`product-page-container ${theme}`}>
 
-
+      <ShoppingCart openCart={openCart} />
       <section className='red anim_gradient top-section'>
         {/* <div className="wave-top-test">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
@@ -118,18 +149,30 @@ const ProductPage = () => {
             <div className='add-minus-sign' onClick={() => setOrder(order + 1)}>
               <i className="fa-regular fa-plus"></i>
             </div>
+            <div onClick={handleTheme} className='manage-theme'>Change Theme</div>
           </div>
-          <div className='buy-now-button'>
+          <div className='buy-now-button' onClick={() => setOpenCart(!openCart)}>
             Add to Cart
           </div>
 
           <p className='index product-description'>{currentProduct.description}</p>
         </div>
-        <div className="wave">
-          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-          </svg>
-        </div>
+        {theme == 'modern' ? (
+          <div class="custom-shape-divider-bottom-1687329308">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+            </svg>
+          </div>
+        ) : (
+          <div className="wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
+              <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+          </div>
+        )
+
+        }
+
       </section>
 
 
@@ -147,9 +190,9 @@ const ProductPage = () => {
       <section className='section-3'>
 
         <h1 className='index you-may-also-like shadowed-text-white'>YOU MAY ALSO LIKE</h1>
-        <div className='you-may-like-image-container'>
+        <div className='you-may-like-image-container carousel'>
           {currentBrandProducts.map((product, index) => (
-            <div className='current-brand-products-container'>
+            <div className='current-brand-products-container' onClick={() => redirectProduct(product.id)}>
               <img
                 key={index}
                 src={product.images[0]}
@@ -181,6 +224,7 @@ const ProductPage = () => {
         <h1>Nice Curves</h1>
         <p>This is a test to see how we can do the product</p>
       </section>
+
 
     </div>
   )

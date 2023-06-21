@@ -1,6 +1,6 @@
-.top-bar-product-page {}
+.poppy .top-bar-product-page {}
 
-.top-section-left {
+.poppy .top-section-left {
   display: flex;
   flex-direction: column;
   padding-top: 100px;
@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-.product-description {
+.poppy .product-description {
   width: 45vw;
   padding-top: 15px;
   line-height: 1.5;
@@ -20,7 +20,7 @@
   z-index: 2;
 }
 
-.product-title {
+.poppy .product-title {
   font-size: 81px;
   /* height: 20px; */
   text-align: left;
@@ -37,7 +37,7 @@
   margin-bottom: 0px;
 }
 
-.you-may-also-like {
+.poppy .you-may-also-like {
   font-size: 81px;
   /* height: 20px; */
   text-align: center;
@@ -55,7 +55,7 @@
   margin-bottom: 0px;
 }
 
-.shadowed-text-white {
+.poppy .shadowed-text-white {
   -webkit-text-stroke: 2px black;
   -webkit-text-fill-color: rgb(248, 248, 248);
   /* Optional: set the text color */
@@ -63,7 +63,7 @@
   letter-spacing: -3px;
 }
 
-.shadowed-text {
+.poppy .shadowed-text {
   -webkit-text-stroke: 2px black;
   -webkit-text-fill-color: rgb(255, 255, 84);
   /* Optional: set the text color */
@@ -71,7 +71,7 @@
   letter-spacing: -3px;
 }
 
-.top-section {
+.poppy .top-section {
   display: flex;
   flex-direction: row;
   z-index: 2;
@@ -97,7 +97,7 @@
     background-size: contain;
   }
  } */
-.top-section-right {
+ .poppy .top-section-right {
   display: flex;
   flex-direction: column;
   padding-top: 40px;
@@ -107,7 +107,7 @@
 
 }
 
-.add-minus-sign-container {
+.poppy .add-minus-sign-container {
   display: flex;
   text-align: center;
   margin: 0px 0px;
@@ -115,7 +115,7 @@
 
 }
 
-.add-minus-sign {
+.poppy .add-minus-sign {
   display: inline-block;
 
   width: 30px;
@@ -133,12 +133,12 @@
   transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
-.add-minus-sign:hover {
+.poppy .add-minus-sign:hover {
   transform: translateY(10px);
   box-shadow: none;
 }
 
-.add-minus-sign-price {
+.poppy .add-minus-sign-price {
   display: inline-block;
 
   width: 30px;
@@ -152,7 +152,7 @@
   font-size: 25px;
 }
 
-.add-minus-sign-number {
+.poppy .add-minus-sign-number {
   display: inline-block;
 
   width: 30px;
@@ -167,7 +167,7 @@
 }
 
 
-.buy-now-button {
+.poppy .buy-now-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,12 +190,12 @@
   transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
-.buy-now-button:hover {
+.poppy .buy-now-button:hover {
   transform: translateY(10px);
   box-shadow: none;
 }
 
-section {
+ .poppy section {
   position: relative;
   display: flex;
   /* flex-direction: column;
@@ -212,11 +212,11 @@ section {
 
 
 
-.product-page-container {
+.poppy.product-page-container {
   margin: 0;
   font-family: 'Prompt', sans-serif;
   color: white;
-  /* background: #202731; */
+  background: #202731;
   position: relative;
   padding: 0;
   /* height: 100vh; */
@@ -224,19 +224,19 @@ section {
 }
 
 .product-page-container section {
-  margin: 0 0;
+  margin: 0;
   position: relative;
   /* border: 2px solid #1D1D1D */
-  padding: 0 0;
+  padding: 0;
   /* z-index: 20; */
 }
 
-.blue {}
+.poppy .blue {}
 
 
-.red {}
+.poppy .red {}
 
-.wave {
+.poppy .wave {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -247,7 +247,7 @@ section {
   z-index: 1;
 }
 
-.wave-top {
+.poppy .wave-top {
   margin: 0;
   position: absolute;
   top: 0;
@@ -259,7 +259,7 @@ section {
   z-index: 1
 }
 
-.wave svg {
+.poppy .wave svg {
   margin: 0;
   position: relative;
   display: block;
@@ -268,13 +268,13 @@ section {
   height: 303px;
 }
 
-.wave .shape-fill {
+.poppy .wave .shape-fill {
   fill: rgb(255, 255, 84);
   z-index: 1;
 
 }
 
-.wave-top .shape-fill {
+.poppy .wave-top .shape-fill {
   fill: rgb(255, 255, 84);
   z-index: 1;
   /* border-bottom: 2px solid black; */
@@ -303,16 +303,16 @@ section {
   fill: #D3335D;
 } */
 
-.section-3 {
+.poppy .section-3 {
   background: rgb(255, 255, 84);
   /* border-bottom: 2px solid white; */
-  height: 100vh;
+  height: 120vh;
   z-index: 1;
   display: flex;
   flex-direction: column;
 }
 
-.wave-3 {
+.poppy .wave-3 {
   position: absolute;
   top: 0;
   left: 0;
@@ -322,7 +322,7 @@ section {
   z-index: 1;
 }
 
-.wave-3 svg {
+.poppy .wave-3 svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
@@ -331,24 +331,24 @@ section {
   z-index: 1;
 }
 
-.wave-3 .shape-fill {
+.poppy .wave-3 .shape-fill {
   fill: rgb(255, 255, 84);
   z-index: 1;
 }
 
 
-.wave-4 {
+.poppy .wave-4 {
   /* border-top: 2px solid white; */
 }
 
 
 
-.index {
+.poppy .index {
   z-index: 2;
 }
 
-.anim_gradient {
-  background: linear-gradient(180deg, rgba(221, 255, 119, 1) 10%, rgba(253, 116, 87, 1) 54%, rgba(239, 73, 90, 1) 92%);
+.poppy .anim_gradient {
+  background: linear-gradient(180deg, rgba(221, 255, 119, 1) 10%, #ea426f);
   ;
   backgroundSize: "400% 400%";
   animation: "gradient 25s ease infinite";
@@ -374,7 +374,7 @@ section {
 
 
 
-.energy-drink img {
+.poppy .energy-drink img {
   max-width: 100px;
   max-height: 100px;
   z-index: 2;
@@ -383,7 +383,7 @@ section {
 }
 
 
-.energy-drink {
+.poppy .energy-drink {
   height: 40vw;
   width: 40vw;
   z-index: 2;
@@ -395,7 +395,7 @@ section {
 }
 
 
-.energy-drink-small-images {
+.poppy .energy-drink-small-images {
   height: 5vw;
   width: 5vw;
   z-index: 2;
@@ -413,13 +413,13 @@ section {
   /* transform: skewX(-10deg); */
 }
 
-.energy-drink-small-images:hover {
+.poppy .energy-drink-small-images:hover {
   transform: translateY(5px);
   box-shadow: none;
   border: 3px black solid;
 }
 
-.small-images-product {
+.poppy .small-images-product {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -429,13 +429,13 @@ section {
 }
 
 
-.shape-fill {
+.poppy .shape-fill {
   stroke: none;
 }
 
 
 
-.you-may-also-images {
+.poppy .you-may-also-images {
   width: 300px;
   height: 300px;
   margin: 100px 50px;
@@ -450,13 +450,13 @@ section {
   transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
-.you-may-also-images:hover{
+.poppy .you-may-also-images:hover{
   transform: translateY(10px);
   box-shadow: 1px 1px 2px 1px black;
 }
 
 
-.you-may-like-image-container {
+.poppy .you-may-like-image-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -464,7 +464,7 @@ section {
   z-index: 20;
 }
 
-.you-may-also-name {
+.poppy .you-may-also-name {
   z-index: 200;
   margin: 20px;
   margin-bottom: -10px;
@@ -473,7 +473,7 @@ section {
   font-weight: 600;
 }
 
-.current-brand-products-container {
+.poppy .current-brand-products-container {
   display: flex;
   flex-direction: column;
   z-index: 20;

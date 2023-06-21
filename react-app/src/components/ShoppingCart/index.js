@@ -2,14 +2,14 @@ import React from 'react'
 import './ShoppingCart.css'
 import { useState } from 'react'
 
-export const ShoppingCart = () => {
+const ShoppingCart = ({ openCart }) => {
   const [order, setOrder] = useState(1)
 
 
 
   return (
-    <div className='shopping-cart-main-container'>
-
+    <div className={`shopping-cart-main-container${openCart ? ' open' : ''}`}>
+      <div class="page-overlay"></div>
       <div className='shopping-cart-width'>
         <div className='shopping-cart-your-cart'>
           <div >YOUR CART</div>
@@ -102,7 +102,7 @@ export const ShoppingCart = () => {
 
         <div className='shopping-cart-bottom-section'>
           <div className='shopping-cart-bottom-price-subtotal'>
-            <div>Subtotal</div>
+            <div className='shopping-cart-subtotal'>Subtotal</div>
             <div className='shopping-cart-total-amount'>$24</div>
           </div>
 

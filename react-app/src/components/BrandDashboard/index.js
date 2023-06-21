@@ -7,6 +7,7 @@ import './BrandDashboard.css'
 import { useHistory } from 'react-router-dom'
 import SideBarDashboard from '../SideBarDashboard.js'
 import './BrandDashboard.css'
+import brandDetails from '../../assets/brand-details.jpg'
 
 
 const BrandDashboardPage = () => {
@@ -32,6 +33,7 @@ const BrandDashboardPage = () => {
             <div className='inside-text'>Edit Brand Details</div>
           </div>
           <div className="grid-cell" onClick={() => history.push(`/${brandName}/products`)}>
+            {/* <img src={brandDetails}></img> */}
             <div className='inside-text'>My Products</div>
           </div>
           <div className="grid-cell">

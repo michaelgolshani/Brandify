@@ -59,7 +59,8 @@
   text-decoration: none;
   list-style-type: none;
   justify-content: space-between;
-  padding: 0px 0px;
+  padding: 5px 0px;
+  padding-top: 11px;
   margin: 0px;
   /* opacity: 0;
   transition: opacity 0.3s ease-in; */
@@ -102,7 +103,7 @@
 }
 
 .logo-image {
-  width: 100px;
+  width: 90px;
   height: auto;
 }
 
