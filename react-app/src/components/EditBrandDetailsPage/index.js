@@ -20,8 +20,6 @@ export const EditBrandDetails = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [isLoading, setIsLoading] = useState(true)
   const state = useSelector((state) => state);
-
-
   const { brandName } = useParams()
 
 
@@ -35,7 +33,7 @@ export const EditBrandDetails = () => {
   const [name, setName] = useState(oldBrand.name);
   const [story, setStory] = useState(oldBrand.story)
   const [description, setDescription] = useState(oldBrand.description)
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({})
 
   useEffect(() => {
     dispatch(getSingleBrandThunk(brandName))
@@ -46,15 +44,11 @@ export const EditBrandDetails = () => {
 
   useEffect(() => {
     if (oldBrand.name) {
-
       setName(oldBrand.name)
       setStory(oldBrand.story)
       setDescription(oldBrand.description)
     }
   }, [oldBrand, brandName]);
-
-
-
 
 
   console.log("NAME", name)
@@ -63,19 +57,48 @@ export const EditBrandDetails = () => {
   // if (sessionUser) return <Redirect to="/" />;
 
   const handleDelete = async () => {
-
     await dispatch(deleteBrandThunk(brandName))
     history.push(`/store-login`)
-
     console.log("SUCCESSFULLY DELETED")
   }
 
+
+  const validate = () => {
+    const errors = {}
+
+    if (!name) {
+      errors.name = "Name is required";
+    } else if (name.length > 50) {
+      errors.name = "Name must be less than 50 characters";
+    } else if (!/^[a-zA-Z0-9\s]+$/.test(name)) {
+      errors.name = "Name cannot contain special characters";
+    }
+    if (!story) {
+      errors.story = "Story is required";
+    }
+    if (story.length > 450) {
+      errors.story = `Brand story must be less than 450 characters. You currently have ${story.length}`
+    }
+    if (!description) {
+      errors.description = "Description is required";
+    }
+    if (description.length > 550) {
+      errors.description = `Description must be less than 550 characters. You currently have ${description.length}`
+    }
+
+    console.log("ERRORS", errors)
+    return errors
+  }
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = await dispatch(login(email, password));
-    // if (data) {
-    //   setErrors(data);
-    // }
+
+    const errors = validate()
+    const errorContent = Object.values(errors)
+    if (errorContent.length) return setErrors(errors)
+
+
     const formData = {
       name: name.trim(),
       story,
@@ -95,9 +118,9 @@ export const EditBrandDetails = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false)
-    },200)
+    }, 200)
     return () => clearTimeout(timeout)
-  },[])
+  }, [])
 
   if (isLoading) {
     return <LoadingButton />
@@ -115,11 +138,6 @@ export const EditBrandDetails = () => {
         <div className="create-brand-container">
 
           <form onSubmit={handleSubmit} className="form-container">
-            <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul>
             <div className="create-brand-top-header-store">
               Brand Details
             </div>
@@ -135,6 +153,7 @@ export const EditBrandDetails = () => {
                 required
                 className="login-input"
               />
+              {errors.name && <p className="error">{errors.name}</p>}
             </label>
             <label>
               Brand Story
@@ -145,6 +164,7 @@ export const EditBrandDetails = () => {
                 required
                 className="login-input brand-story"
               />
+              {errors.story && <p className="error">{errors.story}</p>}
             </label>
             <label>
               Description
@@ -155,12 +175,13 @@ export const EditBrandDetails = () => {
                 required
                 className="login-input description"
               />
+              {errors.description && <p className="error">{errors.description}</p>}
             </label>
             <div className="login-form-button-container">
               <button className="login-form-button create-brand-create-button" type="submit">Update Brand</button>
             </div>
           </form>
-          <button  className="edit-brand-delete-button "onClick={handleDelete}>Delete Brand</button>
+          <button className="edit-brand-delete-button " onClick={handleDelete}>Delete Brand</button>
         </div>
       </div>
     </>

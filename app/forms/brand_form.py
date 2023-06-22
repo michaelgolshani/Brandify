@@ -14,6 +14,6 @@ def brand_name_exists(form,field):
 
 
 class BrandForm(FlaskForm):
-    name = StringField('Board Name', validators=[Length(max=50, message="Name must be less than 255 chars!"), DataRequired(), brand_name_exists])
-    story= StringField("Brand Story", validators=[Length(max = 450, message = "Brand Story does well with about 255 characters."), DataRequired()])
-    description = StringField('Brand Description', validators=[Length(max=550, message="Name must be less than 255 chars!"), DataRequired()])
+    name = StringField('Board Name', validators=[Length(max=50, message="Name must be less than 50 chars!"), DataRequired(), brand_name_exists])
+    story= StringField("Brand Story", validators=[Length(max = 450, message = "Brand Story must be less than 450 characters."), DataRequired()])
+    description = StringField('Brand Description', validators=[Length(max=550, message="Description must be less than 550 chars!"), DataRequired()])
