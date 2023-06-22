@@ -7,6 +7,7 @@ import './AddProductPage.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import SideBarDashboard from '../SideBarDashboard.js';
 import { createProductThunk } from '../../store/products';
+import LoadingButton from '../LoadingButton';
 
 const AddProductPage = ({ update }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const AddProductPage = ({ update }) => {
   const [optionalImage2, setOptionalImage2] = useState('');
   const [features, setFeatures] = useState(['', '', '']);
   const [inventory, setInventory] = useState('')
+  const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState({})
 
 
@@ -116,6 +118,9 @@ const AddProductPage = ({ update }) => {
     if (!description) {
       errors.description = "Description is required";
     }
+    if(description.length > 400) {
+      errors.description = `Description must be less than 400 characters. You currently have ${description.length}.`
+    }
 
     if (features.length < 2) {
       errors.features = "All features are required";
@@ -188,15 +193,24 @@ const AddProductPage = ({ update }) => {
     dispatch(createProductThunk(formData, brandName))
     history.push(`/store-dashboard/${brandName}`)
     console.log("FORM DATA", formData)
-
-
   }
 
   console.log("PRODUCTS OF BRAND", products)
 
-  if (update) {
 
+// checks to make sure that page is given some time to load or clear any previous data.
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+    return () => clearTimeout(timeout);
+  }, []);
+
+
+  if (isLoading) {
+    return <LoadingButton />
   }
+
 
   return (
     <div className='product-list-dashboard-container'>
@@ -220,7 +234,7 @@ const AddProductPage = ({ update }) => {
                   type='text'
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className='add-product-input'
+                  className='add-product-page-input'
                 >
                 </input>
               </div>
@@ -234,6 +248,7 @@ const AddProductPage = ({ update }) => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
+                  className='add-product-page-description'
                 />
               </label>
               {errors.description && <p className="error">{errors.description}</p>}
@@ -248,6 +263,7 @@ const AddProductPage = ({ update }) => {
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 0)}
                   required
+                  className='add-product-page-image'
                 />
               </label>
               {errors.images && <p className="error">{errors.images}</p>}
@@ -258,6 +274,7 @@ const AddProductPage = ({ update }) => {
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 1)}
                   required
+                  className='add-product-page-image'
                 />
               </label>
               <label>
@@ -267,6 +284,7 @@ const AddProductPage = ({ update }) => {
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 2)}
                   required
+                  className='add-product-page-image'
                 />
               </label>
               <label>
@@ -275,6 +293,7 @@ const AddProductPage = ({ update }) => {
                   value={images[3]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 3)}
+                  className='add-product-page-image'
 
                 />
               </label>
@@ -284,6 +303,7 @@ const AddProductPage = ({ update }) => {
                   value={images[4]}
                   type='text'
                   onChange={(e) => updateImage(e.target.value, 4)}
+                  className='add-product-page-image'
 
                 />
               </label>
@@ -297,6 +317,7 @@ const AddProductPage = ({ update }) => {
                   type='text'
                   onChange={(e) => setPrice(e.target.value)}
                   required
+                  className='add-product-page-price'
                 />
               </label>
               {errors.price && <p className="error">{errors.price}</p>}

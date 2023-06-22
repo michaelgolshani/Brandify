@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import './BrandLoginPage.css';
 import { useHistory } from 'react-router-dom'
 import { getAllBrandsThunk } from "../../store/brands";
+import LoadingButton from "../LoadingButton";
 
 
 
@@ -15,6 +16,7 @@ const BrandLoginPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState([]);
 
 
@@ -61,6 +63,17 @@ const BrandLoginPage = () => {
   //   return <h1>loading....</h1>
   // }
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingButton />
+  }
+
   return (
     <>
       <div className="login-full-container">
@@ -81,7 +94,7 @@ const BrandLoginPage = () => {
                 <div>You have no brands. Lets create one.</div>
               )}
               {myBrandArr.map((brand, index) => (
-                <div className="brand-login-brand-container" onClick={() => history.push(`/store-dashboard/${brand.name}`)}key={index}>
+                <div className="brand-login-brand-container" onClick={() => history.push(`/store-dashboard/${brand.name}`)} key={index}>
                   <div>{brand.name}</div>
                 </div>
               ))}

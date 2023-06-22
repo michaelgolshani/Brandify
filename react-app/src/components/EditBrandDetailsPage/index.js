@@ -11,13 +11,14 @@ import { FormDataProvider } from '../../context/FormDataContext';
 import { FormDataContext } from '../../context/FormDataContext';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+import LoadingButton from '../LoadingButton';
 
 
 export const EditBrandDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
+  const [isLoading, setIsLoading] = useState(true)
   const state = useSelector((state) => state);
 
 
@@ -88,9 +89,25 @@ export const EditBrandDetails = () => {
     history.push(`/store-dashboard/${name}`)
   };
 
+
+
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false)
+    },200)
+    return () => clearTimeout(timeout)
+  },[])
+
+  if (isLoading) {
+    return <LoadingButton />
+  }
+
+
   if (!oldBrand) {
     return <h1>loading....</h1>
   }
+
 
   return (
     <>
