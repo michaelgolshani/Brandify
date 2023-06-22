@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import CreateBrandPage from '../CreateBrandPage';
-import { createBrandThunk, deleteBrandThunk } from '../../store/brands';
+import { createBrandThunk, deleteBrandThunk, getAllBrandsThunk } from '../../store/brands';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBrandThunk } from '../../store/brands';
@@ -23,8 +23,28 @@ export const EditBrandDetails = () => {
   const { brandName } = useParams()
 
 
+  console.log("STATE", state)
+  const brands = state.brands
+  console.log(brands.allBrands)
+  const brandsArr = Object.values(brands.allBrands)
+  console.log("BRANDS ARR", brandsArr)
 
   console.log("BRAND NAME", brandName)
+
+
+  let myBrandArr = []
+  for (let i = 0; i < brandsArr.length; i++) {
+    let brand = brandsArr[i]
+
+    console.log(brand)
+    console.log("Admin id", brand.admin_id)
+    console.log("user id", state.session.user.id)
+    console.log(myBrandArr)
+    if (brand.admin_id == state.session.user.id) {
+      myBrandArr.push(brand)
+    }
+  }
+
 
 
   const oldBrand = useSelector((state) => state.brands.singleBrand)
@@ -37,6 +57,7 @@ export const EditBrandDetails = () => {
 
   useEffect(() => {
     dispatch(getSingleBrandThunk(brandName))
+    dispatch(getAllBrandsThunk())
   }, [dispatch])
 
   // const formDataContext = useContext(FormDataContext);
@@ -72,6 +93,13 @@ export const EditBrandDetails = () => {
       errors.name = "Name must be less than 50 characters";
     } else if (!/^[a-zA-Z0-9\s]+$/.test(name)) {
       errors.name = "Name cannot contain special characters";
+    } else {
+      for (let i = 0; i < myBrandArr.length; i++) {
+        if (myBrandArr[i].admin_id !== state.session.user.id && myBrandArr[i].name.toLowerCase() === name.trim().toLowerCase()) {
+          errors.name = "You already have a brand with this name";
+          break;
+        }
+      }
     }
     if (!story) {
       errors.story = "Story is required";

@@ -91,9 +91,40 @@
 .brand-login-brand-outer-container{
   overflow: auto;
   height:40vh;
+  padding-right: 10px;
 }
 
 
 .brand-login-form-container{
   overflow-y: hidden;
+}
+
+
+
+.brand-list-form-container{
+  display: flex;
+  padding: 0px 25px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px 0px;
+
+}
+
+
+.brand-login-brand-outer-container::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+.brand-login-brand-outer-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.brand-login-brand-outer-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.brand-login-brand-outer-container::-webkit-scrollbar-track {
+  background-color: transparent;
 }

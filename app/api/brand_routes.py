@@ -68,9 +68,9 @@ def create_brand():
 
     if form.validate_on_submit():
 
-        for brand in user.brands:
-            if form.name.data == brand.name:
-                return {"errors": "You already have a brand named this"}
+        # for brand in user.brands:
+        #     if form.name.data == brand.name:
+        #         return {"errors": "You already have a brand named this"}
 
         new_brand = Brand(
             name=form.name.data,

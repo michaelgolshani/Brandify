@@ -83,7 +83,7 @@ const BrandLoginPage = () => {
 
             <button className="create-store-button" onClick={() => history.push('/create-brand')}> Create another brand</button>
           </div>
-          <div onSubmit={handleSubmit} className="form-container">
+          <div onSubmit={handleSubmit} className="brand-list-form-container">
             <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>

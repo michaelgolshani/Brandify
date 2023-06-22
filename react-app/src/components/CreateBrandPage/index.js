@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './CreateBrandPage.css';
 import { createBrandThunk } from "../../store/brands";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { getAllBrandsThunk } from "../../store/brands";
 
 
 
@@ -18,6 +19,33 @@ const CreateBrandPage = () => {
   const [story, setStory] = useState("")
   const [description, setDescription] = useState("")
   const [errors, setErrors] = useState({})
+
+
+  useEffect(() => {
+    dispatch(getAllBrandsThunk())
+  }, [])
+
+  const state = useSelector((state) => state)
+  console.log("STATE", state)
+  const brands = state.brands
+  console.log(brands.allBrands)
+  const brandsArr = Object.values(brands.allBrands)
+  console.log("BRANDS ARR", brandsArr)
+
+  let myBrandArr = []
+  for (let i = 0; i < brandsArr.length; i++) {
+    let brand = brandsArr[i]
+
+    console.log(brand)
+    console.log("Admin id", brand.admin_id)
+    console.log("user id", state.session.user.id)
+    console.log(myBrandArr)
+    if (brand.admin_id == state.session.user.id) {
+      myBrandArr.push(brand)
+    }
+  }
+
+  console.log("MY BRANDS", myBrandArr)
 
   console.log("NAME", name)
   console.log("STORY", story)
@@ -33,6 +61,13 @@ const CreateBrandPage = () => {
       errors.name = "Name must be less than 50 characters";
     } else if (!/^[a-zA-Z0-9\s]+$/.test(name)) {
       errors.name = "Name cannot contain special characters";
+    } else {
+      for (let i = 0; i < myBrandArr.length; i++) {
+        if (myBrandArr[i].name.toLowerCase() === name.trim().toLowerCase()) {
+          errors.name = "You already have a brand with this name";
+          break;
+        }
+      }
     }
     if (!story) {
       errors.story = "Story is required";
