@@ -9,17 +9,19 @@ def seed_orders():
         created_at=datetime.now(),
         updated_at=datetime.now(),
         ordered=False,
-        owner_id=1  # Set the owner ID for the first order
+        owner_id=1,
+        brand_id = 2
     )
     db.session.add(order1)
-   
+
 
     order2 = Order(
         status="Shipped",
         created_at=datetime.now(),
         updated_at=datetime.now(),
         ordered=True,
-        owner_id=2  # Set the owner ID for the second order
+        owner_id=2,
+        brand_id = 1
     )
     db.session.add(order2)
 
@@ -30,7 +32,8 @@ def seed_orders():
         created_at=datetime.now(),
         updated_at=datetime.now(),
         ordered=True,
-        owner_id=3  # Set the owner ID for the third order
+        owner_id=3,
+        brand_id = 1
     )
     db.session.add(order3)
     db.session.commit()

@@ -24,6 +24,7 @@ class Brand(db.Model):
 
     user = db.relationship('User', back_populates='brands')
     products = db.relationship('Product', back_populates='product_brand', cascade='delete')
+    orders = db.relationship('Order', back_populates='brand', cascade='delete')
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -31,6 +32,7 @@ class Brand(db.Model):
     def to_dict(self):
 
         product_dicts = [product.to_dict() for product in self.products]
+        order_dicts = [order.to_dict() for order in self.orders]
 
         return {
             'id': self.id,
@@ -40,7 +42,8 @@ class Brand(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'admin_id': self.admin_id,
-            'products': product_dicts
+            'products': product_dicts,
+            'orders': order_dicts
         }
 
 
@@ -158,14 +161,16 @@ class Order(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, default=datetime.now)
-    updated_at = db.Column(db.DateTime, default=datetime.now)
+    created_at = db.Column(db.DateTime,nullable=False, default=datetime.now)
+    updated_at = db.Column(db.DateTime, nullable=False,default=datetime.now)
     ordered = db.Column(db.Boolean, default=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    brand_id = db.Column(db.Integer, db.ForeignKey('brands.id'), nullable=False)
 
     owner = db.relationship('User', back_populates='order')
     # order_items = db.relationship('OrderItem', backref='order', cascade='all, delete-orphan')
     order_items = db.relationship('OrderItem', back_populates='orders', cascade='delete')
+    brand = db.relationship('Brand', back_populates='orders')
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -178,6 +183,7 @@ class Order(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'owner_id': self.owner_id,
+            'brand_id': self.brand_id,
             'order_items': order_items_list
         }
 
@@ -185,9 +191,9 @@ class Order(db.Model):
 class OrderItem(db.Model):
     __tablename__ = 'order_items'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')))
-    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')))
-    quantity = db.Column(db.Integer, default=1)
+    product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
+    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=False)
+    quantity = db.Column(db.Integer, default=1, nullable=False)
 
     product = db.relationship('Product', back_populates='order_items')
     orders = db.relationship('Order', back_populates='order_items')

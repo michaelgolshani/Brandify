@@ -4,31 +4,31 @@ from datetime import datetime
 
 
 def seed_order_items():
-    # Get the first user, brand, and product from the database
+
     user = User.query.first()
     brand = Brand.query.first()
     product = Product.query.first()
 
-    # Create an order item for the first order with the product
+
     order_item_1 = OrderItem(
         product_id=product.id,
-        order_id=1,  # Assuming the first order has ID 1
-        quantity=1
+        order_id=1,
+        quantity=2
     )
     db.session.add(order_item_1)
 
-    # Create an order item for the second order with the product
+
     order_item_2 = OrderItem(
         product_id=product.id,
-        order_id=2,  # Assuming the second order has ID 2
+        order_id=2,
         quantity=1
     )
     db.session.add(order_item_2)
 
-    # Create an order item for the third order with the product
+
     order_item_3 = OrderItem(
         product_id=product.id,
-        order_id=3,  # Assuming the third order has ID 3
+        order_id=3,  
         quantity=1
     )
     db.session.add(order_item_3)
