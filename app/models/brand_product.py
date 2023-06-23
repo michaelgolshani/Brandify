@@ -165,7 +165,7 @@ class Order(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,default=datetime.now)
     ordered = db.Column(db.Boolean, default=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    brand_id = db.Column(db.Integer, db.ForeignKey('brands.id'), nullable=False)
+    brand_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('brands.id')), nullable=False)
 
     owner = db.relationship('User', back_populates='order')
     # order_items = db.relationship('OrderItem', backref='order', cascade='all, delete-orphan')
