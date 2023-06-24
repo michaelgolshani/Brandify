@@ -18,7 +18,7 @@
   z-index: 300;
   color: black;
   z-index: 3;
-  transition: right 1.3s ease;
+  transition: right 1s ease;
   /* display: none; */
 
 }
@@ -31,7 +31,12 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 20;
-  display: none;
+  transition: left 2s ease;
+  /* display: none; */
+}
+
+.page-overlay:hover {
+  /* transition: right 1.3s ease; */
 }
 
 
@@ -136,6 +141,7 @@
   height: 150px;
   border: 2px black solid;
   border-radius: 10px;
+  object-fit:cover; 
 }
 
 .shopping-cart-product-right-side {

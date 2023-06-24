@@ -5,6 +5,10 @@ const CREATE_BRAND = 'boards/new'
 const UPDATE_BRAND = 'boards/edit'
 const DELETE_BRAND = "boards/delete";
 
+const GET_ALL_ORDERS = 'orders/all';
+const CREATE_ORDER = 'orders/new';
+
+
 
 
 const getSingleBrand = (brand) => ({
@@ -31,6 +35,16 @@ const updateBrand = (brand) => ({
 const deleteBrand = () => ({
   type: DELETE_BRAND,
 })
+
+const getAllOrders = (orders) => ({
+  type: GET_ALL_ORDERS,
+  orders
+});
+
+const createOrder = (order) => ({
+  type: CREATE_ORDER,
+  order
+});
 
 
 
@@ -144,6 +158,41 @@ export const deleteBrandThunk = (brandName) => async (dispatch) => {
 };
 
 
+export const getAllOrdersThunk = () => async (dispatch) => {
+  const response = await fetch('/api/orders');
+
+  if (response.ok) {
+    const orders = await response.json();
+    dispatch(getAllOrders(orders));
+    return orders;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
+
+
+
+export const createOrderThunk = (order) => async (dispatch) => {
+  const response = await fetch('/api/orders/new', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order)
+  });
+
+  console.log("RESPONSE IN CREATE ORDER THUNK", response)
+
+  if (response.ok) {
+    console.log("RESPONSE.OK IN CREATE ORDER THUNK", response.ok)
+    const newOrder = await response.json();
+    console.log("NEW ORDER IN CREATE ORDER THUNK", newOrder)
+    dispatch(createOrder(newOrder));
+    return newOrder;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
 
 
 
@@ -157,9 +206,7 @@ export const deleteBrandThunk = (brandName) => async (dispatch) => {
 
 
 
-
-
-const initialState = { allBrands: {}, singleBrand: {} }
+const initialState = { allBrands: {}, singleBrand: {}, allOrders: {} }
 
 export default function brandsReducer(state = initialState, action) {
   let newState = {}
@@ -167,7 +214,7 @@ export default function brandsReducer(state = initialState, action) {
 
     case GET_ALL_BRANDS:
       console.log("WE ARE IN GET ALL BRANDS THUNK", action)
-      newState = { ...state, allBrands: { ...action.brands }, singleBrand: { ...state.singleBrand } }
+      newState = { ...state, allBrands: { ...action.brands }, singleBrand: { ...state.singleBrand }, allOrders: { ...state.allOrders } }
       return newState
 
     case CREATE_BRAND:
@@ -176,7 +223,7 @@ export default function brandsReducer(state = initialState, action) {
       return newState
 
     case UPDATE_BRAND:
-      newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...state.singleBrand } }
+      newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...state.singleBrand }, allOrders: { ...state.allOrders } }
       if (newState.allBrands[action.brand.id]) {
         newState.allBrands[action.brand.id] = action.brand
       }
@@ -187,11 +234,11 @@ export default function brandsReducer(state = initialState, action) {
 
     case GET_SINGLE_BRAND:
       console.log("WE ARE IN SINGLE BRAND thunk", action.brand)
-      newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...action.brand } }
+      newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...action.brand }, allOrders: { ...state.allOrders } }
       return newState
 
     case DELETE_BRAND:
-      newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...state.singleBrand } }
+      newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...state.singleBrand }, allOrders: { ...state.allOrders } }
       delete newState.allBrands[action.id]
       console.log("WE ARE IN DELETE REDUCER", action)
       // if (newState.singleBrand.id == action.brand.id) {
@@ -199,6 +246,34 @@ export default function brandsReducer(state = initialState, action) {
       // }
       console.log("WE HAD SUCCES WITH DELETE REDUCER", action)
       return newState
+
+    case GET_ALL_ORDERS:
+      console.log("ACTION IN GET ALL ORDERS REDUCER", action.orders)
+      newState = {
+        ...state,
+        allOrders: { ...action.orders }
+      };
+      return newState;
+
+    case CREATE_ORDER:
+      console.log("WE ARE IN CREATE ORDER REDUCER. ACTION:", action)
+      newState = {
+        ...state,
+        allBrands: { ...state.allBrands },
+        singleBrand: { ...state.singleBrand },
+        allOrders: { ...state.allOrders }
+      };
+      const brandId = action.order.brand_id;
+      const orderId = action.order.id;
+      console.log("ACTION IN CREATE ORDER REDUCER", action.order)
+      newState.allOrders = {
+        ...newState.allOrders,
+        [brandId]: {
+          ...newState.allOrders[brandId],
+          [orderId]: action.order
+        }
+      };
+      return newState;
 
     default:
       return state

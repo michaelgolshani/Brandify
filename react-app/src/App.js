@@ -16,6 +16,7 @@ import AddProductPage from "./components/AddProductPage";
 import EditProductPage from "./components/EditProductPage";
 import ProductPage from "./components/ProductPage";
 import ShoppingCart from "./components/ShoppingCart";
+import BrandHomePage from "./components/BrandHomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,10 +31,13 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/store/shoppingcart'>
-           < ShoppingCart/>
+            < ShoppingCart />
           </Route>
           <Route exact path='/store/:brandName/:productId'>
             <ProductPage />
+          </Route>
+          <Route exact path='/store/:brandName' >
+            <BrandHomePage />
           </Route>
           <Route exact path='/store-dashboard/:brandName/:productId/edit'>
             <EditProductPage update={true} />

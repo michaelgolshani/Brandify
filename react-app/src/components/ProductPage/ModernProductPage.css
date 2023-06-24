@@ -13,23 +13,24 @@
 
 .modern .product-description {
   width: 45vw;
-  padding-top: 15px;
+  padding-top: 5vh;
   line-height: 1.5;
-  font-size: 20px;
+  font-size: 1.5vw;
   color: rgb(33, 33, 34);
   font-weight: bold;
   z-index: 2;
   /* font-family: 'syncopate-bold'; */
-  font-family: "Neue Haas Unica", sans-serif;;
+  font-family: "Neue Haas Unica", sans-serif;
+  ;
 
 }
 
 .modern .product-title {
-  font-size: 81px;
+  font-size: 5.5vw;
   /* height: 20px; */
   text-align: left;
   color: black;
-  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
   letter-spacing: -0.025em;
   /* box-shadow: 2px 2px 0px 5px black; */
 
@@ -40,13 +41,13 @@
 }
 
 .modern .you-may-also-like {
-  font-size: 81px;
+  font-size: 5.5vw;
   padding-top: 10vh;
   /* height: 20px; */
   text-align: center;
   color: rgb(253, 253, 253);
   font-weight: 900;
-   font-family: 'syncopate-bold';
+  font-family: 'syncopate-bold';
   /* box-shadow: 2px 2px 0px 5px black; */
 
   text-rendering: optimizeLegibility;
@@ -104,8 +105,9 @@
 .modern .add-minus-sign-container {
   display: flex;
   text-align: center;
-  margin: 0px 0px;
-
+  margin: 1vw 0px;
+  margin-bottom: 1vw;
+  align-items: center;
 
 }
 
@@ -137,13 +139,13 @@
 
   width: 30px;
   height: 30px;
-  padding: 20px 0px;
+  padding: 2vw 0px;
 
   border-radius: 7px;
 
 
   color: black;
-  font-size: 25px;
+  font-size: 2vw;
 }
 
 .modern .add-minus-sign-number {
@@ -165,8 +167,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
-  padding: 10px;
+  margin-top: 2vw;
+  padding: .7vw;
   border: 2px solid black;
   border-radius: 2px;
   /* width: 100%; */
@@ -177,7 +179,7 @@
   /* background-color: #D3335D; */
   font-family: 'syncopate-bold';
   color: black;
-  font-size: 19px;
+  font-size: 1.2vw;
   font-weight: 600;
   z-index: 1;
   cursor: pointer;
@@ -211,7 +213,7 @@
   margin: 0;
   font-family: 'Prompt', sans-serif;
   color: white;
-  background: #202731;
+  /* background: #202731; */
   position: relative;
   padding: 0;
   /* height: 100vh; */
@@ -447,7 +449,7 @@
   transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
-.modern .you-may-also-images:hover{
+.modern .you-may-also-images:hover {
   transform: translateY(10px);
   box-shadow: 0px 0px 15px 0px rgb(255, 255, 255);
   border: none;
@@ -468,13 +470,13 @@
   padding-bottom: 15vh;
 }
 
-.modern .you-may-also-images:hover .current-brand-products-container{
+.modern .you-may-also-images:hover .current-brand-products-container {
   animation-play-state: paused;
 }
 
 
 
-.current-brand-products-container{
+.current-brand-products-container {
   /* display: inline-block; */
 }
 
@@ -552,7 +554,7 @@
   fill: #000000;
 }
 
-.modern .manage-theme{
+.modern .manage-theme {
 
   color: black;
   cursor: pointer;
@@ -560,11 +562,12 @@
 
 
 @keyframes slide {
-  from{
-transform: translateX(0%);
+  from {
+    transform: translateX(0%);
   }
+
   to {
-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
 }
 
@@ -595,6 +598,7 @@ transform: translateX(-100%);
   width: calc(100% + 1.3px);
   height: 128px;
   transform: rotateY(180deg);
+  margin-top: -1px;
 }
 
 .custom-shape-divider-bottom-1687372545 .shape-fill {
@@ -624,3 +628,79 @@ transform: translateX(-100%);
   fill: #000000;
   z-index: 1;
 }
+
+
+
+
+.checkout-completed-page {
+  width: 100vw;
+  height: 100vh;
+  z-index: 400;
+
+}
+
+
+
+
+.color-black {
+  color: black;
+  fill: black;
+  z-index: 300;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+}
+
+
+
+
+.black-background {
+  background-color: black;
+}
+
+
+.product-page-feature {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+
+}
+
+.left-side-feature-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 6rem;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.right-side-feature-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 6rem;
+  width: 50%;
+  word-wrap: break-word;
+}
+
+.product-page-features-images{
+  width: 70%;
+  height: 70%;
+  object-fit:cover;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
