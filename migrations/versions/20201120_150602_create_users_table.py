@@ -42,6 +42,7 @@ def upgrade():
     sa.Column('name', sa.String(length=255), nullable=True),
     sa.Column('story', sa.String(length=450), nullable=True),
     sa.Column('description', sa.String(length=30), nullable=True),
+     sa.Column('theme', sa.String(length=15), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.Column('admin_id', sa.Integer(), nullable=False),

@@ -2,13 +2,13 @@ import React from 'react'
 import './BrandProducts.css'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-export const BrandProducts = ({ brandName, currentBrand }) => {
+export const BrandProducts = ({ brandName, currentBrand, theme }) => {
   const history = useHistory()
   const currentBrandProducts = currentBrand.products.slice(0, 2);
   console.log("CURRENT BRAND PRPDUCTS TESTER", currentBrandProducts)
 
   return (
-    <div className='brand-products-container'>
+    <div className={`brand-products-container ${theme}`}>
       {currentBrandProducts.map((product, index) => (
         <div
           className={`brand-products-individual-product-container ${index % 2 === 0 ? 'even' : 'odd'

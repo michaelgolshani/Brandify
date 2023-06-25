@@ -19,6 +19,7 @@ import ShoppingCart from "./components/ShoppingCart";
 import BrandHomePage from "./components/BrandHomePage";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import ErrorPage from "./components/404Page";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,69 +32,79 @@ function App() {
     <>
 
       {isLoaded && (
-        <Switch>
-          <Route exact path='/store/shoppingcart'>
-            < ShoppingCart />
-          </Route>
-          <Route exact path='/store/:brandName/:productId'>
-            <ProductPage />
-          </Route>
-          <Route exact path='/store/:brandName' >
-            <BrandHomePage />
-          </Route>
-          <Route exact path='/store-dashboard/:brandName/:productId/edit'>
-            <Navigation isLoaded={isLoaded} />
-            <EditProductPage update={true} />
-          </Route>
-          <Route exact path='/store-dashboard/:brandName/new'>
-            <Navigation isLoaded={isLoaded} />
-            <AddProductPage />
-          </Route>
-          <Route exact path='/store-dashboard/:brandName/edit'>
-            <Navigation isLoaded={isLoaded} />
-            <EditBrandDetails />
-          </Route>
-          <Route exact path='/store-dashboard/:brandName'>
-            <Navigation isLoaded={isLoaded} />
-            <BrandDashboardPage />
-          </Route>
-          <Route exact path='/:brandName/products'>
-            <Navigation isLoaded={isLoaded} />
-            <ProductListPage />
-          </Route>
-          {/* <Route exact path='/productpage'>
+        <>
+          <Switch>
+            <Route exact path='/store/shoppingcart'>
+              < ShoppingCart />
+            </Route>
+            <Route exact path='/store/:brandName/:productId'>
+              <ProductPage />
+            </Route>
+            <Route exact path='/store/:brandName' >
+              <BrandHomePage />
+            </Route>
+            <Route exact path='/store-dashboard/:brandName/:productId/edit'>
+              <Navigation isLoaded={isLoaded} />
+              <EditProductPage update={true} />
+            </Route>
+            <Route exact path='/store-dashboard/:brandName/new'>
+              <Navigation isLoaded={isLoaded} />
+              <AddProductPage />
+            </Route>
+            <Route exact path='/store-dashboard/:brandName/edit'>
+              <Navigation isLoaded={isLoaded} />
+              <EditBrandDetails />
+            </Route>
+            <Route exact path='/store-dashboard/:brandName'>
+              <Navigation isLoaded={isLoaded} />
+              <BrandDashboardPage />
+            </Route>
+            <Route exact path='/:brandName/products'>
+              <Navigation isLoaded={isLoaded} />
+              <ProductListPage />
+            </Route>
+            {/* <Route exact path='/productpage'>
             <ProductBuyPage />
           </Route> */}
-          <Route exact path='/store-login'>
-            <Navigation isLoaded={isLoaded} />
-            <BrandLoginPage />
-          </Route>
-          <Route exact path='/create-brand'>
-            <Navigation isLoaded={isLoaded} />
-            <CreateBrandPage />
-          </Route>
-          <Route path="/login" >
-            <Navigation isLoaded={isLoaded} />
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <Navigation isLoaded={isLoaded} />
-            <SignupFormPage />
-          </Route>
-          <Route path='/'>
-            <Navigation isLoaded={isLoaded} />
-            <LandingPage />
-          </Route>
-          {/* <Route path='/'>
+            <Route exact path='/store-login'>
+              <Navigation isLoaded={isLoaded} />
+              <BrandLoginPage />
+            </Route>
+            <Route exact path='/create-brand'>
+              <Navigation isLoaded={isLoaded} />
+              <CreateBrandPage />
+            </Route>
+            <Route path="/login" >
+              <Navigation isLoaded={isLoaded} />
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <Navigation isLoaded={isLoaded} />
+              <SignupFormPage />
+            </Route>
+            <Route path='/'>
+              <Navigation isLoaded={isLoaded} />
+              <LandingPage />
+            </Route>
+            {/* <Route path='/'>
             <LandingPage />
           </Route> */}
-          <Route path='/create-store'>
-            <Navigation isLoaded={isLoaded} />
-            <LandingPage />
-          </Route>
+            <Route path='/create-store'>
+              <Navigation isLoaded={isLoaded} />
+              <LandingPage />
+            </Route>
 
 
-        </Switch>
+            <Route>
+              <Navigation isLoaded={isLoaded} />
+              <ErrorPage />
+            </Route>
+            
+          </Switch>
+
+
+
+        </>
       )}
     </>
   );

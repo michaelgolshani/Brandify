@@ -76,6 +76,7 @@ def create_brand():
             name=form.name.data,
             story=form.story.data,
             description=form.description.data,
+            theme=form.theme.data,
             admin_id=current_user.id
         )
 
@@ -106,6 +107,7 @@ def update_brand(brand_name):
     brand_to_edit.name = form.name.data
     brand_to_edit.story = form.story.data
     brand_to_edit.description = form.description.data
+    brand_to_edit.theme = form.theme.data
 
     db.session.commit()
     return brand_to_edit.to_dict()

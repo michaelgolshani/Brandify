@@ -3,9 +3,9 @@ import './BrandInfiniteScroll.css'
 
 
 
-export const BrandInfiniteScroll = () => {
+export const BrandInfiniteScroll = ({theme}) => {
   return (
-    <div className='brand-scroll-container'>
+    <div className={`brand-scroll-container ${theme}`}>
       <div className='logos'>
         <div className='logos-slide'>
           <div>Cutting-Edge Design</div>

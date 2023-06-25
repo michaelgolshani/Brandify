@@ -18,6 +18,7 @@ class Brand(db.Model):
     name = db.Column(db.String(255),nullable=False)
     story = db.Column(db.String(450), nullable = False)
     description = db.Column(db.String(30))
+    theme = db.Column(db.String(15), default='modern')
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     admin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
@@ -39,6 +40,7 @@ class Brand(db.Model):
             'name': self.name,
             'story': self.story,
             'description': self.description,
+            'theme' : self.theme,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'admin_id': self.admin_id,

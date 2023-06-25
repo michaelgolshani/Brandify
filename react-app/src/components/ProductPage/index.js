@@ -38,7 +38,8 @@ const ProductPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(currentProduct ? currentProduct.images?.[0] : '')
   const { brandName, productId } = useParams()
-  const [theme, setTheme] = useState('modern')
+  // const [theme, setTheme] = useState('modern')
+  const [theme, setTheme] = useState(currentBrand.theme)
   const [openCart, setOpenCart] = useState(false)
   const [cartItems, setCartItems] = useState([]);
 
@@ -66,11 +67,16 @@ const ProductPage = () => {
     dispatch(getSingleBrandThunk(brandName))
   }, [dispatch, productId, brandName])
 
+
+  // Checks for the main image and also a brands theme, and refreshes the data
   useEffect(() => {
     if (currentProduct?.images?.[0]) {
       setSelectedImage(currentProduct.images[0]);
     }
-  }, [currentProduct]);
+    if (currentBrand?.theme) {
+      setTheme(currentBrand.theme);
+    }
+  }, [currentProduct, currentBrand]);
 
 
 

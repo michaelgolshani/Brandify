@@ -28,9 +28,14 @@ body {
 
 }
 
-.brand-page-main-container:not(.brand-scroll-container){
+.modern .brand-page-main-container:not(.brand-scroll-container){
   /* padding: 0 5vw; */
   background-color: rgb(232, 232, 232);
+}
+
+.poppy .brand-page-main-container:not(.brand-scroll-container){
+  /* padding: 0 5vw; */
+  background: linear-gradient(100deg,#ea426f 5%, rgba(221, 255, 119, 1)  );
 }
 
 

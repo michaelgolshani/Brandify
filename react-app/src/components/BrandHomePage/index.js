@@ -34,6 +34,17 @@ export const BrandHomePage = () => {
   console.log("CURRENT BRAND STORY", currentBrand.story)
 
 
+  const [theme, setTheme] = useState(currentBrand.theme)
+
+  console.log("CURERNT BRAND THEME", theme)
+
+  useEffect(() => {
+
+    if (currentBrand?.theme) {
+      setTheme(currentBrand.theme);
+    }
+  }, [currentBrand]);
+
   useEffect(() => {
     // dispatch(getSingleProductThunk(productId))
     dispatch(getSingleBrandThunk(brandName))
@@ -52,6 +63,7 @@ export const BrandHomePage = () => {
     return <LoadingButton />
   }
 
+
   // if (!currentBrand) {
   //   return <h1>loading...</h1>
   // }
@@ -60,23 +72,25 @@ export const BrandHomePage = () => {
   return (
     <>
       {currentBrand ? (
-        <div className='brand-page-main-container' id='brand-page-main-container'>
-          <BrandNavBar brandName={brandName} currentBrand={currentBrand} />
-          <BrandHeader brandName={brandName} currentBrand={currentBrand} />
-          <BrandInfiniteScroll />
+        <div className={`${theme}`}>
+        <div className={`brand-page-main-container ${theme}`} id='brand-page-main-container'>
+          <BrandNavBar brandName={brandName} theme={theme} currentBrand={currentBrand} />
+          <BrandHeader brandName={brandName} theme={theme} currentBrand={currentBrand} />
+          <BrandInfiniteScroll theme={theme} />
 
-          <BrandProducts brandName={brandName} currentBrand={currentBrand} />
-          <BrandAbout brandName={brandName} currentBrand={currentBrand} />
+          <BrandProducts brandName={brandName} theme={theme} currentBrand={currentBrand} />
+          <BrandAbout brandName={brandName} theme={theme} currentBrand={currentBrand} />
 
 
           {currentBrand.products.length >= 1 && (
-            <BrandFeatured currentBrand={currentBrand} brandName={brandName} />
+            <BrandFeatured currentBrand={currentBrand} theme={theme} brandName={brandName} />
           )
           }
 
 
           <BrandGallery />
           <BrandFooter />
+        </div>
         </div>
       ) : null
       }

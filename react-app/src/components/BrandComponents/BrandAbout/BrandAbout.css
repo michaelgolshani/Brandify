@@ -1,19 +1,46 @@
-.brand-section-header {
+.modern .brand-section-header {
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1px;
   font-family: 'syncopate-bold';
   color: #626262;
   font-size: 20px;
-  text-decoration:underline;
+  text-decoration: underline;
+  padding: 0 5vw;
+
+}
+
+.poppy .brand-section-header {
+  text-transform: uppercase;
+  font-weight: 600;
+  /* letter-spacing: 1px; */
+  font-family: "Neue Haas Unica", sans-serif;
+  ;
+  color: black;
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: rgb(255, 255, 84);
+  /* Optional: set the text color */
+  /* text-shadow: 5px 7px 3px #d2213f; */
+  /* letter-spacing: -3px; */
+  font-size: 30px;
+  text-decoration: underline;
   padding: 0 5vw;
 
 }
 
 
-#brand-about-headline{
+.modern #brand-about-headline {
 
-font-size: 70px;
-line-height: 1.12;
-padding: 0 5vw;
+  font-size: 70px;
+  line-height: 1.12;
+  padding: 0 5vw;
+}
+
+
+.poppy #brand-about-headline {
+
+  font-size: 70px;
+  line-height: 1.12;
+  padding: 0 5vw;
+  font-family: "Neue Haas Unica", sans-serif;
 }

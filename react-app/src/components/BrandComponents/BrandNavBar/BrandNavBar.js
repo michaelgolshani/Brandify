@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 
 
-export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart,setOpenCart }) => {
+export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setOpenCart, theme }) => {
 
   const history = useHistory()
   console.log("CART ITEMS", cartItems)
@@ -23,26 +23,27 @@ export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart,setOp
 
   return (
 
+    <div className={`${theme}`}>
+      <div className={`brand-navbar`}>
 
-    <div className='brand-navbar'>
+        <div className='brand-navbar-brand-name' onClick={() => history.push(`/store/${brandName}`)}>
+          {brandName}
+        </div>
 
-      <div className='brand-navbar-brand-name' onClick={() => history.push(`/store/${brandName}`)}>
-        {brandName}
+        <div className='brand-navbar-all-products'>
+          All Products
+        </div>
+
+
+        <div className='brand-navbar-right-side'>
+          <div className='brand-navbar-cart-text' onClick={() => setOpenCart(!openCart)}>Cart </div>
+          < ProfileButton />
+
+        </div>
+
+
+
       </div>
-
-      <div className='brand-navbar-all-products'>
-        All Products
-      </div>
-
-
-      <div className='brand-navbar-right-side'>
-        <div className='brand-navbar-cart-text' onClick={()=>  setOpenCart(!openCart)}>Cart </div>
-        < ProfileButton />
-
-      </div>
-
-
-
     </div>
   )
 }

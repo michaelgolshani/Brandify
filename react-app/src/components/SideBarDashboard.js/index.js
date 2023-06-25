@@ -15,7 +15,7 @@ const SideBarDashboard = () => {
   const { brandName } = useParams()
 
 
-  
+
   useEffect(() => {
     dispatch(getSingleBrandThunk(brandName))
   }, [])
@@ -29,23 +29,28 @@ const SideBarDashboard = () => {
         <i className="fa-solid fa-house"></i>
         <div className='side-bar-text' >Home</div>
       </div>
-      <div className='inidividual-choice'>
+      <div className='inidividual-choice' onClick={() => history.push(`/store/${brandName}`)}>
+        <i className="fa-solid fa-shop"></i>
+        <div className='side-bar-text'>My Store</div>
+      </div>
+
+      {/* <div className='inidividual-choice'>
         <i className="fa-solid fa-inbox"></i>
         <div className='side-bar-text'>Orders</div>
-      </div>
+      </div> */}
       <div className='inidividual-choice' onClick={() => history.push(`/${brandName}/products`)}>
         <i className="fa-solid fa-tag fa-rotate-90"></i>
         <div className='side-bar-text' >Products</div>
       </div>
-      <div className='inidividual-choice'>
+      {/* <div className='inidividual-choice'>
         <i className="fa-solid fa-address-card"></i>
         <div className='side-bar-text'>Customers</div>
       </div>
       <div className='inidividual-choice'>
         <i className="fa-solid fa-chart-line"></i>
         <div className='side-bar-text'>Analytics</div>
-      </div>
-      <div className='inidividual-choice settings'>
+      </div> */}
+      <div className='inidividual-choice settings' onClick={() => history.push(`/store-dashboard/${brandName}/edit`)}>
         <i className="fa-solid fa-gear"></i>
         <div className='side-bar-text'>Settings</div>
       </div>

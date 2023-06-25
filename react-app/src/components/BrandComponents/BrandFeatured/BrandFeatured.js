@@ -4,13 +4,13 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 // import '../../ProductPage/PoppyProductPage.css'
 import './BrandFeatured.css'
 
-export const BrandFeatured = ({ currentBrand, brandName }) => {
+export const BrandFeatured = ({ currentBrand, brandName, theme }) => {
   const history = useHistory()
   const currentBrandProducts = currentBrand.products
 
 
   return (
-    <div className='brand-reviews-full-container'>
+    <div className={`brand-reviews-full-container ${theme}`}>
       <div className='brand-reviews-title'>
         <div>What People Are Saying</div>
       </div>

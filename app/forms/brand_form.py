@@ -17,3 +17,4 @@ class BrandForm(FlaskForm):
     name = StringField('Board Name', validators=[Length(max=50, message="Name must be less than 50 chars!"), DataRequired()])
     story= StringField("Brand Story", validators=[Length(max = 450, message = "Brand Story must be less than 450 characters."), DataRequired()])
     description = StringField('Brand Description', validators=[Length(max=30, message="Slogan must be less than 30 chars!"), DataRequired()])
+    theme = StringField('Brand Theme', validators=[Length(max=15, message="Brand theme must be less than 15 chars!"), DataRequired()])

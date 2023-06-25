@@ -18,6 +18,7 @@ const CreateBrandPage = () => {
   const [name, setName] = useState("");
   const [story, setStory] = useState("")
   const [description, setDescription] = useState("")
+  const [theme, setTheme] = useState("modern");
   const [errors, setErrors] = useState({})
 
 
@@ -97,7 +98,8 @@ const CreateBrandPage = () => {
     const formData = {
       name: name.trim(),
       story,
-      description
+      description,
+      theme
     }
     // let newBrand = await
     console.log(formData)
@@ -152,6 +154,17 @@ const CreateBrandPage = () => {
                 className="login-input brand-story"
               />
               {errors.story && <p className="create-brand-error">{errors.story}</p>}
+            </label>
+            <label>
+              Theme
+              <select
+                value={theme}
+                onChange={(e) => setTheme(e.target.value)}
+                className="login-input"
+              >
+                <option value="modern">Modern</option>
+                <option value="poppy">Poppy</option>
+              </select>
             </label>
 
             <div className="login-form-button-container">

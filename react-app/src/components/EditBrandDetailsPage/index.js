@@ -53,6 +53,7 @@ export const EditBrandDetails = () => {
   const [name, setName] = useState(oldBrand.name);
   const [story, setStory] = useState(oldBrand.story)
   const [description, setDescription] = useState(oldBrand.description)
+  const [theme, setTheme] = useState(oldBrand.theme);
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
@@ -68,6 +69,7 @@ export const EditBrandDetails = () => {
       setName(oldBrand.name)
       setStory(oldBrand.story)
       setDescription(oldBrand.description)
+      setTheme(oldBrand.theme)
     }
   }, [oldBrand, brandName]);
 
@@ -75,6 +77,7 @@ export const EditBrandDetails = () => {
   console.log("NAME", name)
   console.log("STORY", story)
   console.log("Description", description)
+  console.log("THEME", theme)
   // if (sessionUser) return <Redirect to="/" />;
 
   const handleDelete = async () => {
@@ -130,7 +133,8 @@ export const EditBrandDetails = () => {
     const formData = {
       name: name.trim(),
       story,
-      description
+      description,
+      theme
     }
     // let newBrand = await
     console.log("FORM DATA", formData)
@@ -204,6 +208,17 @@ export const EditBrandDetails = () => {
                 className="login-input brand-story"
               />
               {errors.story && <p className="error">{errors.story}</p>}
+            </label>
+            <label>
+              Theme
+              <select
+                value={theme}
+                onChange={(e) => setTheme(e.target.value)}
+                className="login-input"
+              >
+                <option value="modern">Modern</option>
+                <option value="poppy">Poppy</option>
+              </select>
             </label>
 
             <div className="login-form-button-container">

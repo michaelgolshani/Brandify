@@ -1,4 +1,4 @@
-.brand-navbar {
+.modern .brand-navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,6 +13,32 @@
  padding-left: 5vw;
  background-color: transparent;
 }
+
+.poppy .brand-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-family: 'syncopate-bold';
+  color: black;
+  text-transform: uppercase;
+ padding-right: 5vw;
+ padding-left: 5vw;
+ background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
 
 .brand-navbar-right-side{
   display: flex;
