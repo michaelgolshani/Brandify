@@ -78,8 +78,8 @@ const CreateBrandPage = () => {
     if (!description) {
       errors.description = "Slogan is required";
     }
-    if (description.length > 25) {
-      errors.description = `Slogan must be less than 25 characters. You currently have ${description.length}`
+    if (description.length > 30) {
+      errors.description = `Slogan must be less than 30 characters. You currently have ${description.length}`
     }
 
     console.log("ERRORS", errors)
