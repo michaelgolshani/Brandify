@@ -1,6 +1,38 @@
-.brand-navbar-container{
+.brand-navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 50px 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-family: 'syncopate-bold';
+  color: #464646;
+  text-transform: uppercase;
+ padding-right: 5vw;
+ padding-left: 5vw;
+ background-color: transparent;
+}
 
+.brand-navbar-right-side{
+  display: flex;
+  align-items: center;
+}
+
+.brand-navbar-cart-text{
+  padding-right: 60px;
+  cursor: pointer;
+}
+
+.brand-navbar-brand-name{
+  cursor: pointer;
+
+}
+
+
+.brand-navbar-all-products{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-right: 45px;
 }

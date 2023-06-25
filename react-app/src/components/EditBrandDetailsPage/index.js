@@ -108,10 +108,10 @@ export const EditBrandDetails = () => {
       errors.story = `Brand story must be less than 450 characters. You currently have ${story.length}`
     }
     if (!description) {
-      errors.description = "Description is required";
+      errors.description = "Slogan is required";
     }
     if (description.length > 550) {
-      errors.description = `Description must be less than 550 characters. You currently have ${description.length}`
+      errors.description = `Slogan must be less than 25 characters. You currently have ${description.length}`
     }
 
     console.log("ERRORS", errors)
@@ -184,6 +184,17 @@ export const EditBrandDetails = () => {
               {errors.name && <p className="error">{errors.name}</p>}
             </label>
             <label>
+              Brand Slogan
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                className="login-input description"
+              />
+              {errors.description && <p className="error">{errors.description}</p>}
+            </label>
+            <label>
               Brand Story
               <textarea
                 type="text"
@@ -194,17 +205,7 @@ export const EditBrandDetails = () => {
               />
               {errors.story && <p className="error">{errors.story}</p>}
             </label>
-            <label>
-              Description
-              <textarea
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                className="login-input description"
-              />
-              {errors.description && <p className="error">{errors.description}</p>}
-            </label>
+
             <div className="login-form-button-container">
               <button className="login-form-button create-brand-create-button" type="submit">Update Brand</button>
             </div>

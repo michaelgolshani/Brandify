@@ -1,0 +1,98 @@
+.brand-reviews-full-container {
+  background-color: black;
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-reviews-title {
+  font-size: 100px;
+  color: white;
+  padding-top: 0vh;
+  padding-bottom: 10vh;
+  text-transform: uppercase;
+  font-family: 'Bai Jamjuree';
+}
+
+
+.brand-reviews-container {
+  box-sizing: border-box;
+  /* background-color: rgb(197, 197, 197); */
+  display: flex;
+  flex-direction: row;
+
+  /* width: 100vw; */
+  margin: 0 0;
+  padding: 0 0;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  /* height: 50vh; */
+  width: 100%;
+
+ overflow: hidden;
+}
+
+
+
+.individual-review-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* width: 20vw; */
+  word-wrap: break-word;
+  padding: 10px 2.5vw;
+  animation: 10s slider linear infinite;
+
+}
+
+
+.review-carousel-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* border: 10px solid rgb(231, 231, 231); */
+  box-shadow: 0px 0px 10px 2px white;
+
+}
+
+.review-start-container {
+
+}
+
+
+.review-stars {
+  fill: white;
+  color: white;
+  padding-top: 20px;
+}
+
+
+.review-description {
+  word-wrap: break-word;
+  width: 20vw;
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+.review-city-state{
+  font-weight: 600;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+
+
+
+@keyframes slider {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}

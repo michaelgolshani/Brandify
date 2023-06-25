@@ -1,0 +1,19 @@
+.brand-section-header {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: 'syncopate-bold';
+  color: #626262;
+  font-size: 20px;
+  text-decoration:underline;
+  padding: 0 5vw;
+
+}
+
+
+#brand-about-headline{
+
+font-size: 70px;
+line-height: 1.12;
+padding: 0 5vw;
+}

@@ -76,10 +76,10 @@ const CreateBrandPage = () => {
       errors.story = `Brand story must be less than 450 characters. You currently have ${story.length}`
     }
     if (!description) {
-      errors.description = "Description is required";
+      errors.description = "Slogan is required";
     }
-    if (description.length > 550) {
-      errors.description = `Description must be less than 550 characters. You currently have ${description.length}`
+    if (description.length > 25) {
+      errors.description = `Slogan must be less than 25 characters. You currently have ${description.length}`
     }
 
     console.log("ERRORS", errors)
@@ -132,6 +132,17 @@ const CreateBrandPage = () => {
               {errors.name && <p className="create-brand-error">{errors.name}</p>}
             </label>
             <label>
+              Brand Slogan <span className="create-brand-small-text">(i.e. Just Do It, Think Different... )</span>
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                className="login-input description"
+              />
+              {errors.description && <p className="create-brand-error">{errors.description}</p>}
+            </label>
+            <label>
               Brand Story <span className="create-brand-small-text">(What is the purpose for starting your brand?)</span>
               <textarea
                 type="text"
@@ -142,17 +153,7 @@ const CreateBrandPage = () => {
               />
               {errors.story && <p className="create-brand-error">{errors.story}</p>}
             </label>
-            <label>
-              Description <span className="create-brand-small-text">(i.e. We are an xyz company that specializes in selling xyz... )</span>
-              <textarea
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                className="login-input description"
-              />
-              {errors.description && <p className="create-brand-error">{errors.description}</p>}
-            </label>
+
             <div className="login-form-button-container">
               <button className="login-form-button create-brand-create-button" type="submit">Create Brand</button>
             </div>

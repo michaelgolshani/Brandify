@@ -173,7 +173,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 2vw;
-  padding: .7vw;
+  padding: .9vw;
   border: 2px solid black;
   border-radius: 7px;
   /* width: 100%; */
@@ -508,16 +508,3 @@ transform: translateX(0);
 transform: translateX(-100%);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

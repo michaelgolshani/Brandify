@@ -23,6 +23,17 @@ body {
 }
 
 
+.brand-section{
+  padding: 100px 0;
+
+}
+
+.brand-page-main-container:not(.brand-scroll-container){
+  /* padding: 0 5vw; */
+  background-color: rgb(232, 232, 232);
+}
+
+
 @font-face {
   font-family: 'syncopate-regular';
   src: url('./assets/Syncopate-Regular.ttf')format('truetype');
@@ -36,4 +47,10 @@ body {
 @font-face {
   font-family: 'poppins';
   src: url('./assets/Poppins-Regular.ttf')format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Bai Jamjuree';
+  src: url('./assets/BaiJamjuree-Regular.ttf')format('truetype');
 }

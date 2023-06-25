@@ -58,6 +58,82 @@ def seed_products():
     # product3.features = product3.features.split(',')
     db.session.add(product3)
 
+    product4 = Product(
+        name= "Peach",
+        price=3.99,
+        description = "Remember that sweet, floral and fragrant smell of fresh, ripe peaches? We have perfectly distilled that tantalizing flavour into this can. This drink is artfully made with cider, real fruits and nothing short but all natural ingredients. ",
+        images ='https://cdn.shopify.com/s/files/1/0640/0213/0141/products/Can3.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TiltedCan3.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TVA_ShapesTheme_NonAlcho_Peach_Condensation.jpg',
+        features = '100% Natural Ingredients,No Artificial Additives or Sweeteners,No Crash',
+        brand_id=brand3.id,
+        owner_id = user3.id,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    )
+    # product3.images = product3.images.split(',')
+    # product3.features = product3.features.split(',')
+    db.session.add(product4)
+
+    product5 = Product(
+        name= "Rasberry",
+        price=3.99,
+        description = "A no fuss fizzy drink for the ones who love simplicity.  It's lightly carbonated, tarty and a bit sweet, with a delightful, hint of rosiness - just like freshly picked raspberries.  It's a cold crisp refreshment for any season of the year.",
+        images ='https://cdn.shopify.com/s/files/1/0640/0213/0141/products/Can8.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TiltedCan8.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TVA_ShapesTheme_NonAlcho_Raspberry_Condensation.jpg',
+        features = '100% Natural Ingredients,No Artificial Additives or Sweeteners,No Crash',
+        brand_id=brand3.id,
+        owner_id = user3.id,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    )
+    # product3.images = product3.images.split(',')
+    # product3.features = product3.features.split(',')
+    db.session.add(product5)
+
+    product6 = Product(
+        name= "Grape",
+        price=3.99,
+        description = "We channeled our nostalgic childhood memories with the classic fruit juice that we loved. We promise you, this one is a great any-time, any-where and any-age drink. It offers that refreshing, crisp and bold flavour of real grape juice with a fun twist of slight bubbly sensation.",
+        images ='https://cdn.shopify.com/s/files/1/0640/0213/0141/products/Can4.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TiltedCan4.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TVA_ShapesTheme_NonAlcho_Grape_Condensation.jpg',
+        features = '100% Natural Ingredients,No Artificial Additives or Sweeteners,No Crash',
+        brand_id=brand3.id,
+        owner_id = user3.id,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    )
+    # product3.images = product3.images.split(',')
+    # product3.features = product3.features.split(',')
+    db.session.add(product6)
+
+    product7 = Product(
+        name= "Cucumber",
+        price=3.99,
+        description = "It tastes like a tropical holiday. Only that you can have it anytime you want without hopping on a plane. It's fresh and summery, with a gentle hint of cucumber and a refreshing twist of lemon.",
+        images ='https://cdn.shopify.com/s/files/1/0640/0213/0141/products/Can5.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TiltedCan5.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TVA_ShapesTheme_NonAlcho_Cucumber_Condensation.jpg',
+        features = '100% Natural Ingredients,No Artificial Additives or Sweeteners,No Crash',
+        brand_id=brand3.id,
+        owner_id = user3.id,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    )
+    # product3.images = product3.images.split(',')
+    # product3.features = product3.features.split(',')
+    db.session.add(product7)
+
+    product8 = Product(
+        name= "Blood Orange",
+        price=3.99,
+        description = "Only nature's best without artificial enhancers. We bring you a drink inspired by Italy's classic Spritz Veneziano. Enjoy an explosion of sweet notes from freshly squeezed blood orange as it fizzles in your tongue with a slightly bitter and soft tang finish.",
+        images ='https://cdn.shopify.com/s/files/1/0640/0213/0141/products/Can1.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TiltedCan1.jpg,https://cdn.shopify.com/s/files/1/0640/0213/0141/products/TVA_ShapesTheme_NonAlcho_BloodOrange_Condensation.jpg',
+        features = '100% Natural Ingredients,No Artificial Additives or Sweeteners,No Crash',
+        brand_id=brand3.id,
+        owner_id = user3.id,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    )
+    # product3.images = product3.images.split(',')
+    # product3.features = product3.features.split(',')
+    db.session.add(product8)
+
+
     db.session.commit()
 
 

@@ -1,0 +1,35 @@
+.brand-header-container {
+  position: relative;
+  padding: 0 5vw;
+
+}
+
+.brand-header-menu {
+  position: absolute;
+  left: 0;
+  top: 100px;
+
+  letter-spacing: 1px;
+  font-family: 'syncopate-bold', sans-serif;
+  color: #626262;
+  text-transform: uppercase;
+
+  li {
+    margin: 10px 0;
+    list-style-type: none;
+  }
+
+}
+
+
+#brand-header-text {
+  font-size: 9.8vw;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 600;
+  margin: 0 0;
+  line-height: 1;
+  word-wrap: break-word;
+  padding: 0 5vw;
+}

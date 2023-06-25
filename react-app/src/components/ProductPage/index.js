@@ -11,6 +11,7 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 import { getAllOrdersThunk } from '../../store/brands'
 import check from '../../assets/check.png'
 import ShoppingCart from '../ShoppingCart'
+import BrandNavBar from '../BrandComponents/BrandNavBar/BrandNavBar'
 
 
 const ProductPage = () => {
@@ -144,14 +145,28 @@ const ProductPage = () => {
     return () => clearTimeout(timeout); // Clear the timeout when the component unmounts
   }, []); // Empty dependency array to run the effect only once
 
+
+  let isProductInBrand = false;
+
+  for( let i = 0 ; i < currentBrandProducts?.length ; i++ ){
+    let currentBrandProduct = currentBrandProducts[i]
+    if (currentBrandProduct.id === currentProduct.id){
+      isProductInBrand = true
+    } else{
+      console.log("THE PRODUCT IS FALSE")
+    }
+  }
+
+
   if (isLoading) {
     return <LoadingButton />
   }
 
   return (
+    <>
 
     <div className={`product-page-container ${theme}`}>
-
+    <BrandNavBar brandName={brandName} currentBrand={currentBrand} cartItems={cartItems} openCart={openCart} setOpenCart={setOpenCart}/>
       <ShoppingCart openCart={openCart} currentProductQuantity={currentProductQuantity} setCurrentProductQuantity={setCurrentProductQuantity} setOpenCart={setOpenCart} cartItems={cartItems} setCartItems={setCartItems} brandName={brandName} />
       <section className='red anim_gradient top-section'>
         {/* <div className="wave-top-test">
@@ -206,6 +221,7 @@ const ProductPage = () => {
 
 
         </div>
+
         {theme == 'modern' ? (
           <div class="custom-shape-divider-bottom-1687372545">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -223,7 +239,7 @@ const ProductPage = () => {
         }
 
       </section>
-{/* 
+      {/*
       <section className='mask-section product-page-feature black-background'>
 
 
@@ -284,11 +300,11 @@ const ProductPage = () => {
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
           </svg>
         </div> */}
-      <div class="custom-shape-divider-top-1687372598">
+      {/* <div class="custom-shape-divider-top-1687372598">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
         </svg>
-      </div>
+      </div> */}
 
       {/* <h1>Nice Curves</h1>
         <p>This is a test to see how we can do the product</p>
@@ -304,6 +320,7 @@ const ProductPage = () => {
 
 
     </div>
+    </>
   )
 }
 
