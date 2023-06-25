@@ -14,10 +14,10 @@ def seed_products():
 
 
     product1 = Product(
-        name = "GalaxyGlide",
+        name = "Galaxy Glide",
         price=99.99,
-        description = "Introducing the GalaxyGlide shoes by NovaStride. These revolutionary shoes combine cutting-edge technology with sleek design. With built-in LED lights that illuminate your every step and automatic laces that ensure a perfect fit, GalaxyGlide shoes offer a futuristic experience like no other. Step into the world of sci-fi fashion and let your feet shine with every stride.",
-        images= "https://bdc2020.o0bc.com/wp-content/uploads/2023/02/sp23-jd-bb-rev-ltcc-tatum1-zoo-product-superiority-detail-2-ta-dx5572-001-63f25202da532-scaled.jpg",
+        description = "Introducing the Galaxy Glide shoes by NovaStride. These revolutionary shoes combine cutting-edge technology with sleek design. With built-in LED lights that illuminate your every step and automatic laces that ensure a perfect fit, GalaxyGlide shoes offer a futuristic experience like no other. Step into the world of sci-fi fashion and let your feet shine with every stride.",
+        images= "https://i.imgur.com/s3ZLVwS.jpg,",
         features='Lightweight,Auto-Lace,LED Lights',
         brand_id=brand1.id,
         owner_id = user1.id,
