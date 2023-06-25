@@ -110,7 +110,7 @@ export const EditBrandDetails = () => {
     if (!description) {
       errors.description = "Slogan is required";
     }
-    if (description.length > 550) {
+    if (description.length > 25) {
       errors.description = `Slogan must be less than 25 characters. You currently have ${description.length}`
     }
 
