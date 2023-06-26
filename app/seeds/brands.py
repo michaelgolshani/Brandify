@@ -44,7 +44,7 @@ def seed_brands():
 
     brand4 = Brand(
         name="DivineGlow",
-        story="The journey of Divine Glow began with its founder, Ava Mitchell, a visionary artist with a deep passion for beauty and self-expression. Ava believed that makeup had the power to uplift, inspire, and bring out the inner radiance that dwells within every individual. Driven by this belief, she embarked on a quest to create a brand that would redefine the beauty landscape. With meticulous attention to detail and a commitment to quality, Divine Glow was meticulously crafted to deliver exceptional products that marry innovation with elegance. Each cosmetic creation is thoughtfully designed to enhance natural features while celebrating diversity, inviting individuals of all backgrounds to embark on a transformative beauty journey.",
+        story="The journey of Divine Glow began with founder Ava Mitchell, a visionary artist passionate about beauty and self-expression. Believing in the transformative power of makeup, Ava set out to create a brand that redefines beauty. With meticulous attention to detail and a commitment to quality, Divine Glow offers exceptional products that blend innovation with elegance. Each creation enhances natural features, celebrates diversity, and invites individuals on a transformative beauty journey. Illuminate Your Beauty with Divine Glow.",
         description="Illuminate Your Beauty",
         theme="poppy",
         admin_id=user1.id,
@@ -55,7 +55,7 @@ def seed_brands():
 
     brand5 = Brand(
         name="Pear",
-        story="In a market where technology and design converge, Pear stands out as a brand name that captures the essence of freshness, simplicity, and refined elegance. It has the potential to become a symbol of innovation and style, appealing to individuals who appreciate the beauty of simplicity and seek products that seamlessly integrate into their lives.Welcome to the world of Pear, where innovation meets elegance, and simplicity meets sophistication. Discover the delightful experience that Pear has to offer and let it become your trusted companion in a world of technological marvels and refined aesthetics.",
+        story="Pear embodies the essence of freshness, simplicity, and refined elegance in a market where technology and design intersect. It represents innovation and style, appealing to those who value seamless integration in their lives. Welcome to the world of Pear, where innovation meets elegance and simplicity meets sophistication. Experience the delightful journey that Pear offers as your trusted companion in a world of technological marvels and refined aesthetics.",
         description="Embrace the Brilliance",
         theme="modern",
         admin_id=user1.id,
