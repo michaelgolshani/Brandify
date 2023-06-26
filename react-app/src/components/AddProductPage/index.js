@@ -234,7 +234,7 @@ const AddProductPage = ({ update }) => {
                   type='text'
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className='add-product-page-input'
+                  className='add-product-page-title-input'
                 >
                 </input>
               </div>

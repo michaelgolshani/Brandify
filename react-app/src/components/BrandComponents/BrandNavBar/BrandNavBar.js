@@ -35,15 +35,15 @@ export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setO
           {brandName}
         </div>
 
-        <div className='brand-navbar-all-products'>
+        {/* <div className='brand-navbar-all-products'>
           All Products
-        </div>
+        </div> */}
 
 
         <div className='brand-navbar-right-side'>
 
           <BrandProfileButton />
-          
+
         </div>
 
 
