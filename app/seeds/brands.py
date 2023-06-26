@@ -44,7 +44,7 @@ def seed_brands():
 
     brand4 = Brand(
         name="DivineGlow",
-        story="The journey of Divine Glow began with founder Ava Mitchell, a visionary artist passionate about beauty and self-expression. Believing in the transformative power of makeup, Ava set out to create a brand that redefines beauty. With meticulous attention to detail and a commitment to quality, Divine Glow offers exceptional products that blend innovation with elegance. Each creation enhances natural features, celebrates diversity, and invites individuals on a transformative beauty journey. Illuminate Your Beauty with Divine Glow.",
+        story="The journey of Divine Glow began with founder Ava Mitchell, a visionary artist passionate about beauty and self-expression. Believing in the transformative power of makeup, Ava set out to create a brand that redefines beauty. With meticulous attention to detail and a commitment to quality, Divine Glow offers exceptional products that blend innovation with elegance.",
         description="Illuminate Your Beauty",
         theme="poppy",
         admin_id=user1.id,
@@ -55,7 +55,7 @@ def seed_brands():
 
     brand5 = Brand(
         name="Pear",
-        story="Pear embodies the essence of freshness, simplicity, and refined elegance in a market where technology and design intersect. It represents innovation and style, appealing to those who value seamless integration in their lives. Welcome to the world of Pear, where innovation meets elegance and simplicity meets sophistication. Experience the delightful journey that Pear offers as your trusted companion in a world of technological marvels and refined aesthetics.",
+        story="Welcome to the world of Pear, where innovation meets elegance and simplicity meets sophistication. Pear represents innovation and style, appealing to those who value seamless integration in their lives. Experience the delightful journey that Pear offers as your trusted companion in a world of technological marvels and refined aesthetics.",
         description="Embrace the Brilliance",
         theme="modern",
         admin_id=user1.id,

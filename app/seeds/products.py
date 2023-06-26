@@ -140,7 +140,7 @@ def seed_products():
     product9 = Product(
         name = "Blue Novas",
         price=79.99,
-        description = "Introducing Blue Novas: a futuristic sci-fi shoe revolutionizing footwear technology. Its sleek design and advanced features embody innovation. With a state-of-the-art propulsion system, each footstrike compresses micro-kinetic cells in the sole, generating a burst of energy that propels you forward. Experience unparalleled speed, efficiency, and reduced impact on joints. Blue Novas, where style meets innovation.",
+        description = "The Blue Novas is a futuristic sci-fi shoe revolutionizing footwear technology. Its sleek design and advanced features embody innovation. With a state-of-the-art propulsion system, each footstrike compresses micro-kinetic cells in the sole, generating a burst of energy that propels you forward. Experience unparalleled speed, efficiency, and reduced impact on joints.",
         images= "https://i.imgur.com/FztHHU6.jpg,https://i.imgur.com/w2Ii26v.jpg,https://i.imgur.com/3lhFY3n.jpg,https://i.imgur.com/Au1zgdy.jpg",
         features='Ice-Break,Terrain-Traction,Smart Insole',
         brand_id=brand1.id,
@@ -155,7 +155,7 @@ def seed_products():
     product10 = Product(
         name = "Infernos",
         price=89.99,
-        description = "Introducing Infernos: a remarkable red sci-fi shoe that ignites imagination and propels you into a world of futuristic fashion. This shoe merges style, innovation, and performance, making a bold statement with every step. Its captivating design exudes confidence and power. The vibrant red color demands attention, while sleek lines and dynamic contours suggest speed and agility. Infernos, where style meets the future.",
+        description = "Infernos is a remarkable sci-fi shoe that ignites imagination and propels you into a world of futuristic fashion. This shoe merges style, innovation, and performance, making a bold statement with every step. The vibrant red color demands attention, while sleek lines and dynamic contours suggest speed and agility. Infernos, where style meets the future.",
         images= "https://i.imgur.com/IRWOy4o.jpg,https://i.imgur.com/8lpNxc0.jpg,https://i.imgur.com/hlz12Z8.jpg,https://i.imgur.com/KHeIW4T.jpg",
         features='Flamethrower,Kinetic Energy,Terrain-Traction',
         brand_id=brand1.id,
@@ -170,7 +170,7 @@ def seed_products():
     product11 = Product(
         name = "SolarFlares",
         price=99.99,
-        description = "Introducing SolarFlares: an exceptional orange shoe inspired by the radiant energy of the sun. This solar-themed footwear combines captivating aesthetics with advanced functionality, letting you shine with every step. Its vibrant orange color captures the essence of solar energy in a captivating design. With a responsive cushioning system, each stride feels cushioned and supported, reducing fatigue and pushing your limits. SolarFlares, where style meets comfort and the sun's energy fuels your journey.",
+        description = "SolarFlares is an exceptional orange shoe inspired by the radiant energy of the sun. This solar-themed footwear combines captivating aesthetics with advanced functionality, letting you shine with every step. Each stride feels cushioned and supported, reducing fatigue and pushing your limits. SolarFlares, where style meets comfort and the sun's energy fuels your journey.",
         images= "https://i.imgur.com/4Gj2pmy.jpg,https://i.imgur.com/FWmnLl4.jpg,https://i.imgur.com/SwzPS8H.jpg,https://i.imgur.com/4SMDAMQ.jpg",
         features='Energy Return,Adaptive-Fit,Re-Charge',
         brand_id=brand1.id,
@@ -185,7 +185,7 @@ def seed_products():
     product12 = Product(
         name = "Majestic Set",
         price=29.99,
-        description = "Introducing Majestic Set: a captivating collection of purple makeup essentials, exuding elegance and regal allure. Elevate your beauty routine with this carefully curated bundle, indulging in a world of majestic hues fit for royalty. Each product complements one another, ensuring effortless coordination and endless possibilities for stunning makeup looks. Embrace the allure with the velvety smooth eyeshadow palette, boasting a mesmerizing array of purple shades. Majestic Set, where elegance meets enchantment.",
+        description = "The Majestic Set is a captivating collection of purple makeup essentials, exuding elegance and regal allure. Elevate your beauty routine with this curated bundle, indulging in a world of majestic hues fit for royalty. Embrace the allure with the velvety smooth eyeshadow palette, boasting a mesmerizing array of purple shades. Majestic Set, where elegance meets enchantment.",
         images= "https://i.imgur.com/YM9eH0V.jpg,https://i.imgur.com/bcYVTx1.jpg,https://i.imgur.com/vUGquXa.jpg,https://i.imgur.com/NEolUTb.jpg",
         features='Purple Hues,Versatile Palette,Radiant Glow',
         brand_id=brand4.id,
@@ -230,7 +230,7 @@ def seed_products():
     product15 = Product(
         name = "Verdant Kit",
         price=29.99,
-        description = "The Verdant Beauty Kit is a stunning collection of green-infused makeup essentials, bringing the freshness of nature to your routine. This carefully curated kit celebrates enchanting green shades, embracing rejuvenating and captivating energy. Dive into verdant forests with deep greens, capture spring's freshness with emerald hues, or add intrigue with shimmering moss tones. Verdant Beauty Kit, where nature meets captivating beauty.",
+        description = "The Verdant Beauty Kit is a stunning collection of green-infused makeup essentials, bringing the freshness of nature to your routine. This carefully curated kit celebrates enchanting green shades, embracing rejuvenating and captivating energy. Dive into verdant forests with deep greens, capture spring's freshness with emerald hues, or add intrigue with shimmering moss tones.",
         images= "https://i.imgur.com/eH6G3xR.jpg,https://i.imgur.com/zwcDo3Z.jpg,https://i.imgur.com/c6T382w.jpg,https://i.imgur.com/6vZ0167.jpg,https://i.imgur.com/8bo17ES.jpg",
         features='Green Shades,Green Blush,Versatile Eyeliner',
         brand_id=brand4.id,
@@ -245,7 +245,7 @@ def seed_products():
     product16 = Product(
         name = "iPear",
         price=999.99,
-        description = "The iPear is a revolutionary device blending cutting-edge technology with Pear's elegance and simplicity. With a sleek design, advanced features, and intuitive interface, it elevates your digital experience. Its vibrant display brings content to life with stunning clarity and rich colors. More than a device, it's a gateway to endless possibilities. Enhance productivity, unleash creativity, and explore entertainment with the iPear's wealth of apps and options. iPear, where technology meets limitless potential.",
+        description = "The iPear is a revolutionary device blending cutting-edge technology with Pear's elegance and simplicity. With a sleek design, advanced features, and intuitive interface, it has become a gateway to endless possibilities. Enhance productivity, unleash creativity, and explore entertainment with the iPear's wealth of apps and options. iPear, where technology meets limitless potential.",
         images= "https://i.imgur.com/LWZ4alZ.jpg,https://i.imgur.com/c38nLWf.jpg,https://i.imgur.com/BoeBWm6.jpg,https://i.imgur.com/7QmDGtf.jpg,https://i.imgur.com/9K3YSC4.jpg",
         features='120hz Pro-Motion,Titanium,5G',
         brand_id=brand5.id,
