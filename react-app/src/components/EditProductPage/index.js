@@ -133,6 +133,10 @@ const EditProductPage = ({ update }) => {
     if (name.length < 5) {
       errors.name = "Name must be at least 5 characters";
     }
+
+    if(name.length > 50){
+      errors.name ="Name must be less than 50 characters"
+    }
     if (!description) {
       errors.description = "Description is required";
     }
