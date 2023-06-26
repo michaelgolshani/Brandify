@@ -148,6 +148,8 @@ const EditProductPage = ({ update }) => {
       errors.price = "Price is required";
     } else if (isNaN(price)) {
       errors.price = "Price is invalid";
+    } else if(price < 0 || price > 100000){
+      errors.price="Price can't be a negative number or bigger than 100,000"
     }
 
     if (images.length < 2) {

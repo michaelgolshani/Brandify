@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 120vh;
   /* width: 300px; */
   /* border: 1px black solid; */
   margin: 0 auto;
@@ -93,7 +93,9 @@
 
 .storesbrand-login {
   font-weight: normal;
-  color: rgb(46, 46, 46);
+  font-size: 40px;
+  font-family: ShopifySans,Helvetica,Arial,sans-serif;
+  color: rgb(2, 2, 2);
 }
 
 

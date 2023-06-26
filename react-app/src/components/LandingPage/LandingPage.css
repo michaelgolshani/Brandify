@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background: linear-gradient(60deg, #ffffff 25%, rgb(119, 255, 212, 0.6) 75%, rgba(119, 207, 255, 0.6));
 }
 
 .landing-page-header {
@@ -10,8 +12,9 @@
   font-weight: 700;
   transition-delay: .5s;
   letter-spacing: -.025em;
-  font-size: 4.75rem;
-  line-height: 1;
+  font-size: 5.75rem;
+  line-height: 1.1;
+  /* text-align: center; */
 
 }
 
@@ -22,11 +25,16 @@
   align-items: center;
   justify-content: center;
   padding-top: 70px;
-  width: 70%;
+  width: 90%;
+  height: 80vh;
 }
 
 .landing-page-right-side {
   /* width:70% */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
 .landing-page-left-side {
@@ -34,6 +42,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .landing-page-middle-container-text {
@@ -41,18 +50,21 @@
   font-weight: 700;
   transition-delay: .5s;
   letter-spacing: -.025em;
-  font-size: 2.75rem;
+  font-size: 3.75rem;
   line-height: 1;
+  padding-bottom: 6vh;
 
 }
 
 .landing-page-middle-container {
-  padding-top: 100px;
-  width: 70%;
+  height: 100vh;
+  padding-top: 25vh;
+  width: 80%;
+  padding-bottom: 30vh;
 }
 
 
-.landing-page-signup{
+.landing-page-signup {
   /* margin-left: 30px; */
   cursor: pointer;
   color: white;
@@ -64,8 +76,84 @@
   padding: 15px 35px;
   border-radius: 25px;
   background-color: black;
+  margin-right: 10vw;
+  margin-top: 2vh;
 }
 
-.landing-page-signup:hover{
+.landing-page-signup:hover {
   background-color: rgb(69, 69, 69);
+}
+
+
+.right-side-image {
+  width: 200px;
+
+}
+
+
+
+
+
+.landing-page-your-store-text {
+
+  font-size: 5vw;
+  padding-bottom: 7vh;
+  font-weight: bold;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+
+
+.landing-page-your-store-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* height: 100vh; */
+}
+
+
+.landing-page-example{
+  width: 80%;
+  box-shadow: 4px 4px 20px 10px rgb(209, 220, 220);
+  /* height: 70%; */
+  margin-bottom: 10vh;
+}
+
+
+.landing-page-two-section{
+display: flex;
+flex-direction: row;
+padding-top: 0;
+padding-bottom: 20vh;
+/* justify-content: space-between; */
+}
+
+
+.landing-page-individual-sections{
+  width: 30vw;
+  padding: 2vw 8vw;
+}
+
+
+.landing-page-indivdual-section-top-border{
+  border-top: 4px solid rgb(109, 222, 253);
+  padding-bottom: 5vh;
+}
+
+.landing-page-indivdual-section-top-title{
+  font-weight: bold;
+  font-size: 2vw;
+  margin-bottom: 2.5vh;
+}
+
+.landing-page-indivdual-section-paragraph{
+  font-size: 25px;
+}
+
+
+
+.landing-page-description-cards{
+  display: flex;
+  justify-content: center;
 }

@@ -29,7 +29,7 @@ const ProductListPage = () => {
     };
     fetchData();
   }, [dispatch]);
-  
+
 
   console.log("BRAND NAME", brandName)
   const state = useSelector(state => state)
@@ -70,7 +70,7 @@ const ProductListPage = () => {
             <div></div>
             <div>Product</div>
             <div>Price</div>
-            <div>Status</div>
+            {/* <div>Status</div> */}
             <div>Inventory</div>
             <div>Vendor</div>
             <div>Edit</div>
@@ -87,7 +87,7 @@ const ProductListPage = () => {
               <img className='product-list-small-image' src={product.images[0]} />
               <div>{product.name}</div>
               <div>${Math.ceil(product.price)}</div>
-              <div className={product.active ? "product-list-rows-active" : ""}>Active</div>
+              {/* <div className={product.active ? "product-list-rows-active" : ""}>Active</div> */}
               <div>{product.inventory}</div>
               <div>{brandName}</div>
               <i className="fa-solid fa-pen-to-square store-icon"></i>

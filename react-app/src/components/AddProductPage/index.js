@@ -242,7 +242,7 @@ const AddProductPage = ({ update }) => {
               {errors.name && <p className="error">{errors.name}</p>}
 
 
-              <label>
+              <label className='add-product-page-description-text'>
                 Description
                 <textarea
                   value={description}
@@ -256,6 +256,7 @@ const AddProductPage = ({ update }) => {
 
 
             <div className='add-product-left-container-individual media'>
+            <div className='add-product-left-container-images'>
               <label>
                 Product Cover Photo
                 <input
@@ -307,6 +308,7 @@ const AddProductPage = ({ update }) => {
 
                 />
               </label>
+              </div>
             </div>
 
             <div className='add-product-left-container-individual media'>
@@ -324,6 +326,7 @@ const AddProductPage = ({ update }) => {
             </div>
 
             <div className="add-product-left-container-individual" >
+            <div className='add-product-page-feature-container'>
               {features.map((feature, index) => (
                 <div key={index}>
                   <label>
@@ -333,11 +336,13 @@ const AddProductPage = ({ update }) => {
                       type="text"
                       onChange={(e) => updateFeature(e.target.value, index)}
                       required
+                      className='add-product-page-feature'
                     />
                   </label>
                   {errors.features && <p className="error">{errors.features}</p>}
                 </div>
               ))}
+              </div>
             </div>
 
             <div className='add-product-left-container-individual media'>

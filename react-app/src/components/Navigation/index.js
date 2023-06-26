@@ -23,19 +23,34 @@ function Navigation({ isLoaded }) {
 				{brandName && sessionUser ? (
 					<NavLink exact to={`/store-dashboard/${brandName}`} className="nav-link">
 						<img src={logo} className="logo-image" />
+						<div className='nav-logo-text'>brandify</div>
 					</NavLink>
 				) : (
-					<NavLink exact to="/" className="nav-link">
-						<img src={logo} className="logo-image" />
-					</NavLink>
+					<>
+						<NavLink exact to="/" className="nav-link">
+							<img src={logo} className="logo-image" />
+							<div className='nav-logo-text'>brandify</div>
+						</NavLink>
+
+					</>
 				)}
 			</li>
+
+
+
 			{isLoaded && sessionUser ? (
 				<li className='nav-item nav-item-right'>
+					<NavLink exact to="/explore/brands" className="nav-link">
+
+						<div className='nav-logo-explore'>Explore Brands</div>
+					</NavLink>
 					<ProfileButton user={sessionUser} />
 				</li>
 			) : (
 				<div className='nav-login-signup-container'>
+					<NavLink exact to="/explore/brands" className="nav-link">
+						<div className='nav-logo-explore'>Explore Brands</div>
+					</NavLink>
 					<NavLink to="/login" className='nav-login'>
 						<div >Log in</div>
 					</NavLink>

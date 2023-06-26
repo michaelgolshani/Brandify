@@ -19,7 +19,9 @@ import ShoppingCart from "./components/ShoppingCart";
 import BrandHomePage from "./components/BrandHomePage";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import Footer from "./components/Footer";
 import ErrorPage from "./components/404Page";
+import { AllBrands } from "./components/AllBrandsPage/AllBrands";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,13 +37,13 @@ function App() {
         <>
           <Switch>
             <Route exact path='/store/shoppingcart'>
-              < ShoppingCart />
+              < ShoppingCart isLoaded={isLoaded} />
             </Route>
             <Route exact path='/store/:brandName/:productId'>
-              <ProductPage />
+              <ProductPage isLoaded={isLoaded} />
             </Route>
             <Route exact path='/store/:brandName' >
-              <BrandHomePage />
+              <BrandHomePage isLoaded={isLoaded} />
             </Route>
             <Route exact path='/store-dashboard/:brandName/:productId/edit'>
               <Navigation isLoaded={isLoaded} />
@@ -74,6 +76,11 @@ function App() {
               <Navigation isLoaded={isLoaded} />
               <CreateBrandPage />
             </Route>
+
+            <Route path='/explore/brands'>
+              <Navigation isLoaded={isLoaded} />
+              <AllBrands />
+            </Route>
             <Route path="/login" >
               <Navigation isLoaded={isLoaded} />
               <LoginFormPage />
@@ -85,6 +92,7 @@ function App() {
             <Route path='/'>
               <Navigation isLoaded={isLoaded} />
               <LandingPage />
+              <Footer />
             </Route>
             {/* <Route path='/'>
             <LandingPage />
@@ -99,7 +107,7 @@ function App() {
               <Navigation isLoaded={isLoaded} />
               <ErrorPage />
             </Route>
-            
+
           </Switch>
 
 

@@ -1,0 +1,79 @@
+.modern .product-scroll-container {
+  box-sizing: border-box;
+  background-color: rgb(0, 0, 0);
+
+  color: white;
+  display: flex;
+  font-weight: bold;
+  flex-direction: row;
+  font-family:'syncopate-bold' ;
+  /* width: 100vw; */
+  margin: 0 0;
+  padding: 0 0;
+  border-top:3px solid white;
+  border-bottom: 3px solid white;
+
+}
+
+.poppy .product-scroll-container {
+  box-sizing: border-box;
+  background:  rgb(255, 255, 84);
+  color: black;
+  display: flex;
+  flex-direction: row;
+  /* width: 100vw; */
+  margin: 0 0;
+  padding: 0 0;
+  border-top: 5px solid #ea426f;
+  border-bottom: 5px solid #ea426f;
+
+}
+
+.logos {
+  overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+}
+
+.logos-slide div {
+  font-size: 25px;
+  margin: 0 40px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+
+}
+
+
+
+
+.logos-slide {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  /* flex-direction: row;
+  align-items: center; */
+  height: 50px;
+  animation: 20s slide linear infinite;
+}
+
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+.product-arrow{
+  transform: rotate(45deg);
+font-size: 30px;
+
+}

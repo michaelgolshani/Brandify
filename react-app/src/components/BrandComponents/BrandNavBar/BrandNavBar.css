@@ -43,6 +43,7 @@
 .brand-navbar-right-side{
   display: flex;
   align-items: center;
+  padding-left: 10vw;
 }
 
 .brand-navbar-cart-text{

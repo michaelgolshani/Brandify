@@ -27,6 +27,7 @@ const BrandDashboardPage = () => {
     <div className='dashboard-container'>
       <SideBarDashboard />
       <div className='main-container'>
+        <div className='main-dashboard-brand-name'>{brandName}'s Dashboard</div>
         {/* <div className="grid-container"> */}
         <div className="grid-row">
           <div className="grid-cell" onClick={() => history.push(`/store-dashboard/${brandName}/edit`)}>
@@ -36,22 +37,12 @@ const BrandDashboardPage = () => {
             {/* <img src={brandDetails}></img> */}
             <div className='inside-text'>My Products</div>
           </div>
-          <div className="grid-cell">
-            <div className='inside-text'>Orders</div>
+          <div className="grid-cell" onClick={() => history.push(`/store/${brandName}`)}>
+            <div className='inside-text'>My Store</div>
           </div>
         </div>
 
-        <div className="grid-row">
-          <div className="grid-cell" onClick={() => history.push(`/store-dashboard/${brandName}/edit`)}>
-            <div className='inside-text'>Edit Brand Details</div>
-          </div>
-          <div className="grid-cell" onClick={() => history.push(`/${brandName}/products`)}>
-            <div className='inside-text'>My Products</div>
-          </div>
-          <div className="grid-cell">
-            <div className='inside-text'>Orders</div>
-          </div>
-        </div>
+
         {/* </div> */}
       </div>
     </div>

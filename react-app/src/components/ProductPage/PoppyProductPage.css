@@ -12,11 +12,12 @@
 
 .poppy .product-description {
   width: 45vw;
-  padding-top: 15px;
+  padding-top: 4.7vh;
   line-height: 1.5;
   font-size: 1.5vw;
   color: rgb(33, 33, 34);
   font-weight: bold;
+  font-style: "Neue Haas Unica", sans-serif;
   z-index: 2;
 }
 
@@ -111,7 +112,7 @@
   display: flex;
   text-align: center;
   align-items: center;
-  margin: 0px 0px;
+  margin: 1vw 0px;
 
 
 }
@@ -183,7 +184,7 @@
 
   /* background-color: #D3335D; */
   color: black;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
   font-weight: 600;
   z-index: 1;
   cursor: pointer;
@@ -218,7 +219,8 @@
   font-family: 'Prompt', sans-serif;
   color: white;
   /* background: transparent; */
-  background: linear-gradient(180deg, rgba(221, 255, 119, 1) 10%, #ea426f);
+  /* background: linear-gradient(180deg, rgba(221, 255, 119, 1) 10%, #ea426f); */
+  background: linear-gradient(100deg,#ea426f 5%, rgba(221, 255, 119, 1)  );
   position: relative;
   padding: 0;
   /* height: 100vh; */
@@ -306,12 +308,14 @@
 } */
 
 .poppy .section-3 {
-  background: rgb(255, 255, 84);
+  /* background: rgb(255, 255, 84); */
   /* border-bottom: 2px solid white; */
+ background: linear-gradient(360deg,#ea426f 5%, rgb(255, 255, 84)  );;
   height: 120vh;
   z-index: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .poppy .wave-3 {
@@ -350,8 +354,8 @@
 }
 
 .poppy .anim_gradient {
-  background: linear-gradient(180deg, rgba(221, 255, 119, 1) 10%, #ea426f);
-  ;
+  /* background: linear-gradient(180deg, rgba(221, 255, 119, 1) 10%, #ea426f); */
+  /* background: linear-gradient(100deg,#ea426f 5%, rgba(221, 255, 119, 1)  ); */
   backgroundSize: "400% 400%";
   animation: "gradient 25s ease infinite";
 
@@ -508,4 +512,42 @@ transform: translateX(0);
   to {
 transform: translateX(-100%);
   }
+}
+
+
+
+
+
+.poppy .section-features {
+  background-color: rgb(255, 255, 84);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+.poppy .product-page-feature-cards {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.features-title {
+
+}
+
+
+
+
+
+.poppy .product-scroll-top {
+  padding-bottom: 15vh;
+  margin-top: 100vh;
+}
+
+.poppy .product-scroll-bottom {
+  padding-top: 15vh;
+  padding-bottom: 100vh;
 }

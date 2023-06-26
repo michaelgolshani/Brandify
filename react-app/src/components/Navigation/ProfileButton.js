@@ -49,18 +49,18 @@ function ProfileButton({ user }) {
   return (
     <>
       <div onClick={openMenu}>
-        <i className="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars nav-bar-icon-dropdown"></i>
       </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div className="profile-dropdown-logo profile-contents">{user.username}</div>
+            <div className="profile-dropdown-logo profile-contents">Welcome, {user.username}</div>
 
-            <div className="profile-dropdown-logo profile-contents">{user.email}</div>
+            {/* <div className="profile-dropdown-logo profile-contents">{user.email}</div> */}
 
-            <div className="profile-dropdown-logo profile-contents">
-              <i class="fa-regular fa-user profile-dropdown-icon"></i>
-              <div>Manage Profile</div>
+            <div className="profile-dropdown-logo profile-contents" onClick={()=> history.push('/explore/brands')}>
+            <i class="fa-solid fa-magnifying-glass profile-dropdown-icon"></i>
+              <div>Explore Brands</div>
             </div>
 
             <div className="profile-dropdown-logo profile-contents" onClick={handleMyBrands}>

@@ -3,13 +3,16 @@ import './BrandNavBar.css'
 import ProfileButton from '../../Navigation/ProfileButton'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useSelector } from 'react-redux'
+import { BrandProfileButton } from './BrandProfileButton'
 
 
 
-export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setOpenCart, theme }) => {
+export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setOpenCart, theme, sessionUser, isLoaded }) => {
 
   const history = useHistory()
   console.log("CART ITEMS", cartItems)
+
+  console.log("WE ARE LOOKING AT USER  IN NAV BAR", sessionUser)
 
   // let quantity=0
   // if (cartItems?.length > 1){
@@ -20,6 +23,8 @@ export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setO
   // useEffect(() => {
 
   // },[cartItems])
+
+
 
   return (
 
@@ -36,9 +41,9 @@ export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setO
 
 
         <div className='brand-navbar-right-side'>
-          <div className='brand-navbar-cart-text' onClick={() => setOpenCart(!openCart)}>Cart </div>
-          < ProfileButton />
 
+          <BrandProfileButton />
+          
         </div>
 
 

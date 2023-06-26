@@ -18,11 +18,12 @@ import LoadingButton from '../LoadingButton'
 
 
 
-export const BrandHomePage = () => {
+export const BrandHomePage = ({isLoaded}) => {
 
   const dispatch = useDispatch()
   const history = useHistory()
   const [isLoading, setIsLoading] = useState(true);
+  const sessionUser = useSelector(state => state.session.user);
 
   const { brandName } = useParams()
   console.log("BRAND NAME FOR HOME PAGE", brandName)
@@ -50,6 +51,8 @@ export const BrandHomePage = () => {
     dispatch(getSingleBrandThunk(brandName))
   }, [dispatch, brandName])
 
+  
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
@@ -74,7 +77,7 @@ export const BrandHomePage = () => {
       {currentBrand ? (
         <div className={`${theme}`}>
         <div className={`brand-page-main-container ${theme}`} id='brand-page-main-container'>
-          <BrandNavBar brandName={brandName} theme={theme} currentBrand={currentBrand} />
+          <BrandNavBar brandName={brandName} theme={theme} currentBrand={currentBrand} sessionUser={sessionUser} isLoaded={isLoaded}/>
           <BrandHeader brandName={brandName} theme={theme} currentBrand={currentBrand} />
           <BrandInfiniteScroll theme={theme} />
 

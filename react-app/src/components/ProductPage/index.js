@@ -12,6 +12,9 @@ import { getAllOrdersThunk } from '../../store/brands'
 import check from '../../assets/check.png'
 import ShoppingCart from '../ShoppingCart'
 import BrandNavBar from '../BrandComponents/BrandNavBar/BrandNavBar'
+import { DescriptionCard } from '../LandingPage/DescriptionCard'
+import { BrandInfiniteScroll } from '../BrandComponents/BrandInfiniteScroll/BrandInfiniteScroll'
+import { ProductInfiniteScroll } from './ProductInfiniteScroll'
 
 
 const ProductPage = () => {
@@ -154,11 +157,11 @@ const ProductPage = () => {
 
   let isProductInBrand = false;
 
-  for( let i = 0 ; i < currentBrandProducts?.length ; i++ ){
+  for (let i = 0; i < currentBrandProducts?.length; i++) {
     let currentBrandProduct = currentBrandProducts[i]
-    if (currentBrandProduct.id === currentProduct.id){
+    if (currentBrandProduct.id === currentProduct.id) {
       isProductInBrand = true
-    } else{
+    } else {
       console.log("THE PRODUCT IS FALSE")
     }
   }
@@ -171,81 +174,77 @@ const ProductPage = () => {
   return (
     <>
 
-    <div className={`product-page-container ${theme}`}>
-    <BrandNavBar brandName={brandName} currentBrand={currentBrand} cartItems={cartItems} openCart={openCart} setOpenCart={setOpenCart}/>
-      <ShoppingCart openCart={openCart} currentProductQuantity={currentProductQuantity} setCurrentProductQuantity={setCurrentProductQuantity} setOpenCart={setOpenCart} cartItems={cartItems} setCartItems={setCartItems} brandName={brandName} />
-      <section className='red anim_gradient top-section'>
-        {/* <div className="wave-top-test">
+      <div className={`product-page-container ${theme}`}>
+        <BrandNavBar brandName={brandName} currentBrand={currentBrand} cartItems={cartItems} openCart={openCart} setOpenCart={setOpenCart} />
+        <ShoppingCart openCart={openCart} currentProductQuantity={currentProductQuantity} setCurrentProductQuantity={setCurrentProductQuantity} setOpenCart={setOpenCart} cartItems={cartItems} setCartItems={setCartItems} brandName={brandName} theme={theme} />
+        <section className='red anim_gradient top-section'>
+          {/* <div className="wave-top-test">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
 
           </svg>
         </div> */}
-        <div className='top-section-left index'>
-          <div>
-            <img src={selectedImage} className='energy-drink index' />
-          </div>
-          <div className="small-images-product">
-            {currentProduct.images?.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                className={`energy-drink-small-images index ${image === selectedImage ? 'selected' : ''
-                  }`}
-                onClick={() => handleImageClick(image)}
-              />
-            ))}
-          </div>
-        </div>
-        <div className='top-section-right'>
-          <h1 className='index product-title shadowed-text'>{currentProduct?.name?.toUpperCase()}</h1>
-          <div className='top-title-money'>
-            <div className='add-minus-sign-price'>${currentProduct.price}</div>
-          </div>
-          <div className='add-minus-sign-container'>
-            <div className='add-minus-sign' onClick={() => {
-              if (currentProductQuantity > 1) {
-                setCurrentProductQuantity(currentProductQuantity - 1);
-              }
-            }}>
-              <i className="fa-solid fa-minus" ></i>
-            </div >
-            <div className='add-minus-sign-number' >
-              {currentProductQuantity}
+          <div className='top-section-left index'>
+            <div>
+              <img src={selectedImage} className='energy-drink index' />
             </div>
-            <div className='add-minus-sign' onClick={() => setCurrentProductQuantity(currentProductQuantity + 1)}>
-              <i className="fa-regular fa-plus"></i>
+            <div className="small-images-product">
+              {currentProduct.images?.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  className={`energy-drink-small-images index ${image === selectedImage ? 'selected' : ''
+                    }`}
+                  onClick={() => handleImageClick(image)}
+                />
+              ))}
             </div>
-            <div onClick={handleTheme} className='manage-theme'>Change Theme</div>
+          </div>
+          <div className='top-section-right'>
+            <h1 className='index product-title shadowed-text'>{currentProduct?.name?.toUpperCase()}</h1>
+            <div className='top-title-money'>
+              <div className='add-minus-sign-price'>${currentProduct.price}</div>
+            </div>
+            <div className='add-minus-sign-container'>
+              <div className='add-minus-sign' onClick={() => {
+                if (currentProductQuantity > 1) {
+                  setCurrentProductQuantity(currentProductQuantity - 1);
+                }
+              }}>
+                <i className="fa-solid fa-minus" ></i>
+              </div >
+              <div className='add-minus-sign-number' >
+                {currentProductQuantity}
+              </div>
+              <div className='add-minus-sign' onClick={() => setCurrentProductQuantity(currentProductQuantity + 1)}>
+                <i className="fa-regular fa-plus"></i>
+              </div>
+              {/* <div onClick={handleTheme} className='manage-theme'>Change Theme</div> */}
+            </div>
+
+            <div className='buy-now-button' onClick={() => handleAddToCart(currentProduct, currentProductQuantity)}>
+              Add to Cart
+            </div>
+
+            <p className='index product-description'>{currentProduct.description}</p>
+
+
           </div>
 
-          <div className='buy-now-button' onClick={() => handleAddToCart(currentProduct, currentProductQuantity)}>
-            Add to Cart
-          </div>
-
-          <p className='index product-description'>{currentProduct.description}</p>
+          {theme == 'poppy' && (
 
 
-        </div>
+            <div className="wave">
+              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+              </svg>
+            </div>
+          )
 
-        {theme == 'modern' ? (
-          <div class="custom-shape-divider-bottom-1687372545">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
-            </svg>
-          </div>
-        ) : (
-          <div className="wave">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 70" preserveAspectRatio="none">
-              <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-            </svg>
-          </div>
-        )
+          }
 
-        }
-
-      </section>
-      {/*
+        </section>
+        {/*
       <section className='mask-section product-page-feature black-background'>
 
 
@@ -257,62 +256,79 @@ const ProductPage = () => {
 
 
 
-      {/* <section>
+        {/* <section>
         <div class="wave-top">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
           </svg>
         </div>
       </section> */}
-      <section className='section-3'>
-
-        <h1 className='index you-may-also-like shadowed-text-white'>YOU MAY ALSO LIKE</h1>
-        <div className='you-may-like-image-container carousel'>
-          {currentBrandProducts.map((product, index) => (
-            <div className='current-brand-products-container' onClick={() => redirectProduct(product.id)}>
-              <img
-                key={index}
-                src={product.images[0]}
-                className="you-may-also-images"
-
-              // onClick={() => handleImageClick(image)}
-              />
-              <div className='you-may-also-name'>{product.name}</div>
-              <div className='you-may-also-name'>${product.price}</div>
-            </div>
-          ))}
-          {currentBrandProducts.map((product, index) => (
-            <div className='current-brand-products-container' onClick={() => redirectProduct(product.id)}>
-              <img
-                key={index}
-                src={product.images[0]}
-                className="you-may-also-images"
-
-              // onClick={() => handleImageClick(image)}
-              />
-              <div className='you-may-also-name'>{product.name}</div>
-              <div className='you-may-also-name'>${product.price}</div>
-            </div>
-          ))}
-        </div>
-        {/* <p>This is a test to see how we can do the product</p> */}
+        <section className='section-features'>
+          <div className='product-scroll-top'>
+            <ProductInfiniteScroll word='features' theme={theme} />
+          </div>
+          {/* <div className='features-title'>Our Features</div> */}
+          <div className='product-page-feature-cards'>
+            <DescriptionCard cardTitle={currentProduct.features[0]} />
+            <DescriptionCard cardTitle={currentProduct.features[1]} />
+            <DescriptionCard cardTitle={currentProduct.features[2]} />
+          </div>
+          <div className='product-scroll-bottom'>
+            <ProductInfiniteScroll word='try now' theme={theme} />
+          </div>
+        </section>
 
 
 
-      </section>
-      {/* <section> */}
-      {/* <div class="wave-3">
+        <section className='section-3'>
+
+          <h1 className='index you-may-also-like shadowed-text-white'>YOU MAY ALSO LIKE</h1>
+          <div className='you-may-like-image-container carousel'>
+            {currentBrandProducts.map((product, index) => (
+              <div className='current-brand-products-container' onClick={() => redirectProduct(product.id)}>
+                <img
+                  key={index}
+                  src={product.images[0]}
+                  className="you-may-also-images"
+
+                // onClick={() => handleImageClick(image)}
+                />
+                <div className='you-may-also-name'>{product.name}</div>
+                <div className='you-may-also-name'>${product.price}</div>
+              </div>
+            ))}
+            {currentBrandProducts.map((product, index) => (
+              <div className='current-brand-products-container' onClick={() => redirectProduct(product.id)}>
+                <img
+                  key={index}
+                  src={product.images[0]}
+                  className="you-may-also-images"
+
+                // onClick={() => handleImageClick(image)}
+                />
+                <div className='you-may-also-name'>{product.name}</div>
+                <div className='you-may-also-name'>${product.price}</div>
+              </div>
+            ))}
+          </div>
+          {/* <p>This is a test to see how we can do the product</p> */}
+
+
+
+        </section>
+        {/* <section> */}
+        {/* <div class="wave-3">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
           </svg>
         </div> */}
-      {/* <div class="custom-shape-divider-top-1687372598">
+        {/* <div class="custom-shape-divider-top-1687372598">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
         </svg>
       </div> */}
 
-      {/* <h1>Nice Curves</h1>
+        {/* <h1>Nice Curves</h1>
         <p>This is a test to see how we can do the product</p>
       </section>
       <section class="wave-4">
@@ -325,7 +341,7 @@ const ProductPage = () => {
       </section> */}
 
 
-    </div>
+      </div>
     </>
   )
 }

@@ -1,10 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react'
-import './ShoppingCart.css'
+// import './ShoppingCart.css'
 import { useState } from 'react'
 import { useRef } from 'react'
+import './MainShoppingCart.css'
+import './ModernShoppingCart.css'
+import './PoppyShoppingCart.css'
 
-const ShoppingCart = ({ openCart, currentProductQuantity, setCurrentProductQuantity, setOpenCart, cartItems, setCartItems, brandName }) => {
+const ShoppingCart = ({ openCart, currentProductQuantity, setCurrentProductQuantity, setOpenCart, cartItems, setCartItems, brandName,theme }) => {
   // const [order, setOrder] = useState(1)
   const [checkoutCompleted, setCheckoutCompleted] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
@@ -101,7 +104,7 @@ const ShoppingCart = ({ openCart, currentProductQuantity, setCurrentProductQuant
   }
 
   return (
-    <div className='whole-page-cart'>
+    <div className={`whole-page-cart ${theme}`}>
 
 
       {checkoutCompleted ? (

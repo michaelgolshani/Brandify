@@ -77,7 +77,7 @@ const BrandLoginPage = () => {
   return (
     <>
       <div className="login-full-container">
-        <div className="login-container">
+        <div className="brand-login-container">
           <div className="top-header-store">
             <h2 className="storesbrand-login">Brands</h2>
 

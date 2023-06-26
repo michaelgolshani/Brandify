@@ -30,7 +30,7 @@ body {
 
 .modern .brand-page-main-container:not(.brand-scroll-container){
   /* padding: 0 5vw; */
-  background-color: rgb(232, 232, 232);
+  background-color: rgb(249, 249, 249);
 }
 
 .poppy .brand-page-main-container:not(.brand-scroll-container){
@@ -58,4 +58,13 @@ body {
 @font-face {
   font-family: 'Bai Jamjuree';
   src: url('./assets/BaiJamjuree-Regular.ttf')format('truetype');
+}
+
+
+/* react-app/src/assets/DrukCond-Super-Cy-Gr-Web.ttf */
+
+
+@font-face {
+  font-family: 'Druckond';
+  src: url('./assets/DrukCond-Super-Cy-Gr-Web.ttf')format('truetype');
 }
