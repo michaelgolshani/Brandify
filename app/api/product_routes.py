@@ -3,6 +3,10 @@ from ..forms import BrandForm, ProductForm
 from flask_login import login_required, current_user, login_user, logout_user
 from app.models import db, User, Brand, Product, Review, Order, OrderItem
 from .auth_routes import validation_errors_to_error_messages
+from app.api.aws_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
+
+
+
 
 product_routes = Blueprint('products', __name__)
 
@@ -40,6 +44,10 @@ def current_user_products():
         all_products[product.id] = product.to_dict()
     return all_products
 
+
+
+
+
 @product_routes.route('/<brand_name>/new', methods=["POST"])
 @login_required
 def create_product(brand_name):
@@ -67,6 +75,11 @@ def create_product(brand_name):
         return new_product.to_dict()
     elif form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
+
+    
 
 @product_routes.route('/edit/<brand_name>/<int:product_id>', methods=["PUT"])
 @login_required
