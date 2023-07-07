@@ -64,6 +64,7 @@ const EditProductPage = ({ update }) => {
   const [optionalImage1, setOptionalImage1] = useState('');
   const [optionalImage2, setOptionalImage2] = useState('');
   const [features, setFeatures] = useState(singleProduct.features);
+  const [isLoadingFeatures, setIsLoadingFeatures] = useState(true);
   const [inventory, setInventory] = useState(singleProduct.inventory)
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(true);
@@ -138,6 +139,13 @@ const EditProductPage = ({ update }) => {
     dispatch(getSingleProductThunk(productId))
     dispatch(getAllProductsThunk()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+  if (singleProduct && singleProduct.features) {
+    setFeatures(singleProduct.features);
+    setIsLoadingFeatures(false);
+  }
+}, [singleProduct]);
 
   useEffect(() => {
     if (singleProduct.name) {
@@ -351,9 +359,9 @@ const EditProductPage = ({ update }) => {
     return () => clearTimeout(timeout);
   }, []);
 
-  if (isLoading) {
-    return <LoadingButton />
-  }
+  if (isLoading || isLoadingFeatures) {
+  return <LoadingButton />;
+}
 
   return (
     <div className='product-list-dashboard-container'>
