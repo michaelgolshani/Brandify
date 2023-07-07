@@ -374,7 +374,7 @@ const AddProductPage = ({ update }) => {
                         id="image1"
                         accept="image/*"
                         onChange={(e) => setImage1(e.target.files[0])}
-                        required
+                        // required
                         className="add-product-page-image"
                         style={{ display: "none" }}
                       />
@@ -398,7 +398,7 @@ const AddProductPage = ({ update }) => {
                           id="image2"
                           accept="image/*"
                           onChange={(e) => setImage2(e.target.files[0])}
-                          required
+                          // required
                           className="add-product-page-image"
                           style={{ display: "none" }}
                         />
@@ -419,7 +419,7 @@ const AddProductPage = ({ update }) => {
                           id="image3"
                           accept="image/*"
                           onChange={(e) => setImage3(e.target.files[0])}
-                          required
+                          // required
                           className="add-product-page-image"
                           style={{ display: "none" }}
                         />
@@ -472,19 +472,16 @@ const AddProductPage = ({ update }) => {
                           </label>
                         )}
 
-                        {errors.image1 && <p className="error">{errors.image1}</p>}
+                        {/* {errors.image1 && <p className="error">{errors.image1}</p>} */}
 
                       </div>
 
                     )}
 
-
-
-
-
                   </div>
-                  {errors.image1 && <p className="error">{errors.image1}</p>}
+
                 </div>
+                {errors.image1 && <p className="error">{errors.image1}</p>}
 
 
 
@@ -553,7 +550,7 @@ const AddProductPage = ({ update }) => {
 
           <div className='add-product-right-container' style={{ flex: 1 }}>
             <div className='add-product-right-container-individual status'>Status</div>
-            <div className='add-product-right-container-individual title-description'>Publishing</div>
+            <div className='add-product-right-container-individual title-description publishing'>Publishing</div>
           </div>
 
 

@@ -251,9 +251,9 @@ const EditProductPage = ({ update }) => {
       }
     }
 
-    if (!image1) {
-      errors.image1 = "Please provide an image";
-    }
+    // if (!image1) {
+    //   errors.image1 = "Please provide an image";
+    // }
 
     console.log("IMAGE 1 CHECK", image1)
 
@@ -661,7 +661,7 @@ const EditProductPage = ({ update }) => {
 
           <div className='add-product-right-container' style={{ flex: 1 }}>
             <div className='add-product-right-container-individual status'>Status</div>
-            <div className='add-product-right-container-individual title-description'>Publishing</div>
+            <div className='add-product-right-container-individual  title-description publishing'>Publishing</div>
           </div>
         </div>
       </form>

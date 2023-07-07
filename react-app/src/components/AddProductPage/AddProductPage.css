@@ -31,7 +31,8 @@
 .title-description {
   display: flex;
   flex-direction: column;
-  height: 250px;
+  padding-bottom: 20px;
+  /* height: 250px; */
 
 }
 
@@ -287,4 +288,8 @@
 .title-description{
   padding-top: 20px;
   padding-left: 10px;
+}
+
+.publishing{
+  height: 250px;
 }
