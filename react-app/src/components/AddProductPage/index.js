@@ -18,6 +18,11 @@ const AddProductPage = ({ update }) => {
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
   const [images, setImages] = useState(['', '', '']);
+  const [image1, setImage1] = useState('')
+  const [image2, setImage2] = useState('')
+  const [image3, setImage3] = useState('')
+  const [image4, setImage4] = useState('')
+  const [image5, setImage5] = useState('')
   const [optionalImage1, setOptionalImage1] = useState('');
   const [optionalImage2, setOptionalImage2] = useState('');
   const [features, setFeatures] = useState(['', '', '']);
@@ -33,6 +38,7 @@ const AddProductPage = ({ update }) => {
 
   console.log("UPDATE", update)
   console.log("PRODUCT ID", productId)
+  console.log("IMAGE1", image1)
 
   const state = useSelector(state => state)
   console.log(state)
@@ -116,14 +122,14 @@ const AddProductPage = ({ update }) => {
       errors.name = "Name must be at least 5 characters";
     }
 
-    if(name.length > 50){
-      errors.name ="Name must be less than 50 characters"
+    if (name.length > 50) {
+      errors.name = "Name must be less than 50 characters"
     }
-    
+
     if (!description) {
       errors.description = "Description is required";
     }
-    if(description.length > 400) {
+    if (description.length > 400) {
       errors.description = `Description must be less than 400 characters. You currently have ${description.length}.`
     }
 
@@ -140,20 +146,27 @@ const AddProductPage = ({ update }) => {
       errors.price = "Price is invalid";
     }
 
-    if (images.length < 2) {
-      errors.images = "At least 3 images are required";
+    // if (images.length < 2) {
+    //   errors.images = "At least 3 images are required";
+    // }
+
+    // for (let i = 0; i < images.length; i++) {
+    //   let image = images[i]
+    //   if (image) {
+    //     const fileExtension = image.split('.').pop().toLowerCase();
+    //     const checkLast = ['jpg', 'png', 'jpeg'];
+    //     if (!checkLast.includes(fileExtension)) {
+    //       errors.images = "Image URL needs to end in .png, .jpg or .jpeg";
+    //     }
+    //   }
+    // }
+
+
+    if (!image1 || !image2 || !image3) {
+      errors.image1 = "Please provide at least 3 images";
     }
 
-    for (let i = 0; i < images.length; i++) {
-      let image = images[i]
-      if (image) {
-        const fileExtension = image.split('.').pop().toLowerCase();
-        const checkLast = ['jpg', 'png', 'jpeg'];
-        if (!checkLast.includes(fileExtension)) {
-          errors.images = "Image URL needs to end in .png, .jpg or .jpeg";
-        }
-      }
-    }
+
 
     console.log("CHECKING IMAGES ARR", images)
     // if (image) {
@@ -183,8 +196,30 @@ const AddProductPage = ({ update }) => {
 
     const errors = validate()
     const errorContent = Object.values(errors)
+    console.log("ERRORS", errors)
     if (errorContent.length) return setErrors(errors)
 
+
+
+
+    const formFileData = new FormData()
+    formFileData.append("name", name)
+    formFileData.append("description", description)
+    formFileData.append("images", images)
+    formFileData.append('image1', image1)
+    formFileData.append('image2', image2)
+    formFileData.append('image3', image3)
+    formFileData.append('price', parseFloat(price))
+    formFileData.append('features', features)
+    formFileData.append('inventory', inventory)
+    if (image4) {
+      formFileData.append('image4', image4)
+    }
+    if (image5) {
+      formFileData.append('image5', image5)
+    }
+
+    console.log("FORM FILE DATA", formFileData)
 
     const formData = {
       name: name,
@@ -193,9 +228,10 @@ const AddProductPage = ({ update }) => {
       price: parseFloat(price),
       features: combinedFeatures,
       inventory: inventory
-
     }
-    dispatch(createProductThunk(formData, brandName))
+
+    // dispatch(createProductThunk(formData, brandName))
+    dispatch(createProductThunk(formFileData, brandName))
     history.push(`/store-dashboard/${brandName}`)
     console.log("FORM DATA", formData)
   }
@@ -203,7 +239,7 @@ const AddProductPage = ({ update }) => {
   console.log("PRODUCTS OF BRAND", products)
 
 
-// checks to make sure that page is given some time to load or clear any previous data.
+  // checks to make sure that page is given some time to load or clear any previous data.
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
@@ -220,7 +256,11 @@ const AddProductPage = ({ update }) => {
   return (
     <div className='product-list-dashboard-container'>
       <SideBarDashboard />
-      <form className='product-list-main-container' onSubmit={onSubmit}>
+      <form
+        className='product-list-main-container'
+        onSubmit={onSubmit}
+        encType='multipart/form-data'
+      >
         <div className='product-list-top-bar'>
           <div className='product-list-products-text'>Add Product</div>
           <button className='product-list-add-product'>Save</button>
@@ -261,58 +301,194 @@ const AddProductPage = ({ update }) => {
 
 
             <div className='add-product-left-container-individual media'>
-            <div className='add-product-left-container-images'>
-              <label>
-                Product Cover Photo
-                <input
-                  value={images[0]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 0)}
-                  required
-                  className='add-product-page-image'
-                />
-              </label>
-              {errors.images && <p className="error">{errors.images}</p>}
-              <label>
-                Photo #2
-                <input
-                  value={images[1]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 1)}
-                  required
-                  className='add-product-page-image'
-                />
-              </label>
-              <label>
-                Photo #3
-                <input
-                  value={images[2]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 2)}
-                  required
-                  className='add-product-page-image'
-                />
-              </label>
-              <label>
-                Photo #4
-                <input
-                  value={images[3]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 3)}
-                  className='add-product-page-image'
+              <div className='add-product-left-container-images'>
+                <div className='add-product-image-media-text'>Media</div>
+                {/* <label>
+                  Product Cover Photo
+                  <input
+                    value={images[0]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 0)}
+                    required
+                    className='add-product-page-image'
+                  />
+                </label>
+                {errors.images && <p className="error">{errors.images}</p>}
+                <label>
+                  Photo #2
+                  <input
+                    value={images[1]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 1)}
+                    required
+                    className='add-product-page-image'
+                  />
+                </label>
+                <label>
+                  Photo #3
+                  <input
+                    value={images[2]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 2)}
+                    required
+                    className='add-product-page-image'
+                  />
+                </label>
+                <label>
+                  Photo #4
+                  <input
+                    value={images[3]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 3)}
+                    className='add-product-page-image'
 
-                />
-              </label>
-              <label>
-                Photo #5
-                <input
-                  value={images[4]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 4)}
-                  className='add-product-page-image'
+                  />
+                </label>
+                <label>
+                  Photo #5
+                  <input
+                    value={images[4]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 4)}
+                    className='add-product-page-image'
 
-                />
-              </label>
+                  />
+                </label> */}
+
+
+                <div className="add-product-image-preview-container">
+                  <div className='add-product-image-preview-left'>
+                    <label>
+
+                      <div
+                        className={`add-product-image-preview ${image1 ? "" : "placeholder"}`}
+                      >
+                        {image1 ? (
+                          <img src={URL.createObjectURL(image1)} alt="Product" />
+                        ) : (
+                          <div className="placeholder-text">Add Cover Image</div>
+                        )}
+                      </div>
+                      <input
+                        type="file"
+                        id="image1"
+                        accept="image/*"
+                        onChange={(e) => setImage1(e.target.files[0])}
+                        required
+                        className="add-product-page-image"
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                  </div>
+
+                  <div className='add-product-image-preview-right'>
+                    <div className='add-product-image-preview-right-top'>
+                      <label>
+                        <div
+                          className={`add-product-image-preview-right ${image2 ? "" : "placeholder"}`}
+                        >
+                          {image2 ? (
+                            <img src={URL.createObjectURL(image2)} alt="Product" />
+                          ) : (
+                            <div className="placeholder-text">Add Image 2</div>
+                          )}
+                        </div>
+                        <input
+                          type="file"
+                          id="image2"
+                          accept="image/*"
+                          onChange={(e) => setImage2(e.target.files[0])}
+                          required
+                          className="add-product-page-image"
+                          style={{ display: "none" }}
+                        />
+                      </label>
+
+                      <label>
+                        <div
+                          className={`add-product-image-preview-right ${image3 ? "" : "placeholder"}`}
+                        >
+                          {image3 ? (
+                            <img src={URL.createObjectURL(image3)} alt="Product" />
+                          ) : (
+                            <div className="placeholder-text">Add Image 3</div>
+                          )}
+                        </div>
+                        <input
+                          type="file"
+                          id="image3"
+                          accept="image/*"
+                          onChange={(e) => setImage3(e.target.files[0])}
+                          required
+                          className="add-product-page-image"
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                    </div>
+
+
+
+                    {image1 && image2 && image3 && (
+                      <div className='add-product-image-preview-right-top'>
+                        <label>
+                          <div
+                            className={`add-product-image-preview-right ${image4 ? "" : "placeholder"}`}
+                          >
+                            {image4 ? (
+                              <img src={URL.createObjectURL(image4)} alt="Product" />
+                            ) : (
+                              <div className="placeholder-text">Add Image 4</div>
+                            )}
+                          </div>
+                          <input
+                            type="file"
+                            id="image4"
+                            accept="image/*"
+                            onChange={(e) => setImage4(e.target.files[0])}
+                            className="add-product-page-image"
+                            style={{ display: "none" }}
+                          />
+                        </label>
+
+                        {image1 && image2 && image3 && image4 && (
+                          <label>
+                            <div
+                              className={`add-product-image-preview-right ${image5 ? "" : "placeholder"}`}
+                            >
+                              {image5 ? (
+                                <img src={URL.createObjectURL(image5)} alt="Product" />
+                              ) : (
+                                <div className="placeholder-text">Add Image 5</div>
+                              )}
+                            </div>
+                            <input
+                              type="file"
+                              id="image5"
+                              accept="image/*"
+                              onChange={(e) => setImage5(e.target.files[0])}
+                              className="add-product-page-image"
+                              style={{ display: "none" }}
+                            />
+                          </label>
+                        )}
+
+                        {errors.image1 && <p className="error">{errors.image1}</p>}
+
+                      </div>
+
+                    )}
+
+
+
+
+
+                  </div>
+                  {errors.image1 && <p className="error">{errors.image1}</p>}
+                </div>
+
+
+
+
               </div>
             </div>
 
@@ -331,22 +507,22 @@ const AddProductPage = ({ update }) => {
             </div>
 
             <div className="add-product-left-container-individual" >
-            <div className='add-product-page-feature-container'>
-              {features.map((feature, index) => (
-                <div key={index}>
-                  <label>
-                    Feature {index + 1}
-                    <input
-                      value={feature}
-                      type="text"
-                      onChange={(e) => updateFeature(e.target.value, index)}
-                      required
-                      className='add-product-page-feature'
-                    />
-                  </label>
-                  {errors.features && <p className="error">{errors.features}</p>}
-                </div>
-              ))}
+              <div className='add-product-page-feature-container'>
+                {features.map((feature, index) => (
+                  <div key={index}>
+                    <label>
+                      Feature {index + 1}
+                      <input
+                        value={feature}
+                        type="text"
+                        onChange={(e) => updateFeature(e.target.value, index)}
+                        required
+                        className='add-product-page-feature'
+                      />
+                    </label>
+                    {errors.features && <p className="error">{errors.features}</p>}
+                  </div>
+                ))}
               </div>
             </div>
 

@@ -56,6 +56,11 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable = False)
     description = db.Column(db.String(400), nullable = False)
     images = db.Column(db.String, nullable=False, default=[])
+    image1 = db.Column(db.String(255), nullable=False)
+    image2 = db.Column(db.String(255), nullable=False)
+    image3 = db.Column(db.String(255), nullable=False)
+    image4 = db.Column(db.String(255), nullable=True)
+    image5 = db.Column(db.String(255), nullable=True)
     features = db.Column(db.String, nullable=False, default=[])
     inventory = db.Column(db.Integer, default = 10)
     created_at = db.Column(db.DateTime, default=datetime.now)
@@ -79,12 +84,20 @@ class Product(db.Model):
     def to_dict(self):
         # variants = [variant.to_dict() for variant in self.product_variants]
         # features = [feature.to_dict() for feature in self.product_features]
+        images = [self.image1, self.image2, self.image3, self.image4, self.image5]
+        images = [image for image in images if image]  # Remove None values
         return {
             'id': self.id,
             'name':self.name,
             'price': self.price,
             'description': self.description,
-            'images': self.images.split(',') if self.images else [],
+            # 'images': self.images.split(',') if self.images else [],
+            'images': images,
+            'image1':self.image1,
+            'image2':self.image2,
+            'image3':self.image3,
+            'image4':self.image4,
+            'image5':self.image5,
             'features' : self.features.split(',') if self.features else [],
             # 'image': self.image,
             'inventory': self.inventory,

@@ -46,6 +46,21 @@ const EditProductPage = ({ update }) => {
   const [price, setPrice] = useState(singleProduct.price)
   const [description, setDescription] = useState(singleProduct.description)
   const [images, setImages] = useState(singleProduct.images);
+  const [image1, setImage1] = useState(singleProduct.image1)
+  const [image2, setImage2] = useState(singleProduct.image2)
+  const [image3, setImage3] = useState(singleProduct.image3)
+  const [image4, setImage4] = useState(singleProduct.image4)
+  const [image5, setImage5] = useState(singleProduct.image5)
+
+
+  const [image1Preview, setImage1Preview] = useState(singleProduct.image1 ? singleProduct.image1 : null);
+  const [image2Preview, setImage2Preview] = useState(singleProduct.image2 ? singleProduct.image2 : null);
+  const [image3Preview, setImage3Preview] = useState(singleProduct.image3 ? singleProduct.image3 : null);
+  const [image4Preview, setImage4Preview] = useState(singleProduct.image4 ? singleProduct.image4 : null);
+  const [image5Preview, setImage5Preview] = useState(singleProduct.image5 ? singleProduct.image5 : null);
+
+
+
   const [optionalImage1, setOptionalImage1] = useState('');
   const [optionalImage2, setOptionalImage2] = useState('');
   const [features, setFeatures] = useState(singleProduct.features);
@@ -53,7 +68,55 @@ const EditProductPage = ({ update }) => {
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(true);
 
+  const isImageSelected = (image) => {
+    return image instanceof File;
+  };
+
   console.log("IMAGES", images)
+
+
+  //checks if a new file is selected for an image, and changes the state accordingly
+  const updateImage1 = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage1(file);
+      setImage1Preview(URL.createObjectURL(file));
+    }
+  };
+
+  const updateImage2 = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage2(file);
+      setImage2Preview(URL.createObjectURL(file));
+    }
+  };
+
+  const updateImage3 = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage3(file);
+      setImage3Preview(URL.createObjectURL(file));
+    }
+  };
+
+  const updateImage4 = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage4(file);
+      setImage4Preview(URL.createObjectURL(file));
+    }
+  };
+
+  const updateImage5 = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage5(file);
+      setImage5Preview(URL.createObjectURL(file));
+    }
+  };
+
+
 
   //find the single product
   let products = []
@@ -83,6 +146,23 @@ const EditProductPage = ({ update }) => {
       setPrice(singleProduct.price)
       setInventory(singleProduct.inventory)
       setImages(singleProduct.images)
+      const image1Preview = singleProduct.image1 || null;
+      const image2Preview = singleProduct.image2 || null;
+      const image3Preview = singleProduct.image3 || null;
+      const image4Preview = singleProduct.image4 || null;
+      const image5Preview = singleProduct.image5 || null;
+
+      setImage1Preview(image1Preview);
+      setImage2Preview(image2Preview);
+      setImage3Preview(image3Preview);
+      setImage4Preview(image4Preview);
+      setImage5Preview(image5Preview);
+
+      setImage1(image1);
+      setImage2(image2);
+      setImage3(image3);
+      setImage4(image4);
+      setImage5(image5);
       setFeatures(singleProduct.features)
 
     }
@@ -134,8 +214,8 @@ const EditProductPage = ({ update }) => {
       errors.name = "Name must be at least 5 characters";
     }
 
-    if(name.length > 50){
-      errors.name ="Name must be less than 50 characters"
+    if (name.length > 50) {
+      errors.name = "Name must be less than 50 characters"
     }
     if (!description) {
       errors.description = "Description is required";
@@ -152,8 +232,8 @@ const EditProductPage = ({ update }) => {
       errors.price = "Price is required";
     } else if (isNaN(price)) {
       errors.price = "Price is invalid";
-    } else if(price < 0 || price > 100000){
-      errors.price="Price can't be a negative number or bigger than 100,000"
+    } else if (price < 0 || price > 100000) {
+      errors.price = "Price can't be a negative number or bigger than 100,000"
     }
 
     if (images.length < 2) {
@@ -170,6 +250,12 @@ const EditProductPage = ({ update }) => {
         }
       }
     }
+
+    if (!image1) {
+      errors.image1 = "Please provide an image";
+    }
+
+    console.log("IMAGE 1 CHECK", image1)
 
     console.log("CHECKING IMAGES ARR", images)
     // if (image) {
@@ -202,11 +288,44 @@ const EditProductPage = ({ update }) => {
   const onSubmit = async (e) => {
     e.preventDefault()
 
+    console.log('Before onSubmit');
+
     const errors = validate()
     const errorContent = Object.values(errors)
     if (errorContent.length) return setErrors(errors)
 
+    const formFileData = new FormData()
+    formFileData.append("name", name)
+    formFileData.append("description", description)
+    formFileData.append("images", images)
+    // formFileData.append('image1', image1)
+    formFileData.append('price', price)
+    formFileData.append('features', features)
+    formFileData.append('inventory', inventory)
 
+    if (image1 && isImageSelected(image1)) {
+      formFileData.append("image1", image1);
+    }
+
+    if (image2 && isImageSelected(image2)) {
+      formFileData.append("image2", image2);
+    }
+
+    if (image3 && isImageSelected(image3)) {
+      formFileData.append("image3", image3);
+    }
+
+    if (image4 && isImageSelected(image4)) {
+      formFileData.append("image4", image4);
+    }
+
+    if (image5 && isImageSelected(image5)) {
+      formFileData.append("image5", image5);
+    }
+
+
+    console.log("FORM FILE DATA", formFileData)
+    console.log("WE ARE RIGHT BEFORE UPDATE SUBMISSON ON FRONTEND- FORM DATA")
     const formData = {
       name: name,
       description: description,
@@ -216,7 +335,10 @@ const EditProductPage = ({ update }) => {
       inventory: inventory,
 
     }
-    await dispatch(updateProductThunk(formData, brandName, productId)).then(() => history.push(`/store-dashboard/${brandName}`))
+
+
+
+    await dispatch(updateProductThunk(formFileData, brandName, productId)).then(() => history.push(`/store-dashboard/${brandName}`))
     console.log("FORM DATA", formData)
   }
 
@@ -236,7 +358,7 @@ const EditProductPage = ({ update }) => {
   return (
     <div className='product-list-dashboard-container'>
       <SideBarDashboard />
-      <form className='product-list-main-container' onSubmit={onSubmit}>
+      <form className='product-list-main-container' onSubmit={onSubmit} encType='multipart/form-data'>
         <div className='product-list-top-bar'>
           <div className='product-list-products-text'>Update Product</div>
           <button className='product-list-delete-product' onClick={onDelete}>Delete</button>
@@ -264,7 +386,7 @@ const EditProductPage = ({ update }) => {
               {errors.name && <p className="error">{errors.name}</p>}
 
 
-              <label  className='add-product-page-description-text'>
+              <label className='add-product-page-description-text'>
                 Description
                 <textarea
                   value={description}
@@ -279,57 +401,213 @@ const EditProductPage = ({ update }) => {
 
             <div className='add-product-left-container-individual media'>
               <div className='add-product-left-container-images'>
-              <label>
-                Product Cover Photo
-                <input
-                  value={images[0]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 0)}
-                  required
-                  className='add-product-page-image'
-                />
-              </label>
-              {errors.images && <p className="error">{errors.images}</p>}
-              <label>
-                Photo #2
-                <input
-                  value={images[1]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 1)}
-                  required
-                  className='add-product-page-image'
-                />
-              </label>
-              <label>
-                Photo #3
-                <input
-                  value={images[2]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 2)}
-                  required
-                  className='add-product-page-image'
-                />
-              </label>
-              <label>
-                Photo #4
-                <input
-                  value={images[3]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 3)}
-                  className='add-product-page-image'
+                <div className='add-product-image-media-text'>Media</div>
+                {/* <label>
+                  Product Cover Photo
+                  <input
+                    value={images[0]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 0)}
+                    required
+                    className='add-product-page-image'
+                  />
+                </label>
+                {errors.images && <p className="error">{errors.images}</p>}
+                <label>
+                  Photo #2
+                  <input
+                    value={images[1]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 1)}
+                    required
+                    className='add-product-page-image'
+                  />
+                </label>
+                <label>
+                  Photo #3
+                  <input
+                    value={images[2]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 2)}
+                    required
+                    className='add-product-page-image'
+                  />
+                </label>
+                <label>
+                  Photo #4
+                  <input
+                    value={images[3]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 3)}
+                    className='add-product-page-image'
 
-                />
-              </label>
-              <label>
-                Photo #5
-                <input
-                  value={images[4]}
-                  type='text'
-                  onChange={(e) => updateImage(e.target.value, 4)}
-                  className='add-product-page-image'
+                  />
+                </label>
+                <label>
+                  Photo #5
+                  <input
+                    value={images[4]}
+                    type='text'
+                    onChange={(e) => updateImage(e.target.value, 4)}
+                    className='add-product-page-image'
 
-                />
-              </label>
+                  />
+                </label> */}
+
+
+                <div className="add-product-image-preview-container">
+
+                  <div className='add-product-image-preview-left'>
+                    <label>
+
+                      <div
+                        className={`add-product-image-preview ${image1 ? "" : "placeholder"}`}
+                      >
+                        {image1Preview && (
+                          <img src={image1Preview} alt="Product" />
+                        )}
+                        {!image1Preview && (
+                          <div className="placeholder-text">Add Cover Image</div>
+                        )}
+                      </div>
+                      <input
+                        type="file"
+                        id="image1"
+                        accept="image/*"
+                        // onChange={(e) => setImage1(e.target.files[0])}
+                        onChange={(e) => {
+                          setImage1(e.target.files[0]);
+                          setImage1Preview(URL.createObjectURL(e.target.files[0]));
+                        }}
+                        // required
+                        className="add-product-page-image"
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                  </div>
+
+                  <div className='add-product-image-preview-right'>
+                    <div className='add-product-image-preview-right-top'>
+                      <label>
+                        <div
+                          className={`add-product-image-preview-right ${image2 ? "" : "placeholder"}`}
+                        >
+                          {image2Preview && (
+                            <img src={image2Preview} alt="Product" />
+                          )}
+                          {!image2Preview && (
+                            <div className="placeholder-text">Add Cover Image</div>
+                          )}
+                        </div>
+                        <input
+                          type="file"
+                          id="image2"
+                          accept="image/*"
+                          onChange={(e) => {
+                            setImage2(e.target.files[0]);
+                            setImage2Preview(URL.createObjectURL(e.target.files[0]));
+                          }}
+                          // required
+                          className="add-product-page-image"
+                          style={{ display: "none" }}
+                        />
+                      </label>
+
+                      <label>
+                        <div
+                          className={`add-product-image-preview-right ${image3 ? "" : "placeholder"}`}
+                        >
+                          {image3Preview && (
+                            <img src={image3Preview} alt="Product" />
+                          )}
+                          {!image3Preview && (
+                            <div className="placeholder-text">Add Cover Image</div>
+                          )}
+                        </div>
+                        <input
+                          type="file"
+                          id="image3"
+                          accept="image/*"
+                          onChange={(e) => {
+                            setImage3(e.target.files[0]);
+                            setImage3Preview(URL.createObjectURL(e.target.files[0]));
+                          }}
+                          // required
+                          className="add-product-page-image"
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                    </div>
+
+
+
+                    {image1Preview && image2Preview && image3Preview && (
+                      <div className='add-product-image-preview-right-top'>
+                        <label>
+                          <div
+                            className={`add-product-image-preview-right ${image4 ? "" : "placeholder"}`}
+                          >
+                            {image4Preview && (
+                              <img src={image4Preview} alt="Product" />
+                            )}
+                            {!image4Preview && (
+                              <div className="placeholder-text">Add Cover Image</div>
+                            )}
+                          </div>
+                          <input
+                            type="file"
+                            id="image4"
+                            accept="image/*"
+                            onChange={(e) => {
+                              setImage4(e.target.files[0]);
+                              setImage4Preview(URL.createObjectURL(e.target.files[0]));
+                            }}
+                            className="add-product-page-image"
+                            style={{ display: "none" }}
+                          />
+                        </label>
+
+                        {image1Preview && image2Preview && image3Preview && image4Preview && (
+                          <label>
+                            <div
+                              className={`add-product-image-preview-right ${image5 ? "" : "placeholder"}`}
+                            >
+                              {image5Preview && (
+                                <img src={image5Preview} alt="Product" />
+                              )}
+                              {!image5Preview && (
+                                <div className="placeholder-text">Add Cover Image</div>
+                              )}
+                            </div>
+                            <input
+                              type="file"
+                              id="image5"
+                              accept="image/*"
+                              onChange={(e) => {
+                                setImage5(e.target.files[0]);
+                                setImage5Preview(URL.createObjectURL(e.target.files[0]));
+                              }}
+                              className="add-product-page-image"
+                              style={{ display: "none" }}
+                            />
+                          </label>
+                        )}
+
+                      </div>
+
+                    )}
+
+
+
+
+
+                  </div>
+
+                </div>
+                {errors.image1 && <p className="error">{errors.image1}</p>}
+
+
+
               </div>
             </div>
 
@@ -348,21 +626,21 @@ const EditProductPage = ({ update }) => {
 
             <div className="add-product-left-container-individual" >
               <div className='add-product-page-feature-container'>
-              {features.map((feature, index) => (
-                <div key={index}>
-                  <label  className='add-product-page-feature-container-text'>
-                    Feature {index + 1}
-                    <input
-                      value={feature}
-                      type="text"
-                      onChange={(e) => updateFeature(e.target.value, index)}
-                      required
-                      className='add-product-page-feature'
-                    />
-                  </label>
-                  {errors.features && <p className="error">{errors.features}</p>}
-                </div>
-              ))}
+                {features.map((feature, index) => (
+                  <div key={index}>
+                    <label className='add-product-page-feature-container-text'>
+                      Feature {index + 1}
+                      <input
+                        value={feature}
+                        type="text"
+                        onChange={(e) => updateFeature(e.target.value, index)}
+                        required
+                        className='add-product-page-feature'
+                      />
+                    </label>
+                    {errors.features && <p className="error">{errors.features}</p>}
+                  </div>
+                ))}
               </div>
             </div>
 

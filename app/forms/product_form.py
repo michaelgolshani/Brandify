@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,BooleanField,SelectField, IntegerField
+from wtforms import StringField,BooleanField,SelectField, IntegerField, FloatField
 from wtforms.validators import DataRequired,Email,ValidationError,Length
 from flask_wtf.file import FileField, FileAllowed,FileRequired
 from app.models import Brand, User, Product
@@ -17,10 +17,14 @@ def product_name_exists(form, field):
 
 class ProductForm(FlaskForm):
     name = StringField("Product Name", validators=[Length(max=50, message="Name must be less than 50 chars"), DataRequired()])
-    price = IntegerField("Product Price", validators=[DataRequired()])
+    price = FloatField("Product Price", validators=[DataRequired()])
     inventory = IntegerField("Product Inventory", validators=[DataRequired()])
     description = StringField("Product Description", validators=[ Length(max=400, message = "Description must be less than 400 chars."),DataRequired()])
     images = StringField("Product Images", validators=[DataRequired()])
-    # image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image1 = FileField("Image File 1", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image2 = FileField("Image File 2", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image3 = FileField("Image File 3", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image4 = FileField("Image File 4", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image5 = FileField("Image File 5", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
     features = StringField("Product Features", validators=[DataRequired()])
     # brand_id = SelectField("Brand", coerce=int, validators=[DataRequired()])

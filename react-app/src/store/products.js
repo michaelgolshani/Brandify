@@ -49,8 +49,9 @@ export const getAllProductsThunk = () => async (dispatch) => {
 export const createProductThunk = (product, brandName) => async (dispatch) => {
   const res = await fetch(`/api/products/${brandName}/new`, {
     method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(product)
+    // headers: { 'Content-Type': 'application/json' },
+    // body: JSON.stringify(product)
+    body: product
   })
   console.log("WE ARE IM CREATE PRODUCT THUNK: res", res)
   if (res.ok) {
@@ -85,8 +86,9 @@ export const getSingleProductThunk = (productId) => async (dispatch) => {
 export const updateProductThunk = (formData, brandName, productId) => async (dispatch) => {
   const res = await fetch(`/api/products/edit/${brandName}/${productId}`, {
     method: "PUT",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
+    // headers: { 'Content-Type': 'application/json' },
+    // body: JSON.stringify(formData)
+    body: formData
   })
   console.log("WE ARE IN UPDATED PRODUCT THUNK", res)
 
