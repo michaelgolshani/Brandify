@@ -61,7 +61,7 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('brand_id', sa.Integer(), nullable=False),
-    sa.Column('images', sa.String(), nullable=False),
+    # sa.Column('images', sa.String(), nullable=False),
     sa.Column('image1', sa.String(), nullable=False),
     sa.Column('image2', sa.String(), nullable=False),
     sa.Column('image3', sa.String(), nullable=False),

@@ -83,7 +83,7 @@ def create_product(brand_name):
             name=form.name.data,
             price=form.price.data,
             description=form.description.data,
-            images = form.images.data,
+            # images = form.images.data,
             image1=uploaded_images[0] if uploaded_images else None,
             image2=uploaded_images[1] if len(uploaded_images) > 1 else None,
             image3=uploaded_images[2] if len(uploaded_images) > 2 else None,

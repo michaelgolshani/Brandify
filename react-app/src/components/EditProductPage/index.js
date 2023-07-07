@@ -612,13 +612,14 @@ const EditProductPage = ({ update }) => {
             </div>
 
             <div className='add-product-left-container-individual media'>
-              <label>
+              <label className='pricing'>
                 Pricing
                 <input
                   value={price}
                   type='text'
                   onChange={(e) => setPrice(e.target.value)}
                   required
+                  className='add-product-page-price'
                 />
               </label>
               {errors.price && <p className="error">{errors.price}</p>}
@@ -652,6 +653,7 @@ const EditProductPage = ({ update }) => {
                   type='number'
                   onChange={(e) => setInventory(e.target.value)}
                   required
+                  className='add-product-page-price'
                 />
               </label>
               {errors.inventory && <p className="error">{errors.inventory}</p>}

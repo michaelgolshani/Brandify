@@ -20,7 +20,7 @@ class ProductForm(FlaskForm):
     price = FloatField("Product Price", validators=[DataRequired()])
     inventory = IntegerField("Product Inventory", validators=[DataRequired()])
     description = StringField("Product Description", validators=[ Length(max=400, message = "Description must be less than 400 chars."),DataRequired()])
-    images = StringField("Product Images", validators=[DataRequired()])
+    # images = StringField("Product Images", validators=[DataRequired()])
     image1 = FileField("Image File 1", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     image2 = FileField("Image File 2", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     image3 = FileField("Image File 3", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])

@@ -205,7 +205,7 @@ const AddProductPage = ({ update }) => {
     const formFileData = new FormData()
     formFileData.append("name", name)
     formFileData.append("description", description)
-    formFileData.append("images", images)
+    // formFileData.append("images", images)
     formFileData.append('image1', image1)
     formFileData.append('image2', image2)
     formFileData.append('image3', image3)
@@ -489,8 +489,8 @@ const AddProductPage = ({ update }) => {
               </div>
             </div>
 
-            <div className='add-product-left-container-individual media'>
-              <label>
+            <div className='add-product-left-container-individual media pricing'>
+              <label className='pricing'>
                 Pricing
                 <input
                   value={price}
@@ -531,6 +531,7 @@ const AddProductPage = ({ update }) => {
                   type='number'
                   onChange={(e) => setInventory(e.target.value)}
                   required
+                  className='add-product-page-price'
                 />
               </label>
               {errors.inventory && <p className="error">{errors.inventory}</p>}

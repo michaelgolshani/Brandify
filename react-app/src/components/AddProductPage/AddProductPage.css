@@ -43,7 +43,7 @@
 }
 .add-product-title {
   /* text-align: left; */
-  width: 90%;
+  width: 93%;
 
 }
 
@@ -292,4 +292,24 @@
 
 .publishing{
   height: 250px;
+}
+
+.pricing label{
+  display: flex;
+  /* flex-direction: column; */
+  /* padding-right: 20px; */
+  width: 30%;
+}
+
+.pricing input{
+ /* margin-top: 10px; */
+}
+
+
+.pricing{
+
+}
+
+.add-product-page-price{
+  margin-left: 20px;
 }

@@ -55,7 +55,7 @@ class Product(db.Model):
     name = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable = False)
     description = db.Column(db.String(400), nullable = False)
-    images = db.Column(db.String, nullable=False, default=[])
+    # images = db.Column(db.String, nullable=False, default=[])
     image1 = db.Column(db.String(255), nullable=False)
     image2 = db.Column(db.String(255), nullable=False)
     image3 = db.Column(db.String(255), nullable=False)
