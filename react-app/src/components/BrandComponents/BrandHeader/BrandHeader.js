@@ -3,7 +3,7 @@ import './BrandHeader.css'
 
 
 export const BrandHeader = ({ brandName, currentBrand, theme }) => {
-  ("BRAND NAME FOR HEADER", brandName)
+
 
   return (
     <div className={`brand-header-container brand-section ${theme}`}>

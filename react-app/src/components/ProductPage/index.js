@@ -23,18 +23,18 @@ const ProductPage = () => {
   const location = useLocation()
 
   const state = useSelector((state) => state)
-    ("STATE", state)
+
   const currentProduct = state.products.singleProduct
-    ("CURRENT PRODUCT", currentProduct)
+
 
   const currentBrand = state.brands.singleBrand
-    ("CURRENT BRAND", currentBrand)
+
 
   const currentBrandProducts = currentBrand.products
-    ("CURRENT BRAND PRODUCTS", currentBrandProducts)
+
 
   // const currentBrandProductsArr = Object.values(currentBrandProducts)
-  // ("CURRENT BRAND PRODUCTS ARR", currentBrandProductsArr)
+  //
 
   const [currentProductQuantity, setCurrentProductQuantity] = useState(1)
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -46,7 +46,7 @@ const ProductPage = () => {
   const [openCart, setOpenCart] = useState(false)
   const [cartItems, setCartItems] = useState([]);
 
-  ("OPEN CART", openCart)
+
 
   // this will control straight lines or waves on the site
   // const modern = true
@@ -58,12 +58,12 @@ const ProductPage = () => {
       setTheme('modern')
     }
   }
-  ("THEME", theme)
 
 
-    ("BRAND NAME", brandName)
-    ("PRODUCT ID", productId)
-    ("COVER IMAGE", currentProduct?.images?.[0])
+
+
+
+
 
   useEffect(() => {
     dispatch(getSingleProductThunk(productId))
@@ -107,16 +107,16 @@ const ProductPage = () => {
   const handleAddToCart = (product, quantity) => {
 
     const existingItem = cartItems.find(item => item.name === product.name)
-      ("EXISTING ITEM", existingItem)
+
 
     if (existingItem) {
       // Product already exists in the cart, update its quantity
       const updatedItems = cartItems.map(item => {
         if (item.name === product.name) {
-          ("ITEM", item)
-            ("PRODUCT", product)
-            ("ITEM QUANTITIY", item.quantity)
-            ("PRODUCT QUANITIY", product.quantity)
+
+
+
+
           return {
             ...item,
             quantity: item.quantity + quantity // Convert product.quantity to number
@@ -162,7 +162,7 @@ const ProductPage = () => {
     if (currentBrandProduct.id === currentProduct.id) {
       isProductInBrand = true
     } else {
-      ("THE PRODUCT IS FALSE")
+
     }
   }
 

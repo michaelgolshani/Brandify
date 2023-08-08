@@ -26,21 +26,21 @@ const EditProductPage = ({ update }) => {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-    // const [checkRender, setCheckRender] = useState(true)
+  // const [checkRender, setCheckRender] = useState(true)
 
-    ("UPDATE", update)
-    ("PRODUCT ID", productId)
+
+
 
   const state = useSelector(state => state)
-    (state)
+
   const allProducts = useSelector(state => state?.products.allProducts)
-    ("ALL PRODUCTS", allProducts)
+
   const singleBrand = useSelector(state => state.brands.singleBrand)
-    (singleBrand)
+
   const singleProduct = useSelector((state) => state.products.singleProduct)
-    ("SINGLE PRODUCT", singleProduct)
+
   const allProductsArr = Object.values(allProducts)
-    ("all products arr", allProductsArr)
+
 
   const [name, setName] = useState(singleProduct.name)
   const [price, setPrice] = useState(singleProduct.price)
@@ -73,7 +73,7 @@ const EditProductPage = ({ update }) => {
     return image instanceof File;
   };
 
-  ("IMAGES", images)
+
 
 
   //checks if a new file is selected for an image, and changes the state accordingly
@@ -130,9 +130,9 @@ const EditProductPage = ({ update }) => {
       }
     }
   }
-  ("PRODUCTS", products)
+
   const currentProductTest = products.find(product => productId == product.id);
-  ("CURRENT PRODUCT", currentProductTest)
+
 
   useEffect(() => {
     // dispatch(getSingleBrandThunk(brandName))
@@ -178,7 +178,7 @@ const EditProductPage = ({ update }) => {
 
   // const currentProduct = products.find(product => productId == product.id);
 
-  //   ("CURRENT PRODUCT", currentProduct)
+  //
   //   setName(currentProduct?.name);
   //   setPrice(currentProduct?.price);
   //   setDescription(currentProduct?.description);
@@ -207,9 +207,9 @@ const EditProductPage = ({ update }) => {
 
   //combine images before sending them to the database
   const combinedImages = [...imagesArr, optionalImage1, optionalImage2].filter(Boolean).join(',');
-  ("COMBINED IMAGES", combinedImages)
+
   const combinedFeatures = [...featuresArr].filter(Boolean).join(',');
-  ("features", combinedFeatures)
+
 
 
   const validate = () => {
@@ -263,19 +263,19 @@ const EditProductPage = ({ update }) => {
     //   errors.image1 = "Please provide an image";
     // }
 
-    ("IMAGE 1 CHECK", image1)
 
-      ("CHECKING IMAGES ARR", images)
-      // if (image) {
-      //   //split the image with the url. then check to see if the image has the checks needed.
-      //   const fileExtension = image.split('.').pop().toLowerCase();
-      //   const checkLast = ['jpg', 'png', 'jpeg'];
-      //   if (!checkLast.includes(fileExtension)) {
-      //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
-      //   }
-      // }
 
-      ("ERRORS", errors)
+
+    // if (image) {
+    //   //split the image with the url. then check to see if the image has the checks needed.
+    //   const fileExtension = image.split('.').pop().toLowerCase();
+    //   const checkLast = ['jpg', 'png', 'jpeg'];
+    //   if (!checkLast.includes(fileExtension)) {
+    //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
+    //   }
+    // }
+
+
     if (isNaN(inventory)) {
       errors.inventory = "Inventory needs to be a number";
     }
@@ -296,7 +296,7 @@ const EditProductPage = ({ update }) => {
   const onSubmit = async (e) => {
     e.preventDefault()
 
-      ('Before onSubmit');
+
 
     const errors = validate()
     const errorContent = Object.values(errors)
@@ -332,8 +332,8 @@ const EditProductPage = ({ update }) => {
     }
 
 
-    ("FORM FILE DATA", formFileData)
-      ("WE ARE RIGHT BEFORE UPDATE SUBMISSON ON FRONTEND- FORM DATA")
+
+
     const formData = {
       name: name,
       description: description,
@@ -347,10 +347,10 @@ const EditProductPage = ({ update }) => {
 
 
     await dispatch(updateProductThunk(formFileData, brandName, productId)).then(() => history.push(`/store-dashboard/${brandName}`))
-      ("FORM DATA", formData)
+
   }
 
-  ("PRODUCTS OF BRAND", products)
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {

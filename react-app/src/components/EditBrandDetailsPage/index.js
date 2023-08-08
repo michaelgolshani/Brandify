@@ -23,23 +23,23 @@ export const EditBrandDetails = () => {
   const { brandName } = useParams()
 
 
-    ("STATE", state)
-  const brands = state.brands
-    (brands.allBrands)
-  const brandsArr = Object.values(brands.allBrands)
-    ("BRANDS ARR", brandsArr)
 
-    ("BRAND NAME", brandName)
+  const brands = state.brands
+
+  const brandsArr = Object.values(brands.allBrands)
+
+
+
 
 
   let myBrandArr = []
   for (let i = 0; i < brandsArr.length; i++) {
     let brand = brandsArr[i]
 
-      (brand)
-      ("Admin id", brand.admin_id)
-      ("user id", state.session.user.id)
-      (myBrandArr)
+
+
+
+
     if (brand.admin_id == state.session.user.id) {
       myBrandArr.push(brand)
     }
@@ -48,7 +48,7 @@ export const EditBrandDetails = () => {
 
 
   const oldBrand = useSelector((state) => state.brands.singleBrand)
-    ("BRAND TO UPDATE ", oldBrand)
+
 
   const [name, setName] = useState(oldBrand.name);
   const [story, setStory] = useState(oldBrand.story)
@@ -74,16 +74,16 @@ export const EditBrandDetails = () => {
   }, [oldBrand, brandName]);
 
 
-  ("NAME", name)
-    ("STORY", story)
-    ("Description", description)
-    ("THEME", theme)
+
+
+
+
   // if (sessionUser) return <Redirect to="/" />;
 
   const handleDelete = async () => {
     await dispatch(deleteBrandThunk(brandName))
     history.push(`/store-login`)
-      ("SUCCESSFULLY DELETED")
+
   }
 
 
@@ -117,7 +117,7 @@ export const EditBrandDetails = () => {
       errors.description = `Slogan must be less than 30 characters. You currently have ${description.length}`
     }
 
-    ("ERRORS", errors)
+
     return errors
   }
 
@@ -136,8 +136,8 @@ export const EditBrandDetails = () => {
       description,
       theme
     }
-      // let newBrand = await
-      ("FORM DATA", formData)
+    // let newBrand = await
+
 
     await dispatch(updateBrandThunk(formData, brandName))
 

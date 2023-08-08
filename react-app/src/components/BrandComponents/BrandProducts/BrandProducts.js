@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 export const BrandProducts = ({ brandName, currentBrand, theme }) => {
   const history = useHistory()
   const currentBrandProducts = currentBrand.products.slice(0, 2);
-  ("CURRENT BRAND PRPDUCTS TESTER", currentBrandProducts)
+
 
   return (
     <div className={`brand-products-container ${theme}`}>

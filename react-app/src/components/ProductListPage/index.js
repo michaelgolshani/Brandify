@@ -34,15 +34,15 @@ const ProductListPage = () => {
   }, [dispatch]);
 
 
-  ("BRAND NAME", brandName)
+
   const state = useSelector(state => state)
-    (state)
+
   const allProducts = useSelector(state => state?.products.allProducts)
-    ("ALL PRODUCTS", allProducts)
+
   const singleBrand = useSelector(state => state.brands.singleBrand)
-    ("SINGLE BRAND", singleBrand)
+
   const allProductsArr = Object.values(allProducts)
-    ("all products arr", allProductsArr)
+
 
   let products = []
   if (allProducts) {
@@ -55,7 +55,7 @@ const ProductListPage = () => {
     }
   }
 
-  ("PRODUCTS OF BRAND", products)
+
 
   return (
     <div className='product-list-dashboard-container'>

@@ -26,18 +26,18 @@ export const BrandHomePage = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
 
   const { brandName } = useParams()
-    ("BRAND NAME FOR HOME PAGE", brandName)
+
 
   const state = useSelector((state) => state)
-    ("STATE", state)
+
   const currentBrand = state.brands.singleBrand
-    ("CURRENT BRAND", currentBrand)
-    ("CURRENT BRAND STORY", currentBrand.story)
+
+
 
 
   const [theme, setTheme] = useState(currentBrand.theme)
 
-    ("CURERNT BRAND THEME", theme)
+
 
   useEffect(() => {
 

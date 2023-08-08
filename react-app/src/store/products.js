@@ -53,11 +53,11 @@ export const createProductThunk = (product, brandName) => async (dispatch) => {
     // body: JSON.stringify(product)
     body: product
   })
-    ("WE ARE IM CREATE PRODUCT THUNK: res", res)
+
   if (res.ok) {
     const new_product = await res.json()
     dispatch(createProduct(product))
-      ("WE HAD SUCCESSFUL CREATE PRODUCT THUNK: res", res.ok)
+
     return new_product
   }
   else {
@@ -69,11 +69,11 @@ export const createProductThunk = (product, brandName) => async (dispatch) => {
 
 export const getSingleProductThunk = (productId) => async (dispatch) => {
   const response = await fetch(`/api/products/${productId}`)
-    ("WE ARE IN SINGLE PRODUCT", response)
+
   if (response.ok) {
 
     const product = await response.json()
-      ("WE ARE IN SINGLE PRODUCT RESPONSE", product)
+
     dispatch(getSingleProduct(product))
     return product
   }
@@ -90,12 +90,12 @@ export const updateProductThunk = (formData, brandName, productId) => async (dis
     // body: JSON.stringify(formData)
     body: formData
   })
-    ("WE ARE IN UPDATED PRODUCT THUNK", res)
+
 
   if (res.ok) {
     const updated_product = await res.json()
     dispatch(updateProduct(updated_product))
-      ("WE ARE IN SUCCESFUL UPDATED PRODUCT THUNK", updated_product)
+
     return updated_product
   }
   else {
@@ -109,11 +109,11 @@ export const deleteProductThunk = (productId) => async (dispatch) => {
   const res = await fetch(`/api/products/delete/${productId}`, {
     method: "DELETE",
   });
-  ("WE ARE IN DELETE PRODUCT THUNK before res", res)
+
   if (res.ok) {
 
     const data = await res.json()
-      ("WE ARE IN DELETE PRODUCT THUNK", data)
+
     dispatch(deleteProduct())
     return data;
   }
@@ -134,13 +134,13 @@ export default function productsReducer(state = initialState, action) {
       return newState;
 
     case CREATE_PRODUCT:
-      ("WE ARE IM CREATE PRODUCT REDUCER: action", action.product)
+
       newState = { ...state, allProducts: { ...state.allProducts }, singleProduct: { ...state.singleProduct } }
       newState.allProducts[action.product.id] = action.product
       return newState
 
     case GET_SINGLE_PRODUCT:
-      ("WE ARE IN SINGLE PRODUCT thunk", action.product)
+
       newState = { ...state, allProducts: { ...state.allProducts }, singleProduct: { ...action.product } }
       return newState
 
@@ -151,13 +151,13 @@ export default function productsReducer(state = initialState, action) {
       }
       newState.singleProduct = action.product
 
-        ("WE ARE IN SUCCESFUL UPDATED PRODUCT REDUCER", action.product)
+
       return newState
 
     case DELETE_PRODUCT:
       newState = { ...state, allProducts: { ...state.allProducts }, singleProduct: { ...state.singleProduct } }
       delete newState.allProducts[action.id]
-        ("WE HAD SUCCES WITH DELETE PRODUCT REDUCER", action)
+
       return newState
 
 

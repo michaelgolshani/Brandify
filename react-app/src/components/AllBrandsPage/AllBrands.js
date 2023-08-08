@@ -19,9 +19,9 @@ export const AllBrands = () => {
 
   const brands = Object.values(state.brands?.allBrands)
 
-    ("ALL BRANDS PAGE STATE", state)
 
-    ("ALL BRANDS PAGE ARR", brands)
+
+
 
 
   return (

@@ -26,11 +26,11 @@ const BrandLoginPage = () => {
 
 
   const state = useSelector((state) => state)
-    ("STATE", state)
+
   const brands = state.brands
-    (brands.allBrands)
+
   const brandsArr = Object.values(brands.allBrands)
-    ("BRANDS ARR", brandsArr)
+
 
 
 
@@ -38,16 +38,16 @@ const BrandLoginPage = () => {
   for (let i = 0; i < brandsArr.length; i++) {
     let brand = brandsArr[i]
 
-      (brand)
-      ("Admin id", brand.admin_id)
-      ("user id", state.session.user.id)
-      (myBrandArr)
+
+
+
+
     if (brand.admin_id == state.session.user.id) {
       myBrandArr.push(brand)
     }
   }
 
-  ("AFTER FOR LOOP", myBrandArr)
+
 
   // if (sessionUser) return <Redirect to="/" />;
 

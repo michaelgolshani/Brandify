@@ -11,7 +11,7 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 	const dispatch = useDispatch()
 	const { brandName } = useParams()
-		("BRAND NAME AT NAV BAR", brandName)
+
 
 	useEffect(() => {
 

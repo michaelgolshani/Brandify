@@ -7,7 +7,7 @@ export const BrandAbout = ({ currentBrand, theme }) => {
     return null
   }
 
-  ("CURRENT STORY IN BRAND ABOUT", currentBrand)
+
   return (
     <div className={`brand-about-section brand-section ${theme}`}>
       <h6 className='brand-section-header'>ABOUT</h6>

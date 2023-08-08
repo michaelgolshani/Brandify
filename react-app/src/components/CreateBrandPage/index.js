@@ -27,30 +27,30 @@ const CreateBrandPage = () => {
   }, [])
 
   const state = useSelector((state) => state)
-    ("STATE", state)
+
   const brands = state.brands
-    (brands.allBrands)
+
   const brandsArr = Object.values(brands.allBrands)
-    ("BRANDS ARR", brandsArr)
+
 
   let myBrandArr = []
   for (let i = 0; i < brandsArr.length; i++) {
     let brand = brandsArr[i]
 
-      (brand)
-      ("Admin id", brand.admin_id)
-      ("user id", state.session.user.id)
-      (myBrandArr)
+
+
+
+
     if (brand.admin_id == state.session.user.id) {
       myBrandArr.push(brand)
     }
   }
 
-  ("MY BRANDS", myBrandArr)
 
-    ("NAME", name)
-    ("STORY", story)
-    ("Description", description)
+
+
+
+
   // if (sessionUser) return <Redirect to="/" />;
 
   const validate = () => {
@@ -83,7 +83,7 @@ const CreateBrandPage = () => {
       errors.description = `Slogan must be less than 30 characters. You currently have ${description.length}`
     }
 
-    ("ERRORS", errors)
+
     return errors
   }
 
@@ -101,8 +101,8 @@ const CreateBrandPage = () => {
       description,
       theme
     }
-      // let newBrand = await
-      (formData)
+    // let newBrand = await
+
 
     await dispatch(createBrandThunk(formData))
     history.push(`/store-dashboard/${name}`)
