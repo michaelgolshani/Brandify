@@ -23,23 +23,23 @@ export const EditBrandDetails = () => {
   const { brandName } = useParams()
 
 
-  console.log("STATE", state)
+    ("STATE", state)
   const brands = state.brands
-  console.log(brands.allBrands)
+    (brands.allBrands)
   const brandsArr = Object.values(brands.allBrands)
-  console.log("BRANDS ARR", brandsArr)
+    ("BRANDS ARR", brandsArr)
 
-  console.log("BRAND NAME", brandName)
+    ("BRAND NAME", brandName)
 
 
   let myBrandArr = []
   for (let i = 0; i < brandsArr.length; i++) {
     let brand = brandsArr[i]
 
-    console.log(brand)
-    console.log("Admin id", brand.admin_id)
-    console.log("user id", state.session.user.id)
-    console.log(myBrandArr)
+      (brand)
+      ("Admin id", brand.admin_id)
+      ("user id", state.session.user.id)
+      (myBrandArr)
     if (brand.admin_id == state.session.user.id) {
       myBrandArr.push(brand)
     }
@@ -48,7 +48,7 @@ export const EditBrandDetails = () => {
 
 
   const oldBrand = useSelector((state) => state.brands.singleBrand)
-  console.log("BRAND TO UPDATE ", oldBrand)
+    ("BRAND TO UPDATE ", oldBrand)
 
   const [name, setName] = useState(oldBrand.name);
   const [story, setStory] = useState(oldBrand.story)
@@ -74,16 +74,16 @@ export const EditBrandDetails = () => {
   }, [oldBrand, brandName]);
 
 
-  console.log("NAME", name)
-  console.log("STORY", story)
-  console.log("Description", description)
-  console.log("THEME", theme)
+  ("NAME", name)
+    ("STORY", story)
+    ("Description", description)
+    ("THEME", theme)
   // if (sessionUser) return <Redirect to="/" />;
 
   const handleDelete = async () => {
     await dispatch(deleteBrandThunk(brandName))
     history.push(`/store-login`)
-    console.log("SUCCESSFULLY DELETED")
+      ("SUCCESSFULLY DELETED")
   }
 
 
@@ -117,7 +117,7 @@ export const EditBrandDetails = () => {
       errors.description = `Slogan must be less than 30 characters. You currently have ${description.length}`
     }
 
-    console.log("ERRORS", errors)
+    ("ERRORS", errors)
     return errors
   }
 
@@ -136,8 +136,8 @@ export const EditBrandDetails = () => {
       description,
       theme
     }
-    // let newBrand = await
-    console.log("FORM DATA", formData)
+      // let newBrand = await
+      ("FORM DATA", formData)
 
     await dispatch(updateBrandThunk(formData, brandName))
 

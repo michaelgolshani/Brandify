@@ -19,9 +19,9 @@ export const AllBrands = () => {
 
   const brands = Object.values(state.brands?.allBrands)
 
-  console.log("ALL BRANDS PAGE STATE", state)
+    ("ALL BRANDS PAGE STATE", state)
 
-  console.log("ALL BRANDS PAGE ARR", brands)
+    ("ALL BRANDS PAGE ARR", brands)
 
 
   return (
@@ -33,7 +33,7 @@ export const AllBrands = () => {
 
       <div className='all-brands-row-container'>
         {brands.map((brand, index) => (
-          <div key={index} className='brand-item' onClick={()=> history.push(`/store/${brand.name}/`)}>
+          <div key={index} className='brand-item' onClick={() => history.push(`/store/${brand.name}/`)}>
             <img className='all-brands-images' src={brand.products[0]?.images[0]} />
             <div className='brand-image-overlay'>
               <div className='brand-inside-text'>

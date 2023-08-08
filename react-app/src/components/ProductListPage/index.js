@@ -34,15 +34,15 @@ const ProductListPage = () => {
   }, [dispatch]);
 
 
-  console.log("BRAND NAME", brandName)
+  ("BRAND NAME", brandName)
   const state = useSelector(state => state)
-  console.log(state)
+    (state)
   const allProducts = useSelector(state => state?.products.allProducts)
-  console.log("ALL PRODUCTS", allProducts)
+    ("ALL PRODUCTS", allProducts)
   const singleBrand = useSelector(state => state.brands.singleBrand)
-  console.log("SINGLE BRAND", singleBrand)
+    ("SINGLE BRAND", singleBrand)
   const allProductsArr = Object.values(allProducts)
-  console.log("all products arr", allProductsArr)
+    ("all products arr", allProductsArr)
 
   let products = []
   if (allProducts) {
@@ -55,7 +55,7 @@ const ProductListPage = () => {
     }
   }
 
-  console.log("PRODUCTS OF BRAND", products)
+  ("PRODUCTS OF BRAND", products)
 
   return (
     <div className='product-list-dashboard-container'>

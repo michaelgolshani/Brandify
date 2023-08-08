@@ -53,7 +53,7 @@ export const getAllBrandsThunk = () => async (dispatch) => {
 
   if (response.ok) {
     const brands = await response.json()
-    console.log("WE ARE In get all brands thunk. Response:", brands)
+      ("WE ARE In get all brands thunk. Response:", brands)
     dispatch(getAllBrands(brands))
     return brands
   }
@@ -66,11 +66,11 @@ export const getAllBrandsThunk = () => async (dispatch) => {
 
 // export const getSingleBrandThunk = (brandId) => async (dispatch) => {
 //   const response  = await fetch(`/api/brands/${brandId}`)
-//   console.log("WE ARE IN SINGLE BRAND", response)
+//   ("WE ARE IN SINGLE BRAND", response)
 //   if (response.ok){
 
 //     const brand = response.json()
-//     console.log("WE ARE IN SINGLE BRAND RESPONSE", brand)
+//     ("WE ARE IN SINGLE BRAND RESPONSE", brand)
 //     dispatch(getSingleBrand(brand))
 //     return brand
 //   }
@@ -82,11 +82,11 @@ export const getAllBrandsThunk = () => async (dispatch) => {
 
 export const getSingleBrandThunk = (brandName) => async (dispatch) => {
   const response = await fetch(`/api/brands/${brandName}`)
-  console.log("WE ARE IN SINGLE BRAND", response)
+    ("WE ARE IN SINGLE BRAND", response)
   if (response.ok) {
 
     const brand = await response.json()
-    console.log("WE ARE IN SINGLE BRAND RESPONSE", brand)
+      ("WE ARE IN SINGLE BRAND RESPONSE", brand)
     dispatch(getSingleBrand(brand))
     return brand
   }
@@ -124,12 +124,12 @@ export const updateBrandThunk = (formData, brandName) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)
   })
-  console.log("WE ARE IN UPDATED BRAND THUNK", res)
+    ("WE ARE IN UPDATED BRAND THUNK", res)
 
   if (res.ok) {
     const updated_brand = await res.json()
     dispatch(updateBrand(updated_brand))
-    console.log("WE ARE IN SUCCESFUL UPDATED BRAND THUNK", updateBrand)
+      ("WE ARE IN SUCCESFUL UPDATED BRAND THUNK", updateBrand)
     return updated_brand
   }
   else {
@@ -142,11 +142,11 @@ export const deleteBrandThunk = (brandName) => async (dispatch) => {
   const res = await fetch(`/api/brands/delete/${brandName}`, {
     method: "DELETE",
   });
-  console.log("WE ARE IN DELETE THUNK before res", res)
+  ("WE ARE IN DELETE THUNK before res", res)
   if (res.ok) {
 
     const data = await res.json()
-    console.log("WE ARE IN DELETE THUNK", data)
+      ("WE ARE IN DELETE THUNK", data)
     dispatch(deleteBrand())
     return data;
   }
@@ -180,12 +180,12 @@ export const createOrderThunk = (order) => async (dispatch) => {
     body: JSON.stringify(order)
   });
 
-  console.log("RESPONSE IN CREATE ORDER THUNK", response)
+  ("RESPONSE IN CREATE ORDER THUNK", response)
 
   if (response.ok) {
-    console.log("RESPONSE.OK IN CREATE ORDER THUNK", response.ok)
+    ("RESPONSE.OK IN CREATE ORDER THUNK", response.ok)
     const newOrder = await response.json();
-    console.log("NEW ORDER IN CREATE ORDER THUNK", newOrder)
+    ("NEW ORDER IN CREATE ORDER THUNK", newOrder)
     dispatch(createOrder(newOrder));
     return newOrder;
   } else {
@@ -213,7 +213,7 @@ export default function brandsReducer(state = initialState, action) {
   switch (action.type) {
 
     case GET_ALL_BRANDS:
-      console.log("WE ARE IN GET ALL BRANDS THUNK", action)
+      ("WE ARE IN GET ALL BRANDS THUNK", action)
       newState = { ...state, allBrands: { ...action.brands }, singleBrand: { ...state.singleBrand }, allOrders: { ...state.allOrders } }
       return newState
 
@@ -229,26 +229,26 @@ export default function brandsReducer(state = initialState, action) {
       }
       newState.singleBrand = action.brand
 
-      console.log("WE ARE IN SUCCESFUL UPDATED BRAND REDUCER", action.brand)
+        ("WE ARE IN SUCCESFUL UPDATED BRAND REDUCER", action.brand)
       return newState
 
     case GET_SINGLE_BRAND:
-      console.log("WE ARE IN SINGLE BRAND thunk", action.brand)
+      ("WE ARE IN SINGLE BRAND thunk", action.brand)
       newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...action.brand }, allOrders: { ...state.allOrders } }
       return newState
 
     case DELETE_BRAND:
       newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: { ...state.singleBrand }, allOrders: { ...state.allOrders } }
       delete newState.allBrands[action.id]
-      console.log("WE ARE IN DELETE REDUCER", action)
-      // if (newState.singleBrand.id == action.brand.id) {
-      //   newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: {} }
-      // }
-      console.log("WE HAD SUCCES WITH DELETE REDUCER", action)
+        ("WE ARE IN DELETE REDUCER", action)
+        // if (newState.singleBrand.id == action.brand.id) {
+        //   newState = { ...state, allBrands: { ...state.allBrands }, singleBrand: {} }
+        // }
+        ("WE HAD SUCCES WITH DELETE REDUCER", action)
       return newState
 
     case GET_ALL_ORDERS:
-      console.log("ACTION IN GET ALL ORDERS REDUCER", action.orders)
+      ("ACTION IN GET ALL ORDERS REDUCER", action.orders)
       newState = {
         ...state,
         allOrders: { ...action.orders }
@@ -256,7 +256,7 @@ export default function brandsReducer(state = initialState, action) {
       return newState;
 
     case CREATE_ORDER:
-      console.log("WE ARE IN CREATE ORDER REDUCER. ACTION:", action)
+      ("WE ARE IN CREATE ORDER REDUCER. ACTION:", action)
       newState = {
         ...state,
         allBrands: { ...state.allBrands },
@@ -265,7 +265,7 @@ export default function brandsReducer(state = initialState, action) {
       };
       const brandId = action.order.brand_id;
       const orderId = action.order.id;
-      console.log("ACTION IN CREATE ORDER REDUCER", action.order)
+      ("ACTION IN CREATE ORDER REDUCER", action.order)
       newState.allOrders = {
         ...newState.allOrders,
         [brandId]: {

@@ -23,18 +23,18 @@ const ProductPage = () => {
   const location = useLocation()
 
   const state = useSelector((state) => state)
-  console.log("STATE", state)
+    ("STATE", state)
   const currentProduct = state.products.singleProduct
-  console.log("CURRENT PRODUCT", currentProduct)
+    ("CURRENT PRODUCT", currentProduct)
 
   const currentBrand = state.brands.singleBrand
-  console.log("CURRENT BRAND", currentBrand)
+    ("CURRENT BRAND", currentBrand)
 
   const currentBrandProducts = currentBrand.products
-  console.log("CURRENT BRAND PRODUCTS", currentBrandProducts)
+    ("CURRENT BRAND PRODUCTS", currentBrandProducts)
 
   // const currentBrandProductsArr = Object.values(currentBrandProducts)
-  // console.log("CURRENT BRAND PRODUCTS ARR", currentBrandProductsArr)
+  // ("CURRENT BRAND PRODUCTS ARR", currentBrandProductsArr)
 
   const [currentProductQuantity, setCurrentProductQuantity] = useState(1)
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -46,7 +46,7 @@ const ProductPage = () => {
   const [openCart, setOpenCart] = useState(false)
   const [cartItems, setCartItems] = useState([]);
 
-  console.log("OPEN CART", openCart)
+  ("OPEN CART", openCart)
 
   // this will control straight lines or waves on the site
   // const modern = true
@@ -58,12 +58,12 @@ const ProductPage = () => {
       setTheme('modern')
     }
   }
-  console.log("THEME", theme)
+  ("THEME", theme)
 
 
-  console.log("BRAND NAME", brandName)
-  console.log("PRODUCT ID", productId)
-  console.log("COVER IMAGE", currentProduct?.images?.[0])
+    ("BRAND NAME", brandName)
+    ("PRODUCT ID", productId)
+    ("COVER IMAGE", currentProduct?.images?.[0])
 
   useEffect(() => {
     dispatch(getSingleProductThunk(productId))
@@ -107,16 +107,16 @@ const ProductPage = () => {
   const handleAddToCart = (product, quantity) => {
 
     const existingItem = cartItems.find(item => item.name === product.name)
-    console.log("EXISTING ITEM", existingItem)
+      ("EXISTING ITEM", existingItem)
 
     if (existingItem) {
       // Product already exists in the cart, update its quantity
       const updatedItems = cartItems.map(item => {
         if (item.name === product.name) {
-          console.log("ITEM", item)
-          console.log("PRODUCT", product)
-          console.log("ITEM QUANTITIY", item.quantity)
-          console.log("PRODUCT QUANITIY", product.quantity)
+          ("ITEM", item)
+            ("PRODUCT", product)
+            ("ITEM QUANTITIY", item.quantity)
+            ("PRODUCT QUANITIY", product.quantity)
           return {
             ...item,
             quantity: item.quantity + quantity // Convert product.quantity to number
@@ -162,7 +162,7 @@ const ProductPage = () => {
     if (currentBrandProduct.id === currentProduct.id) {
       isProductInBrand = true
     } else {
-      console.log("THE PRODUCT IS FALSE")
+      ("THE PRODUCT IS FALSE")
     }
   }
 

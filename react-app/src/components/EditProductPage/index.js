@@ -26,21 +26,21 @@ const EditProductPage = ({ update }) => {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // const [checkRender, setCheckRender] = useState(true)
+    // const [checkRender, setCheckRender] = useState(true)
 
-  console.log("UPDATE", update)
-  console.log("PRODUCT ID", productId)
+    ("UPDATE", update)
+    ("PRODUCT ID", productId)
 
   const state = useSelector(state => state)
-  console.log(state)
+    (state)
   const allProducts = useSelector(state => state?.products.allProducts)
-  console.log("ALL PRODUCTS", allProducts)
+    ("ALL PRODUCTS", allProducts)
   const singleBrand = useSelector(state => state.brands.singleBrand)
-  console.log(singleBrand)
+    (singleBrand)
   const singleProduct = useSelector((state) => state.products.singleProduct)
-  console.log("SINGLE PRODUCT", singleProduct)
+    ("SINGLE PRODUCT", singleProduct)
   const allProductsArr = Object.values(allProducts)
-  console.log("all products arr", allProductsArr)
+    ("all products arr", allProductsArr)
 
   const [name, setName] = useState(singleProduct.name)
   const [price, setPrice] = useState(singleProduct.price)
@@ -73,7 +73,7 @@ const EditProductPage = ({ update }) => {
     return image instanceof File;
   };
 
-  console.log("IMAGES", images)
+  ("IMAGES", images)
 
 
   //checks if a new file is selected for an image, and changes the state accordingly
@@ -130,9 +130,9 @@ const EditProductPage = ({ update }) => {
       }
     }
   }
-  console.log("PRODUCTS", products)
+  ("PRODUCTS", products)
   const currentProductTest = products.find(product => productId == product.id);
-  console.log("CURRENT PRODUCT", currentProductTest)
+  ("CURRENT PRODUCT", currentProductTest)
 
   useEffect(() => {
     // dispatch(getSingleBrandThunk(brandName))
@@ -141,11 +141,11 @@ const EditProductPage = ({ update }) => {
   }, [dispatch]);
 
   useEffect(() => {
-  if (singleProduct && singleProduct.features) {
-    setFeatures(singleProduct.features);
-    setIsLoadingFeatures(false);
-  }
-}, [singleProduct]);
+    if (singleProduct && singleProduct.features) {
+      setFeatures(singleProduct.features);
+      setIsLoadingFeatures(false);
+    }
+  }, [singleProduct]);
 
   useEffect(() => {
     if (singleProduct.name) {
@@ -178,7 +178,7 @@ const EditProductPage = ({ update }) => {
 
   // const currentProduct = products.find(product => productId == product.id);
 
-  //   console.log("CURRENT PRODUCT", currentProduct)
+  //   ("CURRENT PRODUCT", currentProduct)
   //   setName(currentProduct?.name);
   //   setPrice(currentProduct?.price);
   //   setDescription(currentProduct?.description);
@@ -207,9 +207,9 @@ const EditProductPage = ({ update }) => {
 
   //combine images before sending them to the database
   const combinedImages = [...imagesArr, optionalImage1, optionalImage2].filter(Boolean).join(',');
-  console.log("COMBINED IMAGES", combinedImages)
+  ("COMBINED IMAGES", combinedImages)
   const combinedFeatures = [...featuresArr].filter(Boolean).join(',');
-  console.log("features", combinedFeatures)
+  ("features", combinedFeatures)
 
 
   const validate = () => {
@@ -263,19 +263,19 @@ const EditProductPage = ({ update }) => {
     //   errors.image1 = "Please provide an image";
     // }
 
-    console.log("IMAGE 1 CHECK", image1)
+    ("IMAGE 1 CHECK", image1)
 
-    console.log("CHECKING IMAGES ARR", images)
-    // if (image) {
-    //   //split the image with the url. then check to see if the image has the checks needed.
-    //   const fileExtension = image.split('.').pop().toLowerCase();
-    //   const checkLast = ['jpg', 'png', 'jpeg'];
-    //   if (!checkLast.includes(fileExtension)) {
-    //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
-    //   }
-    // }
+      ("CHECKING IMAGES ARR", images)
+      // if (image) {
+      //   //split the image with the url. then check to see if the image has the checks needed.
+      //   const fileExtension = image.split('.').pop().toLowerCase();
+      //   const checkLast = ['jpg', 'png', 'jpeg'];
+      //   if (!checkLast.includes(fileExtension)) {
+      //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
+      //   }
+      // }
 
-    console.log("ERRORS", errors)
+      ("ERRORS", errors)
     if (isNaN(inventory)) {
       errors.inventory = "Inventory needs to be a number";
     }
@@ -296,7 +296,7 @@ const EditProductPage = ({ update }) => {
   const onSubmit = async (e) => {
     e.preventDefault()
 
-    console.log('Before onSubmit');
+      ('Before onSubmit');
 
     const errors = validate()
     const errorContent = Object.values(errors)
@@ -332,8 +332,8 @@ const EditProductPage = ({ update }) => {
     }
 
 
-    console.log("FORM FILE DATA", formFileData)
-    console.log("WE ARE RIGHT BEFORE UPDATE SUBMISSON ON FRONTEND- FORM DATA")
+    ("FORM FILE DATA", formFileData)
+      ("WE ARE RIGHT BEFORE UPDATE SUBMISSON ON FRONTEND- FORM DATA")
     const formData = {
       name: name,
       description: description,
@@ -347,10 +347,10 @@ const EditProductPage = ({ update }) => {
 
 
     await dispatch(updateProductThunk(formFileData, brandName, productId)).then(() => history.push(`/store-dashboard/${brandName}`))
-    console.log("FORM DATA", formData)
+      ("FORM DATA", formData)
   }
 
-  console.log("PRODUCTS OF BRAND", products)
+  ("PRODUCTS OF BRAND", products)
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -360,8 +360,8 @@ const EditProductPage = ({ update }) => {
   }, []);
 
   if (isLoading || isLoadingFeatures) {
-  return <LoadingButton />;
-}
+    return <LoadingButton />;
+  }
 
   return (
     <div className='product-list-dashboard-container'>

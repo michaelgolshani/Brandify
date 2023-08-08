@@ -18,7 +18,7 @@ import LoadingButton from '../LoadingButton'
 
 
 
-export const BrandHomePage = ({isLoaded}) => {
+export const BrandHomePage = ({ isLoaded }) => {
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -26,18 +26,18 @@ export const BrandHomePage = ({isLoaded}) => {
   const sessionUser = useSelector(state => state.session.user);
 
   const { brandName } = useParams()
-  console.log("BRAND NAME FOR HOME PAGE", brandName)
+    ("BRAND NAME FOR HOME PAGE", brandName)
 
   const state = useSelector((state) => state)
-  console.log("STATE", state)
+    ("STATE", state)
   const currentBrand = state.brands.singleBrand
-  console.log("CURRENT BRAND", currentBrand)
-  console.log("CURRENT BRAND STORY", currentBrand.story)
+    ("CURRENT BRAND", currentBrand)
+    ("CURRENT BRAND STORY", currentBrand.story)
 
 
   const [theme, setTheme] = useState(currentBrand.theme)
 
-  console.log("CURERNT BRAND THEME", theme)
+    ("CURERNT BRAND THEME", theme)
 
   useEffect(() => {
 
@@ -51,7 +51,7 @@ export const BrandHomePage = ({isLoaded}) => {
     dispatch(getSingleBrandThunk(brandName))
   }, [dispatch, brandName])
 
-  
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -76,24 +76,24 @@ export const BrandHomePage = ({isLoaded}) => {
     <>
       {currentBrand ? (
         <div className={`${theme}`}>
-        <div className={`brand-page-main-container ${theme}`} id='brand-page-main-container'>
-          <BrandNavBar brandName={brandName} theme={theme} currentBrand={currentBrand} sessionUser={sessionUser} isLoaded={isLoaded}/>
-          <BrandHeader brandName={brandName} theme={theme} currentBrand={currentBrand} />
-          <BrandInfiniteScroll theme={theme} />
+          <div className={`brand-page-main-container ${theme}`} id='brand-page-main-container'>
+            <BrandNavBar brandName={brandName} theme={theme} currentBrand={currentBrand} sessionUser={sessionUser} isLoaded={isLoaded} />
+            <BrandHeader brandName={brandName} theme={theme} currentBrand={currentBrand} />
+            <BrandInfiniteScroll theme={theme} />
 
-          <BrandProducts brandName={brandName} theme={theme} currentBrand={currentBrand} />
-          <BrandAbout brandName={brandName} theme={theme} currentBrand={currentBrand} />
-
-
-          {currentBrand.products.length >= 1 && (
-            <BrandFeatured currentBrand={currentBrand} theme={theme} brandName={brandName} />
-          )
-          }
+            <BrandProducts brandName={brandName} theme={theme} currentBrand={currentBrand} />
+            <BrandAbout brandName={brandName} theme={theme} currentBrand={currentBrand} />
 
 
-          <BrandGallery />
-          <BrandFooter />
-        </div>
+            {currentBrand.products.length >= 1 && (
+              <BrandFeatured currentBrand={currentBrand} theme={theme} brandName={brandName} />
+            )
+            }
+
+
+            <BrandGallery />
+            <BrandFooter />
+          </div>
         </div>
       ) : null
       }

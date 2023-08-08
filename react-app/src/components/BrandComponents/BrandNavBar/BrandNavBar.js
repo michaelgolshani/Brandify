@@ -10,9 +10,9 @@ import { BrandProfileButton } from './BrandProfileButton'
 export const BrandNavBar = ({ brandName, currentBrand, cartItems, openCart, setOpenCart, theme, sessionUser, isLoaded }) => {
 
   const history = useHistory()
-  console.log("CART ITEMS", cartItems)
+    ("CART ITEMS", cartItems)
 
-  console.log("WE ARE LOOKING AT USER  IN NAV BAR", sessionUser)
+    ("WE ARE LOOKING AT USER  IN NAV BAR", sessionUser)
 
   // let quantity=0
   // if (cartItems?.length > 1){

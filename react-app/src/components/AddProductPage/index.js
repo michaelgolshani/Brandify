@@ -34,24 +34,24 @@ const AddProductPage = ({ update }) => {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // const [checkRender, setCheckRender] = useState(true)
+    // const [checkRender, setCheckRender] = useState(true)
 
-  console.log("UPDATE", update)
-  console.log("PRODUCT ID", productId)
-  console.log("IMAGE1", image1)
+    ("UPDATE", update)
+    ("PRODUCT ID", productId)
+    ("IMAGE1", image1)
 
   const state = useSelector(state => state)
-  console.log(state)
+    (state)
   const allProducts = useSelector(state => state?.products.allProducts)
-  console.log("ALL PRODUCTS", allProducts)
+    ("ALL PRODUCTS", allProducts)
   const singleBrand = useSelector(state => state.brands.singleBrand)
-  console.log(singleBrand)
+    (singleBrand)
   const singleProduct = useSelector((state) => state.products.singleProduct)
-  console.log("SINGLE PRODUCT", singleProduct)
+    ("SINGLE PRODUCT", singleProduct)
   const allProductsArr = Object.values(allProducts)
-  console.log("all products arr", allProductsArr)
+    ("all products arr", allProductsArr)
 
-  console.log("IMAGES", images)
+    ("IMAGES", images)
 
   //find the single product
   let products = []
@@ -64,9 +64,9 @@ const AddProductPage = ({ update }) => {
       }
     }
   }
-  console.log("PRODUCTS", products)
+  ("PRODUCTS", products)
   const currentProductTest = products.find(product => productId == product.id);
-  console.log("CURRENT PRODUCT", currentProductTest)
+  ("CURRENT PRODUCT", currentProductTest)
 
   useEffect(() => {
     dispatch(getSingleBrandThunk(brandName))
@@ -80,7 +80,7 @@ const AddProductPage = ({ update }) => {
 
   // const currentProduct = products.find(product => productId == product.id);
 
-  //   console.log("CURRENT PRODUCT", currentProduct)
+  //   ("CURRENT PRODUCT", currentProduct)
   //   setName(currentProduct?.name);
   //   setPrice(currentProduct?.price);
   //   setDescription(currentProduct?.description);
@@ -108,9 +108,9 @@ const AddProductPage = ({ update }) => {
 
   //combine images before sending them to the database
   const combinedImages = [...images, optionalImage1, optionalImage2].filter(Boolean).join(',');
-  console.log("COMBINED IMAGES", combinedImages)
+  ("COMBINED IMAGES", combinedImages)
   const combinedFeatures = [...features].filter(Boolean).join(',');
-  console.log("features", combinedFeatures)
+  ("features", combinedFeatures)
 
   const validate = () => {
     const errors = {}
@@ -168,17 +168,17 @@ const AddProductPage = ({ update }) => {
 
 
 
-    console.log("CHECKING IMAGES ARR", images)
-    // if (image) {
-    //   //split the image with the url. then check to see if the image has the checks needed.
-    //   const fileExtension = image.split('.').pop().toLowerCase();
-    //   const checkLast = ['jpg', 'png', 'jpeg'];
-    //   if (!checkLast.includes(fileExtension)) {
-    //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
-    //   }
-    // }
+    ("CHECKING IMAGES ARR", images)
+      // if (image) {
+      //   //split the image with the url. then check to see if the image has the checks needed.
+      //   const fileExtension = image.split('.').pop().toLowerCase();
+      //   const checkLast = ['jpg', 'png', 'jpeg'];
+      //   if (!checkLast.includes(fileExtension)) {
+      //     errors.image = "Image URL needs to end in .png, .jpg or .jpeg";
+      //   }
+      // }
 
-    console.log("ERRORS", errors)
+      ("ERRORS", errors)
     if (isNaN(inventory)) {
       errors.inventory = "Inventory needs to be a number";
     }
@@ -196,7 +196,7 @@ const AddProductPage = ({ update }) => {
 
     const errors = validate()
     const errorContent = Object.values(errors)
-    console.log("ERRORS", errors)
+      ("ERRORS", errors)
     if (errorContent.length) return setErrors(errors)
 
 
@@ -219,7 +219,7 @@ const AddProductPage = ({ update }) => {
       formFileData.append('image5', image5)
     }
 
-    console.log("FORM FILE DATA", formFileData)
+    ("FORM FILE DATA", formFileData)
 
     const formData = {
       name: name,
@@ -233,10 +233,10 @@ const AddProductPage = ({ update }) => {
     // dispatch(createProductThunk(formData, brandName))
     dispatch(createProductThunk(formFileData, brandName))
     history.push(`/store-dashboard/${brandName}`)
-    console.log("FORM DATA", formData)
+      ("FORM DATA", formData)
   }
 
-  console.log("PRODUCTS OF BRAND", products)
+  ("PRODUCTS OF BRAND", products)
 
 
   // checks to make sure that page is given some time to load or clear any previous data.
