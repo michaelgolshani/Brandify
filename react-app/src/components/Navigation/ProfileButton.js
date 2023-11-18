@@ -43,6 +43,11 @@ function ProfileButton({ user }) {
     closeMenu()
   }
 
+  const handleExploreBrands = (e) => {
+    history.push('/explore/brands')
+    closeMenu()
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -58,8 +63,8 @@ function ProfileButton({ user }) {
 
             {/* <div className="profile-dropdown-logo profile-contents">{user.email}</div> */}
 
-            <div className="profile-dropdown-logo profile-contents" onClick={()=> history.push('/explore/brands')}>
-            <i class="fa-solid fa-magnifying-glass profile-dropdown-icon"></i>
+            <div className="profile-dropdown-logo profile-contents" onClick={handleExploreBrands}>
+              <i class="fa-solid fa-magnifying-glass profile-dropdown-icon"></i>
               <div>Explore Brands</div>
             </div>
 

@@ -9,9 +9,9 @@
   font-family: 'syncopate-bold';
   color: #464646;
   text-transform: uppercase;
- padding-right: 5vw;
- padding-left: 5vw;
- background-color: transparent;
+  padding-right: 5vw;
+  padding-left: 5vw;
+  background-color: transparent;
 }
 
 .poppy .brand-navbar {
@@ -25,9 +25,9 @@
   font-family: 'syncopate-bold';
   color: black;
   text-transform: uppercase;
- padding-right: 5vw;
- padding-left: 5vw;
- background-color: transparent;
+  padding-right: 5vw;
+  padding-left: 5vw;
+  background-color: transparent;
 }
 
 
@@ -40,24 +40,25 @@
 
 
 
-.brand-navbar-right-side{
+.brand-navbar-right-side {
   display: flex;
   align-items: center;
   padding-left: 10vw;
+  cursor: pointer;
 }
 
-.brand-navbar-cart-text{
+.brand-navbar-cart-text {
   padding-right: 60px;
   cursor: pointer;
 }
 
-.brand-navbar-brand-name{
+.brand-navbar-brand-name {
   cursor: pointer;
 
 }
 
 
-.brand-navbar-all-products{
+.brand-navbar-all-products {
   display: flex;
   align-items: center;
   text-align: center;

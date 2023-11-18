@@ -32,16 +32,13 @@ const EditProductPage = ({ update }) => {
 
 
   const state = useSelector(state => state)
-
   const allProducts = useSelector(state => state?.products.allProducts)
-
   const singleBrand = useSelector(state => state.brands.singleBrand)
-
   const singleProduct = useSelector((state) => state.products.singleProduct)
-
   const allProductsArr = Object.values(allProducts)
 
 
+  //Product Info State
   const [name, setName] = useState(singleProduct.name)
   const [price, setPrice] = useState(singleProduct.price)
   const [description, setDescription] = useState(singleProduct.description)
@@ -53,6 +50,7 @@ const EditProductPage = ({ update }) => {
   const [image5, setImage5] = useState(singleProduct.image5)
 
 
+  //Product Image Preview State
   const [image1Preview, setImage1Preview] = useState(singleProduct.image1 ? singleProduct.image1 : null);
   const [image2Preview, setImage2Preview] = useState(singleProduct.image2 ? singleProduct.image2 : null);
   const [image3Preview, setImage3Preview] = useState(singleProduct.image3 ? singleProduct.image3 : null);
@@ -69,6 +67,10 @@ const EditProductPage = ({ update }) => {
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(true);
 
+
+
+
+//Function to check if an image is selected
   const isImageSelected = (image) => {
     return image instanceof File;
   };
