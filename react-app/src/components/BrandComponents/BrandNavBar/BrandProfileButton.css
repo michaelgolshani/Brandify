@@ -1,4 +1,51 @@
-.font-size{
-  font-size: 10px;
+.font-size {
+  font-size: 15px;
+  /* margin-top: 10px; */
 }
 
+.margin-top-15 {
+  margin-top: 20px;
+}
+
+.margin-right-25 {
+  margin-right: 25px;
+}
+
+.brand-font-profile-dropdown {
+  font-family: ShopifySans, Helvetica, Arial, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  position: relative;
+  /* Required for positioning pseudo-element */
+}
+
+/* Hide the underline initially */
+.brand-font-profile-dropdown::after {
+  content: '';
+  /* Ensures the pseudo-element is visible */
+  position: absolute;
+  /* Position it relative to the parent */
+  left: 0;
+  /* Adjust positioning as needed */
+  bottom: -2px;
+  /* Adjust positioning as needed */
+  width: 100%;
+  /* Full width of the text */
+  height: 1.5px;
+  /* Height of the underline */
+  background-color: transparent;
+  /* Initially transparent */
+  opacity: 0;
+  /* Set initial opacity to hide */
+  transition: width 0.5s ease, opacity 0.5s ease, transform 10s ease;
+  /* Adding transition for smooth animation */
+}
+
+/* Show the underline with animation on hover or focus */
+.brand-font-profile-dropdown:hover::after,
+.brand-font-profile-dropdown:focus::after {
+  opacity: 1;
+  /* Show the underline */
+  background-color: #000;
+  /* Color of the underline */
+}

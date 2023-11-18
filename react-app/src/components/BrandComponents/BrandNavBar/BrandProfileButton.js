@@ -6,7 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import LoginFormModal from "../../LoginFormModal";
 import SignupFormModal from "../../SignupFormModal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import "./BrandProfileButton.css"
 
 export const BrandProfileButton = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export const BrandProfileButton = () => {
     closeMenu()
   }
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown margin-right-25 margin-top-15" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
 
@@ -60,19 +60,19 @@ export const BrandProfileButton = () => {
 
 
 
-            {/* <div className="profile-dropdown-logo profile-contents">{user.email}</div> */}
+        {/* <div className="profile-dropdown-logo profile-contents">{user.email}</div> */}
 
-            <div className="profile-dropdown-logo profile-contents" onClick={() => history.push('/explore/brands')}>
-            <i class="fa-solid fa-magnifying-glass profile-dropdown-icon font-size"></i>
-              <div className="font-size">Explore Brands</div>
-            </div>
+        <div className="profile-dropdown-logo profile-contents margin-top-15" onClick={() => history.push('/explore/brands')}>
+          <i class="fa-solid fa-magnifying-glass profile-dropdown-icon font-size"></i>
+          <div className="brand-font-profile-dropdown font-size">Explore Brands</div>
+        </div>
 
-            <div className="profile-dropdown-logo profile-contents" onClick={() => history.push('/')}>
-              <i className="fa-sharp fa-solid fa-store profile-dropdown-icon font-size"></i>
-              <div>Home</div>
-            </div>
+        <div className="profile-dropdown-logo profile-contents" onClick={() => history.push('/')}>
+          <i className="fa-sharp fa-solid fa-store profile-dropdown-icon font-size"></i>
+          <div className="brand-font-profile-dropdown font-size">Home</div>
+        </div>
 
-            {/* <div className="profile-dropdown-logo profile-contents">
+        {/* <div className="profile-dropdown-logo profile-contents">
               <i class="fa-solid fa-arrow-right profile-dropdown-icon"></i>
               <div onClick={handleLogout}>Log Out</div>
             </div> */}

@@ -65,17 +65,17 @@ function ProfileButton({ user }) {
 
             <div className="profile-dropdown-logo profile-contents" onClick={handleExploreBrands}>
               <i class="fa-solid fa-magnifying-glass profile-dropdown-icon"></i>
-              <div>Explore Brands</div>
+              <div className="brand-font-profile-dropdown">Explore Brands</div>
             </div>
 
             <div className="profile-dropdown-logo profile-contents" onClick={handleMyBrands}>
               <i className="fa-sharp fa-solid fa-store profile-dropdown-icon"></i>
-              <div>My Brands</div>
+              <div className="brand-font-profile-dropdown">My Brands</div>
             </div>
 
             <div className="profile-dropdown-logo profile-contents">
               <i class="fa-solid fa-arrow-right profile-dropdown-icon"></i>
-              <div onClick={handleLogout}>Log Out</div>
+              <div onClick={handleLogout} className="brand-font-profile-dropdown">Log Out</div>
             </div>
           </>
         ) : (

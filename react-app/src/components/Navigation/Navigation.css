@@ -27,7 +27,7 @@
 .profile-dropdown-logo {
   display: flex;
   flex-direction: row;
-
+  align-items: center;
 }
 
 .profile-dropdown-icon {
@@ -78,7 +78,7 @@
 
 }
 
-.nav-bar-icon-dropdown{
+.nav-bar-icon-dropdown {
   margin-left: 30px;
   cursor: pointer;
 }
