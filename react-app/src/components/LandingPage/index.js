@@ -38,9 +38,9 @@ const LandingPage = () => {
       </section>
 
       <div className='landing-page-your-store-container'>
-        <div className='landing-page-your-store-text'>Your store, redefined</div>
-        <img className='landing-page-example' src={landingPageExample} />
-        <div className='landing-page-two-section'>
+        <h2 className='landing-page-your-store-text'>Your store, redefined</h2>
+        <img className='landing-page-example' src={landingPageExample} alt="An example of what your store can look like"/>
+        <section className='landing-page-two-section' aria-labelledby="landing-page-section-title">
           <div className='landing-page-individual-sections'>
             <div className='landing-page-indivdual-section-top-border'></div>
             <div className='landing-page-indivdual-section-top-title'>Build an online storefront</div>
@@ -54,7 +54,7 @@ const LandingPage = () => {
           </div>
 
 
-        </div>
+        </section>
       </div>
     </div>
   )
