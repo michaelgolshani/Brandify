@@ -15,27 +15,27 @@ const LandingPage = () => {
 
   return (
     <div className='landing-page-container'>
-      <div className='landing-page-top-container'>
+      <div className='landing-page-top-container' role="banner">
         <div className='landing-page-left-side'>
-          <div className='landing-page-header'>The global commerce platform</div>
+          <h1 className='landing-page-header' role="heading">The global commerce platform</h1>
           <h2>Build your business with Brandify to sell online, offline, and everywhere in between.</h2>
           <NavLink to="/signup">
-            <button className='landing-page-signup'>Sign Up</button>
+            <button className='landing-page-signup' role='button' aria-label='Sign Up'>Sign Up</button>
           </NavLink>
         </div>
-        <div className='landing-page-right-side'>
+        <div className='landing-page-right-side' aria-aria-label='Infinite Scroll Feature Section'>
           <LandingPageInfiniteScroll  />
         </div>
       </div>
 
-      <div className='landing-page-middle-container'>
-        <h2 className='landing-page-middle-container-text'>Discover why millions of entrepreneurs choose Brandify to build their business — from hello world to IPO.</h2>
-        <div className='landing-page-description-cards'>
+      <section className='landing-page-middle-container'>
+        <h2 className='landing-page-middle-container-text' role='heading' aria-level="2">Discover why millions of entrepreneurs choose Brandify to build their business — from hello world to IPO.</h2>
+        <div className='landing-page-description-cards' aria-label='Description Cards'>
           <DescriptionCard color='white' cardTitle='high-res'/>
           <DescriptionCard color='white' cardTitle='flexible'/>
           <DescriptionCard color='white' cardTitle='versatile'/>
         </div>
-      </div>
+      </section>
 
       <div className='landing-page-your-store-container'>
         <div className='landing-page-your-store-text'>Your store, redefined</div>
