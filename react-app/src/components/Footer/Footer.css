@@ -39,3 +39,27 @@
 .footer-links:hover{
   color: blue;
 }
+
+
+/* Mobile styles for landing page */
+@media (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .footer-left {
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .footer-right {
+    padding: 0;
+  }
+
+  .footer-links {
+    padding: 10px;
+  }
+}
