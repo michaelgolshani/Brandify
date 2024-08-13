@@ -74,3 +74,22 @@
     transform: translateY(-100%);
   }
 }
+
+
+
+/* Mobile styles for landing page */
+@media (max-width: 767px) {
+  .landing-page-scroll-container {
+    height: 50vh;
+  }
+
+  .landing-page-right-side {
+    padding-top: 12vh;
+  }
+
+  .landing-page-logos-slide div {
+    font-size: 34px;
+    margin: 20px 0px;
+    padding: 5px 5px;
+  }
+}

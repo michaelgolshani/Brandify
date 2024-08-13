@@ -103,3 +103,29 @@
  margin-right: 3vw;
  text-align: center;
 }
+
+
+
+
+/* Mobile styles for landing page */
+@media (max-width: 767px) {
+  .description-card-container.landing-page-card {
+    width: 50vw;
+    height: auto;
+    min-height: 200px;
+    margin-right: 0;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .description-card-container.landing-page-card .description-card-title {
+    font-size: 6vw;
+    text-align: center;
+  }
+
+  .description-card-container.landing-page-card .description-arrow {
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+  }
+}

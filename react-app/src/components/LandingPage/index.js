@@ -66,9 +66,21 @@ const LandingPage = () => {
           className="landing-page-description-cards"
           aria-label="Description Cards"
         >
-          <DescriptionCard color="white" cardTitle="high-res" />
-          <DescriptionCard color="white" cardTitle="flexible" />
-          <DescriptionCard color="white" cardTitle="versatile" />
+          <DescriptionCard
+            color="white"
+            cardTitle="high-res"
+            className="landing-page-card"
+          />
+          <DescriptionCard
+            color="white"
+            cardTitle="flexible"
+            className="landing-page-card"
+          />
+          <DescriptionCard
+            color="white"
+            cardTitle="versatile"
+            className="landing-page-card"
+          />
         </div>
       </section>
 

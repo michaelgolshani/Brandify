@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background: linear-gradient(60deg, #ffffff 25%, rgb(119, 255, 212, 0.6) 75%, rgba(119, 207, 255, 0.6));
 }
 
@@ -14,10 +13,7 @@
   letter-spacing: -.025em;
   font-size: 5.75rem;
   line-height: 1.1;
-  /* text-align: center; */
-
 }
-
 
 .landing-page-top-container {
   display: flex;
@@ -156,4 +152,79 @@ padding-bottom: 20vh;
 .landing-page-description-cards{
   display: flex;
   justify-content: center;
+}
+
+
+
+/* Mobile styles for landing page */
+@media (max-width: 767px) {
+  .landing-page-container {
+    padding: 20px;
+  }
+
+  .landing-page-header {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .landing-page-top-container {
+    flex-direction: column;
+    height: auto;
+    padding-top: 40px;
+  }
+
+  .landing-page-right-side,
+  .landing-page-left-side {
+    width: 100%;
+  }
+
+  .landing-page-middle-container-text {
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 3vh;
+  }
+
+  .landing-page-middle-container {
+    height: auto;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+
+  .landing-page-signup {
+    width: 100%;
+    max-width: 300px;
+    margin-right: 0;
+  }
+
+  .landing-page-your-store-text {
+    font-size: 2rem;
+    padding-bottom: 4vh;
+  }
+
+  .landing-page-example {
+    width: 100%;
+  }
+
+  .landing-page-two-section {
+    flex-direction: column;
+    padding-bottom: 10vh;
+  }
+
+  .landing-page-individual-sections {
+    width: 100%;
+    padding: 4vw 0;
+  }
+
+  .landing-page-indivdual-section-top-title {
+    font-size: 1.5rem;
+  }
+
+  .landing-page-indivdual-section-paragraph {
+    font-size: 16px;
+  }
+
+  .landing-page-description-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 }
