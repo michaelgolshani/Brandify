@@ -19,8 +19,8 @@ const LandingPage = () => {
         <div className='landing-page-left-side'>
           <h1 className='landing-page-header' role="heading">The global commerce platform</h1>
           <h2>Build your business with Brandify to sell online, offline, and everywhere in between.</h2>
-          <NavLink to="/signup">
-            <button className='landing-page-signup' role='button' aria-label='Sign Up'>Sign Up</button>
+          <NavLink to="/store-login">
+            <button className='landing-page-signup' role='button' aria-label='See your brands'>See your Brands</button>
           </NavLink>
         </div>
         <div className='landing-page-right-side' aria-aria-label='Infinite Scroll Feature Section'>
