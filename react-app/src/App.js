@@ -22,6 +22,7 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import Footer from "./components/Footer";
 import ErrorPage from "./components/404Page";
 import { AllBrands } from "./components/AllBrandsPage/AllBrands";
+import DashboardHome from "./components/BrandDashboard/DashboardHome";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,18 @@ function App() {
               <Navigation isLoaded={isLoaded} />
               <BrandDashboardPage />
             </Route>
+
+
+
+
+            <Route exact path='/dashboard-test/:brandName'>
+              {/* <Navigation isLoaded={isLoaded} /> */}
+              <DashboardHome />
+            </Route>
+
+
+
+
             <Route exact path='/:brandName/products'>
               <Navigation isLoaded={isLoaded} />
               <ProductListPage />
