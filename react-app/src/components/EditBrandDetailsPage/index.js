@@ -1,18 +1,9 @@
-import React from 'react'
-import { useEffect } from 'react'
-import CreateBrandPage from '../CreateBrandPage';
-import { createBrandThunk, deleteBrandThunk, getAllBrandsThunk } from '../../store/brands';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { updateBrandThunk } from '../../store/brands';
-import { useParams } from 'react-router-dom';
-import { getSingleBrandThunk } from '../../store/brands';
-import { FormDataProvider } from '../../context/FormDataContext';
-import { FormDataContext } from '../../context/FormDataContext';
-import { useContext } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams, useHistory } from 'react-router-dom';
+import { updateBrandThunk, deleteBrandThunk, getAllBrandsThunk, getSingleBrandThunk } from '../../store/brands';
 import LoadingButton from '../LoadingButton';
-
+import './EditBrandDetailsPage.css'
 
 export const EditBrandDetails = () => {
   const dispatch = useDispatch();
@@ -165,71 +156,104 @@ export const EditBrandDetails = () => {
 
 
   return (
-    <>
-      <div className="create-brand-full-container">
-        <div className="create-brand-container">
+    <div className='dashboard-container'>
+      <main className="main-content">
+        <header className="main-header">
+          <div className="header-left">
+            <button
+              className="back-button"
+              onClick={() => history.push(`/store-dashboard/${brandName}`)}
+            >
+              <i className="fas fa-arrow-left"></i>
+              <span>Back to Dashboard</span>
+            </button>
+          </div>
+          <div className="dashboard-title">Edit Details</div>
+          <div className="notification-icon">
+            <i className="fas fa-bell"></i>
+          </div>
+        </header>
 
-          <form onSubmit={handleSubmit} className="form-container">
-            <div className="create-brand-top-header-store">
-              Brand Details
-            </div>
-            <div className="create-brand-top-header-store-bottom">
-              Edit your brand.
-            </div>
-            <label>
-              Name
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="login-input"
-              />
-              {errors.name && <p className="error">{errors.name}</p>}
-            </label>
-            <label>
-              Brand Slogan
-              <input
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                className="login-input description"
-              />
-              {errors.description && <p className="error">{errors.description}</p>}
-            </label>
-            <label>
-              Brand Story
-              <textarea
-                type="text"
-                value={story}
-                onChange={(e) => setStory(e.target.value)}
-                required
-                className="login-input brand-story"
-              />
-              {errors.story && <p className="error">{errors.story}</p>}
-            </label>
-            <label>
-              Theme
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-                className="login-input"
-              >
-                <option value="modern">Modern</option>
-                <option value="poppy">Poppy</option>
-              </select>
-            </label>
+        <div className="edit-brand-content">
+          <form onSubmit={handleSubmit} className="edit-form">
+            <div className="form-section">
+              <div className="section-header">
+                <h3>Basic Information</h3>
+                <p>Update your brand's core details</p>
+              </div>
 
-            <div className="login-form-button-container">
-              <button className="login-form-button create-brand-create-button" type="submit">Update Brand</button>
+              <div className="input-group">
+                <label>
+                  Brand Name
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="form-input"
+                    placeholder="Enter brand name"
+                  />
+                  {errors.name && <p className="error-message">{errors.name}</p>}
+                </label>
+              </div>
+
+              <div className="input-group">
+                <label>
+                  Brand Slogan
+                  <input
+                    type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                    className="form-input"
+                    placeholder="Enter brand slogan"
+                  />
+                  {errors.description && <p className="error-message">{errors.description}</p>}
+                </label>
+              </div>
+
+              <div className="input-group">
+                <label>
+                  Brand Story
+                  <textarea
+                    value={story}
+                    onChange={(e) => setStory(e.target.value)}
+                    required
+                    className="form-input textarea"
+                    placeholder="Tell your brand's story"
+                  />
+                  {errors.story && <p className="error-message">{errors.story}</p>}
+                </label>
+              </div>
+
+              <div className="input-group">
+                <label>
+                  Theme
+                  <select
+                    value={theme}
+                    onChange={(e) => setTheme(e.target.value)}
+                    className="form-input"
+                  >
+                    <option value="modern">Modern</option>
+                    <option value="poppy">Poppy</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div className="form-actions">
+              <button type="submit" className="action-button primary">
+                Update Brand
+              </button>
+              <button type="button" className="action-button danger" onClick={handleDelete}>
+                Delete Brand
+              </button>
             </div>
           </form>
-          <button className="edit-brand-delete-button " onClick={handleDelete}>Delete Brand</button>
         </div>
-      </div>
-    </>
+      </main>
+    </div>
   );
 }
 
-export default CreateBrandPage
+export default EditBrandDetails;

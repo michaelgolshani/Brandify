@@ -1,0 +1,216 @@
+/* Layout */
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all var(--transition-speed) ease;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  transition: all var(--transition-speed) ease;
+  position: fixed;
+  height: 100vh;
+  /* overflow-y: auto; */
+}
+
+.logo {
+  height: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent-blue);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  margin-left: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity var(--transition-speed) ease;
+  background: linear-gradient(45deg, var(--text-primary), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  right: 25px;
+  /* top: 35px; */
+  bottom: 90px;
+  width: 24px;
+  height: 24px;
+  /* background: var(--accent-blue); */
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  z-index: 100;
+  transform: scaleX(-1); /* Flip horizontally */
+  font-size: 1.3rem;
+}
+
+.sidebar-toggle:hover {
+  /* background: #3F5ED9; */
+  transform: scaleX(-1);
+}
+
+.sidebar-closed .sidebar-toggle {
+  bottom: 120px; /* Adjust this to move it further up */
+  transform: scaleX(1);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  flex: 1;
+  margin-bottom: auto;
+}
+
+.sidebar .nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+
+.nav-item i {
+  margin-right: 12px;
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color var(--transition-speed) ease;
+}
+
+.nav-item span {
+  font-size: 14px;
+  transition: opacity var(--transition-speed) ease;
+}
+
+/* Active Navigation Item with Gradient Border */
+.nav-item.active {
+  position: relative;
+  z-index: 0;
+  background: transparent;
+  overflow: hidden;
+  color: var(--text-primary);
+}
+
+.nav-item.active::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: -200%;
+  background: conic-gradient(
+    from 0deg,
+    var(--accent-blue),
+    #687aff,
+    var(--accent-blue),
+    #8b98fd,
+    var(--accent-blue)
+  );
+  animation: rotateGradient 4s linear infinite;
+  width: 500%;
+  height: 600%;
+  top: -200%;
+  left: -200%;
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 2px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Optional: Add a glow effect to the active item */
+.nav-item.active i {
+  color: var(--accent-blue);
+  filter: drop-shadow(0 0 8px rgba(79, 110, 246, 0.5));
+}
+
+/* Adjust hover state for better interaction */
+.nav-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active:hover::after {
+  background: rgba(30, 30, 30, 1);
+}
+
+/* New Product Button */
+.new-product-btn {
+  background: linear-gradient(135deg, #3c7dff, #9d4edd);
+  color: white;
+  padding: 0;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  height: 48px;
+}
+
+.new-product-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glow-pink);
+  background: linear-gradient(135deg, #6b9cfe, #a86adc);
+}
+
+.new-product-btn:not(.sidebar-closed){
+  padding: 0 24px; /* Add padding only in expanded state */
+}
+
+.new-product-btn i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; /* Set fixed width */
+  height: 24px; /* Set fixed height */
+  font-size: 20px; /* Adjust as needed */
+  margin: 0; /* Remove any margin */
+}

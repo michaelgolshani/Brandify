@@ -1,83 +1,236 @@
-.main-container {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  /* margin-right: 250px; */
+/* Import the variables from DashboardHome.css */
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --accent-blue: #4f6ef6;
+  --accent-pink: #ff5b79;
+  --accent-yellow: #ffb648;
+  --border-radius: 16px;
+  --transition-speed: 0.3s;
 }
 
-
-.main-dashboard-brand-name{
-  font-size: 40px;
-  font-weight: bold;
-  font-family: 'syncopate-bold';
-  text-transform: uppercase;
-  padding: 20px 0px;
-  letter-spacing: 0.1px;
+.dashboard-container {
+  background: var(--bg-primary) !important;
+  min-height: 100vh;
+  color: var(--text-primary);
 }
 
-.grid-container {
+/* Main Content Styles */
+.main-content {
+  padding: 32px 40px;
+}
+
+.main-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.main-header h1 {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-
-
+  transition: background-color var(--transition-speed) ease;
 }
 
-.grid-row {
-
-  display: flex;
-  flex-direction: row;
-  margin: 50px 50px;
-  /* width: 70%; */
-
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-.grid-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 50px;
-  /* background-color: rgb(166, 166, 166); */
-  margin: 0px 10px;
-  width: 10vw;
-  height: 10vw;
-  border-radius: 20px;
+.metric-card {
+  background: var(--bg-secondary);
+  padding: 24px;
+  border-radius: var(--border-radius);
   cursor: pointer;
+  transition: transform var(--transition-speed) ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.metric-header h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.metric-action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.action-icon {
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
-  border: 2px solid black;
-  /* box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3),
-    -15px -15px 50px rgba(253, 253, 253, 0.7); */
-  box-shadow: 0px 8px 6px 0px black;
-  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out, border 0.1s ease-in-out;
-
-  /* padding:80px 50px 50px; */
-  background-color: rgba(236, 236, 236, 1);
-  backdrop-filter: blur(15px);
-
-  /* box-shadow: 2px 2px 0px 2px green; */
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.grid-cell:hover {
-  transform: translateY(10px);
-  box-shadow: none;
-  border: 2px solid black;
-
+.action-icon.pink {
+  background: var(--accent-pink);
 }
 
-.inside-text {
-  font-size: 30px;
-  padding: 0px 0px;
+.action-icon.yellow {
+  background: var(--accent-yellow);
+}
 
-  font-weight: bold;
-  text-align: center;
-  /* font-family: 'syncopate-bold'; */
-  letter-spacing: 1px;
-  /* text-transform: uppercase; */
+.action-icon.purple {
+  background: linear-gradient(135deg, #3c7dff, #9d4edd);
+}
+
+.action-icon.green {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+}
+
+.metric-action p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  flex: 1;
+}
+
+.view-btn {
+  background: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  font-size: 14px;
+}
+
+.view-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-primary);
+}
+
+/* Update the metric-card to support gradient backgrounds */
+.metric-card.gradient-purple {
+  background: linear-gradient(135deg, #3c7dff20, #9d4edd20);
+  border: 1px solid #9d4edd40;
+}
+
+.metric-card.gradient-green {
+  background: linear-gradient(135deg, #00b89420, #00cec920);
+  border: 1px solid #00cec940;
+}
+
+.metric-card.gradient-pink {
+  background: linear-gradient(135deg, #ff5b7920, #ff8db720);
+  border: 1px solid #ff5b7940;
+}
+
+.metric-card.gradient-yellow {
+  background: linear-gradient(135deg, #ffb64820, #ffd93d20);
+  border: 1px solid #ffb64840;
+}
+
+.metric-card.gradient-purple:hover {
+  background: linear-gradient(135deg, #3c7dff30, #9d4edd30);
+  transform: translateY(-4px);
+}
+
+.metric-card.gradient-green:hover {
+  background: linear-gradient(135deg, #00b89430, #00cec930);
+  transform: translateY(-4px);
+}
+
+.metric-card.gradient-pink:hover {
+  background: linear-gradient(135deg, #ff5b7930, #ff8db730);
+  transform: translateY(-4px);
+}
+
+.metric-card.gradient-yellow:hover {
+  background: linear-gradient(135deg, #ffb64830, #ffd93d30);
+  transform: translateY(-4px);
+}
+
+/* Update the gradient backgrounds to darker, more subtle variants */
+.metric-card.gradient-purple,
+.metric-card.gradient-green,
+.metric-card.gradient-pink,
+.metric-card.gradient-yellow {
+  background: linear-gradient(135deg, #181818, #202020);
+  border: 1px solid #2a2a2a;
+}
+
+/* Update hover states to be slightly lighter but still subtle */
+.metric-card.gradient-purple:hover,
+.metric-card.gradient-green:hover,
+.metric-card.gradient-pink:hover,
+.metric-card.gradient-yellow:hover {
+  background: linear-gradient(135deg, #1a1a1a, #232323);
+  transform: translateY(-4px);
+  border: 1px solid #333333;
+}
+
+/* Keep the existing colorful action icons */
+.action-icon.pink {
+  background: var(--accent-pink);
+}
+
+.action-icon.yellow {
+  background: var(--accent-yellow);
+}
+
+.action-icon.purple {
+  background: linear-gradient(135deg, #3c7dff, #9d4edd);
+}
+
+.action-icon.green {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }

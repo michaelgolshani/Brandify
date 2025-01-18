@@ -23,6 +23,8 @@ import Footer from "./components/Footer";
 import ErrorPage from "./components/404Page";
 import { AllBrands } from "./components/AllBrandsPage/AllBrands";
 import DashboardHome from "./components/BrandDashboard/DashboardHome";
+import { Sidebar } from "./components/Sidebar";
+import { DashboardTopLevel } from "./components/Dashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +48,7 @@ function App() {
             <Route exact path='/store/:brandName' >
               <BrandHomePage isLoaded={isLoaded} />
             </Route>
-            <Route exact path='/store-dashboard/:brandName/:productId/edit'>
+            {/* <Route exact path='/store-dashboard/:brandName/:productId/edit'>
               <Navigation isLoaded={isLoaded} />
               <EditProductPage update={true} />
             </Route>
@@ -61,6 +63,9 @@ function App() {
             <Route exact path='/store-dashboard/:brandName'>
               <Navigation isLoaded={isLoaded} />
               <BrandDashboardPage />
+            </Route> */}
+            <Route path="/store-dashboard/:brandName">
+              <DashboardTopLevel />
             </Route>
 
 
@@ -69,6 +74,11 @@ function App() {
             <Route exact path='/dashboard-test/:brandName'>
               {/* <Navigation isLoaded={isLoaded} /> */}
               <DashboardHome />
+            </Route>
+
+            <Route exact path='/sidebar-test/:brandName'>
+              {/* <Navigation isLoaded={isLoaded} /> */}
+              <Sidebar />
             </Route>
 
 
